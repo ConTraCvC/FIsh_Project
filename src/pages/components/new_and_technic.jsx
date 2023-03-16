@@ -21,13 +21,6 @@ export const getServerSideProps = async () => {
 
 const NewAndTechnic = ({new_props, tech_props, food_props}) => {
 
-  // useEffect( async() => {
-  //   const docSnap = await getDocs(newCollection);
-  //   const new_props = docSnap.docs.map((doc) => ({ ...doc.data()}))
-  //   console.warn(new_props)
-  //   return new_props
-  // }, [])
-
   console.log(new_props)
 
   // const dbRef = ref(database);
