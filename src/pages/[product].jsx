@@ -1,5 +1,5 @@
 import React from 'react'
-import TopBar from '@component/modules/top_bar'
+import TopBar from '@component/pages/components/top_bar'
 import Image from 'next/image'
 import background from '../assets/background.jpg'
 import Link from "next/link"
@@ -9,7 +9,7 @@ import { db } from "@component/firebase/firebase"
 import { collection, getDocs} from "firebase/firestore/lite"
 import { useRouter } from 'next/router'
 
-import BasicBreadcrumbs from '@component/modules/bread_crumbs'
+import BasicBreadcrumbs from '@component/pages/components/bread_crumbs'
 
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")

@@ -19,7 +19,14 @@ export const getServerSideProps = async () => {
     props: { new_props, tech_props, food_props } };
 };
 
-const NewAndTechnique = ({new_props, tech_props, food_props}) => {
+const NewAndTechnic = ({new_props, tech_props, food_props}) => {
+
+  // useEffect( async() => {
+  //   const docSnap = await getDocs(newCollection);
+  //   const new_props = docSnap.docs.map((doc) => ({ ...doc.data()}))
+  //   console.warn(new_props)
+  //   return new_props
+  // }, [])
 
   console.log(new_props)
 
@@ -99,4 +106,4 @@ const NewAndTechnique = ({new_props, tech_props, food_props}) => {
   )
 }
 
-export default NewAndTechnique
+export default NewAndTechnic

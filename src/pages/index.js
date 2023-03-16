@@ -1,10 +1,10 @@
 import '../styles/Home.module.css'
 import React from 'react'
-import ImageSlice from '@component/modules/image_slice'
-import TopBar from '@component/modules/top_bar'
-import NewAndTechnique from '@component/modules/new_and_technic'
+import ImageSlice from '@component/pages/components/image_slice'
+import TopBar from '@component/pages/components/top_bar'
 import Image from 'next/image'
 import background from '../assets/background.jpg'
+import NewAndTechnic from '@component/pages/components/new_and_technic'
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
       </div>
       <TopBar/>
       <ImageSlice/>
-      <NewAndTechnique/>
+      <NewAndTechnic/>
     </div>
   )
 }
