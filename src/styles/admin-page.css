@@ -1,0 +1,14 @@
+.table__css {
+  border: 1px solid;
+  border-collapse: collapse;
+  height: 200px;
+}
+
+.table__css th{
+  border: 1px solid;
+  padding-right: 300px;
+}
+.table__css td{
+  border: 1px solid;
+  text-align: center;
+}

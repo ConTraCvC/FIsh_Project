@@ -1,0 +1,15 @@
+.slice__container h3{
+  position: relative;
+  padding-left: 1.7rem;
+  margin: auto;
+  top: 1rem;
+}
+
+.slice__container {
+  margin: auto;
+  max-width: 80%;
+  top: 1%;
+  position: relative;
+  border: 0.1px solid rgb(185, 185, 185);
+  border-radius: 10px;
+}

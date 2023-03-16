@@ -1,0 +1,263 @@
+
+.gradient__bg {
+  background: rgb(41,36,93);
+  background: -moz-radial-gradient(circle, rgba(41,36,93,1) 0%, rgba(14,22,83,1) 0%, rgba(0,16,79,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(41,36,93,1) 0%, rgba(14,22,83,1) 0%, rgba(0,16,79,1) 100%);
+  background: radial-gradient(circle, rgba(41,36,93,1) 0%, rgba(14,22,83,1) 0%, rgba(0,16,79,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#29245d",endColorstr="#000000",GradientType=1);}
+
+.button__gradient__bg {
+  background: rgb(31,31,31);
+  background: -moz-radial-gradient(circle, rgba(0,9,102,1) 0%, rgba(10,0,105,1) 30%, rgba(14,22,83,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(0,9,102,1) 0%, rgba(10,0,105,1) 30%, rgba(14,22,83,1) 100%);
+  background: radial-gradient(circle, rgba(0,9,102,1) 0%, rgba(10,0,105,1) 30%, rgba(14,22,83,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1f1f1f",endColorstr="#0e1653",GradientType=1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .grid {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.bg-image-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+  transform: scale(1.1);
+}
+
+.mainframe{
+  height: 4000px;
+  overflow: hidden;
+  scroll-behavior: smooth
+}
+
+.top__menu-bar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.top__menu-list {
+  display: flex;
+  column-gap: 33px;
+  top: -7rem;
+  position: relative;
+  justify-content: center;
+  margin-left: auto;
+  width: 50%;
+  height: 40px;
+  font-weight: bold;
+  background-color:  	#404040;
+  border-radius: 5px;
+  align-items: center;
+  color: white;
+}
+
+.top__link {
+  font-size: 15px;
+  position: relative;
+}
+
+.top__link::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  bottom: -1.5rem;
+  left: 0;
+  height: 6px;
+  transition: all 0.2s;
+  background-color: orange;
+}
+
+.top__link:hover::before {
+  width: 100%;
+}
+
+.dropbtn {
+  font-size: 13px;
+  border: 1px solid;
+  border-color: darkslategray;
+  height: 50px;
+}
+
+.dropmenu {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  top: -2rem ;
+  max-width: 100%;
+  height: 130px;
+  padding-top: 5px;
+}
+
+.dropdown  {
+  display: flex;
+  position: relative;
+  height: 50px;
+  max-width: 100px;
+}
+
+.dropdown button {
+  font-weight: bold;
+  left: 110%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #74a5de;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 3.1rem;
+  border-radius: 3px;
+  background: rgba(86, 120, 255, 0.6);
+}
+
+.dropdown-content a {
+  font-size: 14px;
+  color: white;
+  padding: 5px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {color: rgb(206, 202, 0);}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.footer {
+  background-color: #74a5de;
+}
+
+@media screen and (max-width: 600px) {
+  .dropbtn{
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .top__menu-list2{
+    top: 10rem;
+    right: 16rem;
+  }
+  .top__menu-list {
+    position: relative;
+    right: 10rem;
+  }
+  .top__link{
+    position: relative;
+    right: 10rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .top__menu-list {
+    width: 1000px;
+    left: -10%
+  }
+  .dropmenu{
+    position: relative;
+    max-width: 100%;
+  }
+  .dropdown{
+    position: relative;
+    left: 7%;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .top__menu-list {
+    position: relative;
+    width: 900px;
+    left: 2rem;
+  }
+  .top__link {
+    font-size: 15px;
+    position: relative;
+    left: -1rem;
+    white-space: nowrap;
+  }
+  .dropmenu {
+    width: 100%;
+  }
+  .dropbtn {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .top__menu-list2{
+    top: 10rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .top__menu-list {
+    width: 800px;
+    left: 5%;
+  }
+  .dropmenu{
+    position: relative;
+    width: 100%;
+  }
+  .dropdown{
+    position: relative;
+    left: -7%;
+  }
+  .dropbtn{
+    position: relative;
+    max-width: 70px;
+  }
+}
