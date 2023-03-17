@@ -6,7 +6,25 @@ import Image from 'next/image'
 import background from '../assets/background.jpg'
 import NewAndTechnic from '@component/pages/components/new_and_technic'
 
-export default function Home() {
+import { db } from "@component/firebase/firebase"
+import { collection, getDocs} from "firebase/firestore/lite"
+
+const newCollection = collection(db, "news")
+const techCollection = collection(db, "techniques")
+const foodCollection = collection(db, "foods")
+
+export const getServerSideProps = async () => {
+  const docSnap = await getDocs(newCollection);
+  const new_props = docSnap.docs.map((doc) => ({ ...doc.data()}))
+  const techSnap = await getDocs(techCollection)
+  const tech_props = techSnap.docs.map((doc) => ({ ...doc.data()}))
+  const foodSnap = await getDocs(foodCollection)
+  const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
+  return {
+    props: { new_props, tech_props, food_props } };
+};
+
+export default function Home({new_props, tech_props, food_props}) {
   return (
     <div className='mainframe'>
       <div className="bg-image-wrapper">
@@ -17,8 +35,8 @@ export default function Home() {
          />
       </div>
       <TopBar/>
-      <ImageSlice/>
-      <NewAndTechnic/>
+      <ImageSlice data1={new_props}/>
+      <NewAndTechnic data1={new_props} data2={tech_props} data3={food_props}/>
     </div>
   )
 }

@@ -69,7 +69,7 @@ const TopBar = () => {
             )
           })}
         </div>
-        <div style={{position:"relative", top:"-4rem", marginLeft:"69%"}}>
+        <div style={{position:"relative", top:"-5rem", marginLeft:"69%"}}>
           <SearchBar/>
         </div>
         <TopDropDown/>
