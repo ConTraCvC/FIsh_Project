@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import TopBar from '@component/pages/components/top_bar'
 import BasicBreadcrumbs from '@component/pages/components/bread_crumbs'
 import background from '../assets/background.jpg'
 import { Form, FormGroup, Input, Table } from 'reactstrap'
-import { useState } from 'react'
 import { ref, uploadBytes} from "firebase/storage";
 import { store } from '@component/firebase/firebase'
 import { Modal, Box } from '@mui/material'
@@ -30,25 +29,41 @@ const style = {
 export default function Admin() {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
   const [isOpen4, setIsOpen4] = useState(false);
+  const [isOpenSX, setIsOpenSX] = useState(false);
+  const [isOpenTN, setIsOpenTN] = useState(false);
+  const [isOpenMU, setIsOpenMU] = useState(false);
+  const [isOpenTC, setIsOpenTC] = useState(false);
+  const [isOpenNT, setIsOpenNT] = useState(false);
+  const [isOpenNN, setIsOpenNN] = useState(false);
   const [ imageUpload, setImageUpLoad ] = useState(null);
+  const [image, setImage] = useState(null)
+  const [image1, setImage1] = useState(null)
+  const [image2, setImage2] = useState(null)
+  const [image3, setImage3] = useState(null)
+  const [image4, setImage4] = useState(null)
+  const [image_tp, setImage_tp] = useState(null)
   const [title, setTitle] = useState("");
+  const [title2, setTitle2] = useState("");
   const [body, setBody] = useState("");
+  const [body2, setBody2] = useState("");
+  const [body3, setBody3] = useState("");
 
   const handleClose = () => setIsOpen(false)
-  const handleClose2 = () => setIsOpen2(false)
   const handleClose3 = () => setIsOpen3(false)
   const handleClose4 = () => setIsOpen4(false)
+  const handleCloseSX = () => setIsOpenSX(false)
+  const handleCloseTN = () => setIsOpenTN(false)
+  const handleCloseMU = () => setIsOpenMU(false)
+  const handleCloseTC = () => setIsOpenTC(false)
+  const handleCloseNT = () => setIsOpenNT(false)
+  const handleCloseNN = () => setIsOpenNN(false)
 
   const MENU_LIST = [
     {
       text: "UP ẢNH NEW FEED",
       function() {setIsOpen(true)}
-    },{
-      text: "UP ẢNH GIỐNG CÁ",
-      function() {setIsOpen2(true)}
     },{
       text: "UP ẢNH KỸ THUẬT",
       function() {setIsOpen3(true)}
@@ -58,16 +73,44 @@ export default function Admin() {
     }
   ]
 
+  const PHAN_LOAI_SX = [
+    {
+      text: "GIỐNG CÁ BIỂN SẢN XUẤT",
+      function() {setIsOpenSX(true)}
+    },
+    {
+      text: "GIỐNG CÁ BIỂN TỰ NHIÊN",
+      function() {setIsOpenTN(true)}
+    },
+    {
+      text: "GIỐNG CÁ MÚ SẢN XUẤT",
+      function() {setIsOpenMU(true)}
+    },
+    {
+      text: "TÔM, CUA GIỐNG",
+      function() {setIsOpenTC(true)}
+    },
+    {
+      text: "GIỐNG NHUYỄN THỂ",
+      function() {setIsOpenNT(true)}
+    },
+    {
+      text: "GIỐNG CÁ NƯỚC NGỌT",
+      function() {setIsOpenNN(true)}
+    },
+  ]
+
   // Get database
   const imageRef = collection(db, 'news');
   const techRef = collection(db, 'techniques');
   const foodRef = collection(db, 'foods');
+  const fishs_Ref = collection(db, 'fish_types');
 
   const uploadImages = async() => {
     if (imageUpload == null) {
       return alert("Bạn hãy chọn file");
     } else {
-      const fishRef = ref(store, `$ca_giong/${imageUpload.name}`)
+      const fishRef = ref(store, `$fishs/${imageUpload.name}`)
       await uploadBytes(fishRef, imageUpload).then(() => {
         alert("Image Uploaded")
       })
@@ -134,17 +177,32 @@ export default function Admin() {
     }
   }
 
+
+
+  const uploadFirebase__SX = async() => {
+    if (image_tp == null && Object.values(title).length, Object.values(title).length <= 0) {
+      return alert("Bạn hãy chọn file và nhập đủ trường");
+    } else {
+      const fishRef = ref(store, `fishs/${image_tp.name}`)
+      await uploadBytes(fishRef, image_tp).then(() => {
+        alert("Image Uploaded")
+      })
+      await addDoc(fishs_Ref, {
+          title: {title},
+          body: {body},
+          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+      }).then(() => {
+        alert("Data Pushed")
+      })
+    }
+  }
+
   const MODAL_MAPPING = [
     {
       text: "BẠN ĐÃ CHẮC CHẮN VỀ NEW FEED ??",
       upload: uploadFirebase__New,
       handle: handleClose,
       boolean: isOpen
-    },{
-      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ ??",
-      upload: uploadFirebase__New,
-      handle: handleClose2,
-      boolean: isOpen2
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ KỸ THUẬT ??",
       upload: uploadFirebase__Tech,
@@ -155,6 +213,36 @@ export default function Admin() {
       upload: uploadFirebase__Food,
       handle: handleClose4,
       boolean: isOpen4
+    },{
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ SX ??",
+      upload: uploadFirebase__Food,
+      handle: handleCloseSX,
+      boolean: isOpenSX
+    },{
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ TỰ NHIÊN ??",
+      upload: uploadFirebase__Food,
+      handle: handleCloseTN,
+      boolean: isOpenTN
+    },{
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ MÚ SẢN XUẤT ??",
+      upload: uploadFirebase__Food,
+      handle: handleCloseMU,
+      boolean: isOpenMU
+    },{
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ TÔM CUA GIỐNG ??",
+      upload: uploadFirebase__Food,
+      handle: handleCloseTC,
+      boolean: isOpenTC
+    },{
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG NHUYỄN THỂ ??",
+      upload: uploadFirebase__Food,
+      handle: handleCloseNT,
+      boolean: isOpenNT
+    },{
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ NƯỚC NGỌT ??",
+      upload: uploadFirebase__Food,
+      handle: handleCloseNN,
+      boolean: isOpenNN
     }
   ]
   
@@ -198,6 +286,52 @@ export default function Admin() {
       <button onClick={uploadImages} style={{position:"relative", width:"100px", height:"30px", backgroundColor:"royalblue", borderRadius:"5px", marginLeft:"2rem"}}>UPLOAD</button>
     </Form>
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
+
+      <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
+          <h2 style={{position:"relative", color:"white", top:"-1rem"}} >UP ẢNH GIỐNG CÁ</h2>
+          <Form>
+            <FormGroup>
+            <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
+              <thead>
+                <tr>
+                  <th>Ảnh:</th>
+                  <td width="50%" style={{textAlign:'center'}}>
+                    <Input
+                      type='file'
+                      onChange={(event) => setImageUpLoad(event.target.files[0])}>
+                    </Input></td>
+                </tr>
+                <tr>
+                  <th>Tiêu Đề:</th>
+                  <td>
+                    <Input
+                      type='textarea'
+                      placeholder='Nhập Tiêu Đề'
+                      onChange={(e) => setTitle(e.target.value)}>
+                    </Input></td>
+                </tr>
+                <tr>
+                  <th>Nội dung:</th>
+                  <td>
+                    <Input 
+                      type='textarea' 
+                      placeholder='Nhập Nội Dung'
+                      onChange={(e) => setBody(e.target.value)}>
+                    </Input>
+                  </td>
+                </tr>
+              </thead>
+            </Table>
+            </FormGroup>
+            <FormGroup style={{paddingLeft:"2%", paddingTop:"3rem"}}>
+              {""}
+            </FormGroup>
+          </Form>
+          <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
+               scolor='success' onClick={""} type="submit">Upload</button>
+
+        <hr style={{width:"80%"}} ></hr>
+      </div>
 
     {MENU_LIST.map((menu) => {
       return(

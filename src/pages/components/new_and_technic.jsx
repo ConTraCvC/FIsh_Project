@@ -23,8 +23,8 @@ const NewAndTechnic = ({data1, data2, data3}) => {
   // });
 
   const newListMap = Object.values(data1).slice(0, 6).map(data => {
-    return <div style={{display:"flex", flexDirection:"column", width:"250px"}}>
-      <a href="/item-page" style={{color:"white"}}>{Object.values(data.title)}</a>
+    return <div style={{display:"flex", flexDirection:"column"}}>
+      <Link href="/item-page" style={{color:"white"}}>{Object.values(data.title)}</Link>
       <a style={{color:"darkgray", fontSize:"12px", padding:"5px"}} >{Object.values(data.date)}</a>
       <hr style={{borderTop:"0.1px"}}></hr><li style={{opacity:"0"}}></li>
     </div>

@@ -1,10 +1,9 @@
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import TopItem from "./top_item";
 import logo_vi from "../../assets/logo_vi.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { Input, Form } from "reactstrap";
 import TopDropDown from "./top_drop_down";
 
@@ -35,21 +34,22 @@ const MENU_LIST = [
 
 const TopBar = () => {
 
+  const searchRef = useRef();
+
   const router = useRouter()
-  const [query, setQuery] = useState("")
   const handleSubmit = (e) => {
       e.preventDefault()
-      router.push("/search?keyword=" + query)
+      router.push("/search?keyword=" + Object.values(searchRef))
   }
 
   function SearchBar() {
     return (
       <Form role="search" onSubmit={handleSubmit}>
         <Input
-          value={query}
+          ref={searchRef}
+          type="search"
           placeholder="&#128269; Bạn muốn tìm sản phẩm nào"
           style={{ height:'35px',width:'320px',borderRadius:"5px"}}
-          onChange={(e) => setQuery(e.target.value)}
         />
        </Form>
     )

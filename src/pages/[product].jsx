@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react'
+import React, { useState } from 'react'
 import TopBar from '@component/pages/components/top_bar'
 import Image from 'next/image'
 import background from '../assets/background.jpg'
@@ -10,7 +10,7 @@ import { collection, getDocs} from "firebase/firestore/lite"
 import { useRouter } from 'next/router'
 
 import BasicBreadcrumbs from '@component/pages/components/bread_crumbs'
-import { Button, Input, Table } from 'reactstrap'
+import { FormGroup, Input, Table } from 'reactstrap'
 
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
@@ -71,17 +71,27 @@ export default function ItemPage({new_props, tech_props, food_props}) {
     )
   })
 
+  ///////////////////////
+
   const [ kich_thuoc, setKich_thuoc ] = useState(1);
   const [ so_luong, setSo_luong] = useState(1);
-  const [ info, setInfo ] = useState()
-  const [ dat_hang, setDat_Hang ] = useState() 
+  const [ info, setInfo ] = useState(true);
+  const [ dat_hang, setDat_Hang ] = useState(false);
+  const [random, setRandom] = useState(0);
+
+  function randomNumberInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  function ranDom() {
+    setRandom(randomNumberInRange(1000, 9999))
+  }
 
   const FishMap = Object.values(fish_props).slice(0, 0).map(fish => {
     return (
       <div>
         <div>
           <h3>{Object.values(fish.title)}</h3>
-          <img src={fish.image}></img>
+          <img width="400px" height="300px" src={fish.image}></img>
         </div>
         <div style={{position:"relative"}}>
           <h5 style={{position:"relative", color:"white"}}>Nội dung:</h5>
@@ -89,38 +99,37 @@ export default function ItemPage({new_props, tech_props, food_props}) {
 
           <Input style={{position:"relative", color:"white"}}
             value={kich_thuoc}
-            onChange={(e) => setKich_thuoc(e.target.value)}>
-            <Button 
-              value={kich_thuoc}
-              onChange={(e) => setKich_thuoc(e.target.value+1)}/>
-            <Button
-              value={kich_thuoc}
-              onChange={(e) => setKich_thuoc(e.target.value-1)}/>
-          </Input>
+            onChange={(e) => setKich_thuoc(e.target.value)}/>
+          <button
+            value={kich_thuoc}
+            onClick={(e) => setKich_thuoc(++e.target.value)}/>
+          <button
+            value={kich_thuoc}
+            onClick={(e) => setKich_thuoc(--e.target.value)}/>
           <Input style={{position:"relative", color:"white"}}
             value={so_luong}
-            onChange={(e) => setSo_luong(e.target.value)}>
-            <Button
-              value={so_luong}
-              onChange={(e) => setSo_luong(e.target.value+1)}/>
-            <Button
-              value={so_luong}
-              onChange={(e) => setSo_luong(e.target.value-1)}/>
-          </Input>
+            onChange={(e) => setSo_luong(e.target.value)}/>
+          <button
+            value={so_luong}
+            onClick={(e) => setSo_luong(++e.target.value)}/>
+            <button
+            value={so_luong}
+            onClick={(e) => setSo_luong(--e.target.value)}/>
+
           <h4 style={{position:"relative", color:"lightblue"}}>{`Tổng tiền: ${kich_thuoc*so_luong*fish.don_gia}`}</h4>
         </div>
         { info && dat_hang ? 
-          <Button style={{position:"relative", color:"white"}}
-            onClick={() => setInfo(true) && setDat_Hang(false)}>Thông tin sản phẩm</Button> :
-          <Button style={{position:"relative", color:"white"}}
-            onClick={() => setInfo(false) && setDat_Hang(true)}>Đặt hàng</Button>
+          <button style={{position:"relative", color:"white"}}
+            onClick={() => setInfo(true) && setDat_Hang(false)}>Thông tin sản phẩm</button> :
+          <button style={{position:"relative", color:"white"}}
+            onClick={() => setInfo(false) && setDat_Hang(true)}>Đặt hàng</button>
         }
         { info &&  (
           <div style={{position:"relative", color:"white"}}>
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
             <h5>{fish.body}</h5>
             <h3>CÁ THƯƠNG PHẨM</h3>
-            <img src={fish.image_tp}></img>
+            <img width="400px" height="300px" src={fish.image_tp}></img>
             <Table>
               <thead>
                 <tr>
@@ -189,13 +198,43 @@ export default function ItemPage({new_props, tech_props, food_props}) {
               </thead>
             </Table>
             <h4>Hình 1:</h4>
-            <img src={fish.image1}/>
+            <img width="400px" height="300px"  src={fish.image1}/>
             <h4>Hình 2:</h4>
-            <img src={fish.image2}></img>
+            <img width="400px" height="300px"  src={fish.image2}></img>
             <h4>Hình 3:</h4>
-            <img src={fish.image3}></img>
+            <img width="400px" height="300px"  src={fish.image3}></img>
+            <iframe width="400px" height="300px" src={fish.youtube}>Video 1:</iframe>
+            <iframe width="400px" height="300px" src={fish.youtube1}>Video 2:</iframe>
             <h4>Cá thương phẩm:</h4>
             <h5>{fish.body2}</h5>
+            <iframe width="400px" height="300px"  src={fish.youtube2}>Video 3:</iframe>
+            <iframe width="400px" height="300px" src={fish.youtube3}>Video 4:</iframe>
+            <iframe width="400px" height="300px"  src={fish.youtube4}>Video 5:</iframe>
+            <iframe width="400px" height="300px"  src={fish.youtube5}>Video 6:</iframe>
+            <h5>{fish.body3}</h5>
+          </div>
+        )}
+        { dat_hang && (
+          <div>
+            <h3>THÔNG TIN KHÁCH HÀNG</h3>
+            <Form>
+              <FormGroup>
+                <Input/>
+                <Input/>
+                <Input/>
+                <Input/>
+              </FormGroup>
+              <FormGroup>
+                <Input/>
+                <Input/>
+              </FormGroup>
+              <FormGroup>
+                <Input/>
+                <button>{random}</button>
+                <button onClick={ranDom}>{""}</button>
+              </FormGroup>
+              <button onClick={""}>Mua ngay</button>
+            </Form>
           </div>
         )}
       </div>
