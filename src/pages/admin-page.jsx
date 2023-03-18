@@ -104,7 +104,12 @@ export default function Admin() {
   const imageRef = collection(db, 'news');
   const techRef = collection(db, 'techniques');
   const foodRef = collection(db, 'foods');
-  const fishs_Ref = collection(db, 'fish_types');
+  const fish_SX = collection(db, 'fish_types');
+  const fish_TN = collection(db, 'fish_TN');
+  const fish_MU = collection(db, 'fish_MU');
+  const fish_TC = collection(db, 'fish_TC');
+  const fish_NT = collection(db, 'fish_NT');
+  const fish_NN = collection(db, 'fish_NN');
 
   const uploadImages = async() => {
     if (imageUpload == null) {
@@ -118,7 +123,7 @@ export default function Admin() {
   }
 
   const uploadFirebase__New = async() => {
-    if (imageUpload == null && Object.values(title).length, Object.values(title).length <= 0) {
+    if (imageUpload == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập đủ trường");
     } else {
       const fishRef = ref(store, `news/${imageUpload.name}`)
@@ -138,7 +143,7 @@ export default function Admin() {
   }
 
   const uploadFirebase__Tech = async() => {
-    if (imageUpload == null && Object.values(title).length, Object.values(title).length <= 0) {
+    if (imageUpload == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập đủ trường");
     } else {
       const fishRef = ref(store, `techniques/${imageUpload.name}`)
@@ -158,7 +163,7 @@ export default function Admin() {
   }
 
   const uploadFirebase__Food = async() => {
-    if (imageUpload == null && Object.values(title).length, Object.values(title).length <= 0) {
+    if (imageUpload == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập đủ trường");
     } else {
       const fishRef = ref(store, `foods/${imageUpload.name}`)
@@ -177,17 +182,101 @@ export default function Admin() {
     }
   }
 
-
-
   const uploadFirebase__SX = async() => {
-    if (image_tp == null && Object.values(title).length, Object.values(title).length <= 0) {
-      return alert("Bạn hãy chọn file và nhập đủ trường");
+    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+      return alert("Bạn hãy chọn file và nhập trường");
     } else {
       const fishRef = ref(store, `fishs/${image_tp.name}`)
       await uploadBytes(fishRef, image_tp).then(() => {
         alert("Image Uploaded")
       })
-      await addDoc(fishs_Ref, {
+      await addDoc(fish_SX, {
+          title: {title},
+          body: {body},
+          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+      }).then(() => {
+        alert("Data Pushed")
+      })
+    }
+  }
+
+  const uploadFirebase__TN = async() => {
+    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+      return alert("Bạn hãy chọn file và nhập trường");
+    } else {
+      const fishRef = ref(store, `fishs/${image_tp.name}`)
+      await uploadBytes(fishRef, image_tp).then(() => {
+        alert("Image Uploaded")
+      })
+      await addDoc(fish_TN, {
+          title: {title},
+          body: {body},
+          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+      }).then(() => {
+        alert("Data Pushed")
+      })
+    }
+  }
+  const uploadFirebase__MU = async() => {
+    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+      return alert("Bạn hãy chọn file và nhập trường");
+    } else {
+      const fishRef = ref(store, `fishs/${image_tp.name}`)
+      await uploadBytes(fishRef, image_tp).then(() => {
+        alert("Image Uploaded")
+      })
+      await addDoc(fish_MU, {
+          title: {title},
+          body: {body},
+          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+      }).then(() => {
+        alert("Data Pushed")
+      })
+    }
+  }
+  const uploadFirebase__TC = async() => {
+    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+      return alert("Bạn hãy chọn file và nhập trường");
+    } else {
+      const fishRef = ref(store, `fishs/${image_tp.name}`)
+      await uploadBytes(fishRef, image_tp).then(() => {
+        alert("Image Uploaded")
+      })
+      await addDoc(fish_TC, {
+          title: {title},
+          body: {body},
+          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+      }).then(() => {
+        alert("Data Pushed")
+      })
+    }
+  }
+  const uploadFirebase__NT = async() => {
+    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+      return alert("Bạn hãy chọn file và nhập trường");
+    } else {
+      const fishRef = ref(store, `fishs/${image_tp.name}`)
+      await uploadBytes(fishRef, image_tp).then(() => {
+        alert("Image Uploaded")
+      })
+      await addDoc(fish_NT, {
+          title: {title},
+          body: {body},
+          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+      }).then(() => {
+        alert("Data Pushed")
+      })
+    }
+  }
+  const uploadFirebase__NN = async() => {
+    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+      return alert("Bạn hãy chọn file và nhập trường");
+    } else {
+      const fishRef = ref(store, `fishs/${image_tp.name}`)
+      await uploadBytes(fishRef, image_tp).then(() => {
+        alert("Image Uploaded")
+      })
+      await addDoc(fish_NN, {
           title: {title},
           body: {body},
           image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
@@ -215,32 +304,32 @@ export default function Admin() {
       boolean: isOpen4
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ SX ??",
-      upload: uploadFirebase__Food,
+      upload: uploadFirebase__SX,
       handle: handleCloseSX,
       boolean: isOpenSX
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ TỰ NHIÊN ??",
-      upload: uploadFirebase__Food,
+      upload: uploadFirebase__TN,
       handle: handleCloseTN,
       boolean: isOpenTN
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ MÚ SẢN XUẤT ??",
-      upload: uploadFirebase__Food,
+      upload: uploadFirebase__MU,
       handle: handleCloseMU,
       boolean: isOpenMU
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ TÔM CUA GIỐNG ??",
-      upload: uploadFirebase__Food,
+      upload: uploadFirebase__TC,
       handle: handleCloseTC,
       boolean: isOpenTC
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG NHUYỄN THỂ ??",
-      upload: uploadFirebase__Food,
+      upload: uploadFirebase__NT,
       handle: handleCloseNT,
       boolean: isOpenNT
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ NƯỚC NGỌT ??",
-      upload: uploadFirebase__Food,
+      upload: uploadFirebase__NN,
       handle: handleCloseNN,
       boolean: isOpenNN
     }
@@ -278,6 +367,7 @@ export default function Admin() {
     <TopBar/>
     <BasicBreadcrumbs/>
 
+  
     <Form style={{display:"flex", marginTop:"5%"}}>
       <h2 style={{color:'white', position:"relative", marginLeft:"15%"}}>UP ẢNH THƯỜNG</h2>
       <Input type='file'
@@ -286,9 +376,11 @@ export default function Admin() {
       <button onClick={uploadImages} style={{position:"relative", width:"100px", height:"30px", backgroundColor:"royalblue", borderRadius:"5px", marginLeft:"2rem"}}>UPLOAD</button>
     </Form>
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
-
-      <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
-          <h2 style={{position:"relative", color:"white", top:"-1rem"}} >UP ẢNH GIỐNG CÁ</h2>
+    
+    {PHAN_LOAI_SX.map((menu) => {
+      return(
+        <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
+          <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{menu.text}</h2>
           <Form>
             <FormGroup>
             <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
@@ -328,10 +420,11 @@ export default function Admin() {
             </FormGroup>
           </Form>
           <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
-               scolor='success' onClick={""} type="submit">Upload</button>
-
-        <hr style={{width:"80%"}} ></hr>
-      </div>
+               scolor='success' onClick={menu.function} type="submit">Upload</button>
+          <hr style={{width:"80%"}} ></hr>
+        </div>
+      )
+    })}
 
     {MENU_LIST.map((menu) => {
       return(
@@ -371,7 +464,7 @@ export default function Admin() {
             </thead>
           </Table>
           </FormGroup>
-          <FormGroup style={{paddingLeft:"2%", paddingTop:"3rem"}}>
+          <FormGroup style={{paddingLeft:"2%", paddingTop:"2rem"}}>
             {""}
           </FormGroup>
         </Form>
