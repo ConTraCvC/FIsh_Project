@@ -31,9 +31,9 @@ const ImageSlice = () => {
               <thead>
                 <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
                   <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"orange"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><p style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</p></td>
+                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
+                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
+                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
                 </tr>
               </thead>
             </Table>    
@@ -43,9 +43,9 @@ const ImageSlice = () => {
               <thead>
                 <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
                   <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"orange"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><p style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</p></td>
+                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
+                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
+                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
                 </tr>
               </thead>
             </Table>    
@@ -55,9 +55,9 @@ const ImageSlice = () => {
               <thead>
                 <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
                   <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"orange"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><p style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</p></td>
+                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
+                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
+                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
                 </tr>
               </thead>
             </Table>    
@@ -67,9 +67,9 @@ const ImageSlice = () => {
               <thead>
                 <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
                   <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"orange"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><p style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</p></td>
+                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
+                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
+                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
                 </tr>
               </thead>
             </Table>    
@@ -79,9 +79,9 @@ const ImageSlice = () => {
               <thead>
                 <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
                   <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"orange"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><p style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</p></td>
+                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
+                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
+                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
                 </tr>
               </thead>
             </Table>    

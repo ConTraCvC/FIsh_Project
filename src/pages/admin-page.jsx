@@ -376,6 +376,29 @@ export default function Admin() {
       <button onClick={uploadImages} style={{position:"relative", width:"100px", height:"30px", backgroundColor:"royalblue", borderRadius:"5px", marginLeft:"2rem"}}>UPLOAD</button>
     </Form>
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
+
+    {/* <div style={{position:"relative", marginTop:"1%", marginLeft:"14.5%"}}>
+      <button style={{position:"relative", color:"black",
+        backgroundColor:"darkgrey", width:"220px", height:"50px",
+        borderTopLeftRadius:'5px', borderBottomLeftRadius:"5px"}}
+        onClick={""}>CÁ BIỂN SẢN XUẤT</button>
+      <button style={{position:"relative", color:"black",
+        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        onClick={""}>CÁ BIỂN TỰ NHIÊN</button>
+      <button style={{position:"relative", color:"black",
+        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        onClick={""}>CÁ MÚ SẢN XUẤT</button>
+      <button style={{position:"relative", color:"black",
+        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        onClick={""}>GIỐNG TÔM CUA</button>
+      <button style={{position:"relative", color:"black",
+        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        onClick={""}>GIỐNG NHUYỄN THỂ</button>
+      <button style={{position:"relative", color:"black",
+        backgroundColor:"darkgrey", width:"220px", height:"50px",
+        borderTopRightRadius:'5px', borderBottomRightRadius:'5px'}}
+        onClick={""}>CÁ NƯỚC NGỌT</button>
+    </div> */}
     
     {PHAN_LOAI_SX.map((menu) => {
       return(

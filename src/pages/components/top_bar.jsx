@@ -49,7 +49,7 @@ const TopBar = () => {
           ref={searchRef}
           type="search"
           placeholder="&#128269; Bạn muốn tìm sản phẩm nào"
-          style={{ height:'35px',width:'320px',borderRadius:"5px"}}
+          style={{ height:'35px',width:'320px',borderRadius:"10px"}}
         />
        </Form>
     )

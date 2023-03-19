@@ -39,6 +39,7 @@
 .new__feed_subContent {
   display: flex;
   margin-bottom: 30px;
+  font-weight: bold;
   color: white;
 }
 
@@ -46,6 +47,7 @@
   display: flex;
   margin-bottom: 30px;
   color: white;
+  font-weight: bold;
   right: 50%;
 }
 
