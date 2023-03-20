@@ -434,31 +434,14 @@ export default function Admin() {
     </Form>
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
 
-    {/* <div style={{position:"relative", marginTop:"1%", marginLeft:"14.5%", maxWidth:"80%"}}>
-      <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"180px", height:"50px",
-        borderTopLeftRadius:'5px', borderBottomLeftRadius:"5px"}}
-        onClick={""}>CÁ BIỂN SẢN XUẤT</button>
-      <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
-        onClick={""}>CÁ BIỂN TỰ NHIÊN</button>
-      <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
-        onClick={""}>CÁ MÚ SẢN XUẤT</button>
-      <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
-        onClick={""}>GIỐNG TÔM CUA</button>
-      <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
-        onClick={""}>GIỐNG NHUYỄN THỂ</button>
-      <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"180px", height:"50px",
-        borderTopRightRadius:'5px', borderBottomRightRadius:'5px'}}
-        onClick={""}>CÁ NƯỚC NGỌT</button>
-    </div> */}
-
-    <button onClick={() => ListItem(PHAN_LOAI_SX.slice(0,1))} style={{position:"relative", color:"black"}}>SSS</button>
-    <button onClick={() => ListItem(PHAN_LOAI_SX.slice(1,2))} style={{position:"relative", color:"black"}}>UUU</button>
+    <div>
+      <button onClick={() => ListItem(setSlice(PHAN_LOAI_SX.slice(0,1)) + setSlice2([]))} style={{position:"relative", color:"black"}}>SSS</button>
+      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(1,2)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
+      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(2,3)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
+      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(3,4)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
+      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(4,5)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
+      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(5,6)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
+    </div>
     
     <ListItem/>
 
