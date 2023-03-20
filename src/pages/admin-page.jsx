@@ -303,12 +303,12 @@ export default function Admin() {
       handle: handleClose4,
       boolean: isOpen4
     },{
-      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ SX ??",
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ BIỂN SẢN XUẤT ??",
       upload: uploadFirebase__SX,
       handle: handleCloseSX,
       boolean: isOpenSX
     },{
-      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ TỰ NHIÊN ??",
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ BIỂN TỰ NHIÊN ??",
       upload: uploadFirebase__TN,
       handle: handleCloseTN,
       boolean: isOpenTN
@@ -318,7 +318,7 @@ export default function Admin() {
       handle: handleCloseMU,
       boolean: isOpenMU
     },{
-      text: "BẠN ĐÃ CHẮC CHẮN VỀ TÔM CUA GIỐNG ??",
+      text: "BẠN ĐÃ CHẮC CHẮN VỀ TÔM, CUA GIỐNG ??",
       upload: uploadFirebase__TC,
       handle: handleCloseTC,
       boolean: isOpenTC
@@ -335,18 +335,25 @@ export default function Admin() {
     }
   ]
 
-  const [slice, setSlice] = useState(false)
-  const [slice2, setSlice2] = useState(false)
-  const [slice3, setSlice3] = useState()
-  const [slice4, setSlice4] = useState()
-  const [slice5, setSlice5] = useState()
-  const [slice6, setSlice6] = useState()
+  const [slice, setSlice] = useState([])
+  const [slice2, setSlice2] = useState([])
+  const [slice3, setSlice3] = useState([])
+  const [slice4, setSlice4] = useState([])
+  const [slice5, setSlice5] = useState([])
+  const [slice6, setSlice6] = useState([])
 
-  const ListItem = (params) => {
-    console.log(params[0])
+  const ListItem = () => {
+    // console.log(slice)
+    // console.log(slice2)
     return(
       <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
-        <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{params[0]}</h2>
+        <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{
+          Object.values(slice).length>0 ? slice[0].text :
+          Object.values(slice2).length>0 ? slice2[0].text :
+          Object.values(slice3).length>0 ? slice3[0].text :
+          Object.values(slice4).length>0 ? slice4[0].text :
+          Object.values(slice5).length>0 ? slice5[0].text :
+          Object.values(slice6).length>0 ? slice6[0].text : null}</h2>
         <Form>
           <FormGroup>
           <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
@@ -386,7 +393,13 @@ export default function Admin() {
           </FormGroup>
         </Form>
         <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
-             scolor='success' onClick={params[0]} type="submit">Upload</button>
+          scolor='success' onClick={
+          Object.values(slice).length>0 ? slice[0].function : 
+          Object.values(slice2).length>0 ? slice2[0].function :
+          Object.values(slice3).length>0 ? slice3[0].function :
+          Object.values(slice4).length>0 ? slice4[0].function :
+          Object.values(slice5).length>0 ? slice5[0].function :
+          Object.values(slice6).length>0 ? slice6[0].function : null} type="submit">Upload</button>
         <hr style={{width:"80%"}} ></hr>
       </div>
     )
@@ -434,65 +447,29 @@ export default function Admin() {
     </Form>
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
 
-    <div>
-      <button onClick={() => ListItem(setSlice(PHAN_LOAI_SX.slice(0,1)) + setSlice2([]))} style={{position:"relative", color:"black"}}>SSS</button>
-      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(1,2)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
-      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(2,3)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
-      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(3,4)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
-      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(4,5)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
-      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(5,6)) + setSlice([]))} style={{position:"relative", color:"black"}}>UUU</button>
+    <div style={{position:"relative", marginLeft:'20%'}}>
+      <button onClick={() => ListItem(setSlice(PHAN_LOAI_SX.slice(0,1)) + setSlice2([]))} style={{
+        position:"relative", color:"black", backgroundColor:"darkgrey", width:"180px", height:"50px",
+        borderTopLeftRadius:'5px', borderBottomLeftRadius:"5px"}}>CÁ BIỂN SẢN XUẤT</button>
+      <button onClick={() => ListItem(setSlice2(PHAN_LOAI_SX.slice(1,2)) + setSlice([]) + setSlice3([])
+       + setSlice4([]) + setSlice5([]) + setSlice6([]))} style={{
+        position:"relative", color:"black", backgroundColor:"darkgrey", width:"180px", height:"50px"}}>CÁ BIỂN TỰ NHIÊN</button>
+      <button onClick={() => ListItem(setSlice3(PHAN_LOAI_SX.slice(2,3)) + setSlice([]) + setSlice2([])
+       + setSlice4([]) + setSlice5([]) + setSlice6([]))} style={{
+        position:"relative", color:"black", backgroundColor:"darkgrey", width:"180px", height:"50px"}}>CÁ MÚ SẢN XUẤT</button>
+      <button onClick={() => ListItem(setSlice4(PHAN_LOAI_SX.slice(3,4)) + setSlice([]) + setSlice2([])
+       + setSlice3([]) + setSlice5([]) + setSlice6([]))} style={{
+        position:"relative", color:"black", backgroundColor:"darkgrey", width:"180px", height:"50px"}}>TÔM, CÁ GIỐNG</button>
+      <button onClick={() => ListItem(setSlice5(PHAN_LOAI_SX.slice(4,5)) + setSlice([]) + setSlice2([])
+       + setSlice3([]) + setSlice4([]) + setSlice6([]))} style={{
+        position:"relative", color:"black", backgroundColor:"darkgrey", width:"180px", height:"50px"}}>GIỐNG NHUYỄN THỂ</button>
+      <button onClick={() => ListItem(setSlice6(PHAN_LOAI_SX.slice(5,6)) + setSlice([]) + setSlice2([])
+       + setSlice3([]) + setSlice4([]) + setSlice5([]))} style={{
+        position:"relative", color:"black", backgroundColor:"darkgrey", width:"180px", height:"50px",
+        borderTopRightRadius:'5px', borderBottomRightRadius:'5px'}}>CÁ NƯỚC NGỌT</button>
     </div>
     
     <ListItem/>
-
-    {/* {slice2 && PHAN_LOAI_SX.slice(1,2).map((menu) => {
-      return(
-        <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
-          <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{menu.text}</h2>
-          <Form>
-            <FormGroup>
-            <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
-              <thead>
-                <tr>
-                  <th>Ảnh:</th>
-                  <td width="50%" style={{textAlign:'center'}}>
-                    <Input
-                      type='file'
-                      onChange={(event) => setImageUpLoad(event.target.files[0])}>
-                    </Input></td>
-                </tr>
-                <tr>
-                  <th>Tiêu Đề:</th>
-                  <td>
-                    <Input
-                      type='textarea'
-                      placeholder='Nhập Tiêu Đề'
-                      onChange={(e) => setTitle(e.target.value)}>
-                    </Input></td>
-                </tr>
-                <tr>
-                  <th>Nội dung:</th>
-                  <td>
-                    <Input 
-                      type='textarea' 
-                      placeholder='Nhập Nội Dung'
-                      onChange={(e) => setBody(e.target.value)}>
-                    </Input>
-                  </td>
-                </tr>
-              </thead>
-            </Table>
-            </FormGroup>
-            <FormGroup style={{paddingLeft:"2%", paddingTop:"3rem"}}>
-              {""}
-            </FormGroup>
-          </Form>
-          <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
-               scolor='success' onClick={menu.function} type="submit">Upload</button>
-          <hr style={{width:"80%"}} ></hr>
-        </div>
-      )
-    })} */}
 
     {MENU_LIST.map((menu) => {
       return(
