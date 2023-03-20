@@ -342,11 +342,11 @@ export default function Admin() {
   const [slice5, setSlice5] = useState()
   const [slice6, setSlice6] = useState()
 
-  const ListItem = (menu) => {
-    console.log(menu[0])
+  const ListItem = (params) => {
+    console.log(params[0])
     return(
       <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
-        <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{menu[0]}</h2>
+        <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{params[0]}</h2>
         <Form>
           <FormGroup>
           <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
@@ -386,7 +386,7 @@ export default function Admin() {
           </FormGroup>
         </Form>
         <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
-             scolor='success' onClick={menu.function} type="submit">Upload</button>
+             scolor='success' onClick={params[0]} type="submit">Upload</button>
         <hr style={{width:"80%"}} ></hr>
       </div>
     )
