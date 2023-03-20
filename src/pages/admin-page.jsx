@@ -334,6 +334,63 @@ export default function Admin() {
       boolean: isOpenNN
     }
   ]
+
+  const [slice, setSlice] = useState(false)
+  const [slice2, setSlice2] = useState(false)
+  const [slice3, setSlice3] = useState()
+  const [slice4, setSlice4] = useState()
+  const [slice5, setSlice5] = useState()
+  const [slice6, setSlice6] = useState()
+
+  const ListItem = (menu) => {
+    console.log(menu[0])
+    return(
+      <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
+        <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{menu[0]}</h2>
+        <Form>
+          <FormGroup>
+          <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
+            <thead>
+              <tr>
+                <th>Ảnh:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    type='file'
+                    onChange={(event) => setImageUpLoad(event.target.files[0])}>
+                  </Input></td>
+              </tr>
+              <tr>   
+                <th>Tiêu Đề:</th>
+                <td>
+                  <Input
+                    type='textarea'
+                    placeholder='Nhập Tiêu Đề'
+                    onChange={(e) => setTitle(e.target.value)}>
+                  </Input></td>
+              </tr>
+              <tr>
+                <th>Nội dung:</th>
+                <td>
+                  <Input 
+                    type='textarea' 
+                    placeholder='Nhập Nội Dung'
+                    onChange={(e) => setBody(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+            </thead>
+          </Table>
+          </FormGroup>
+          <FormGroup style={{paddingLeft:"2%", paddingTop:"3rem"}}>
+            {""}
+          </FormGroup>
+        </Form>
+        <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
+             scolor='success' onClick={menu.function} type="submit">Upload</button>
+        <hr style={{width:"80%"}} ></hr>
+      </div>
+    )
+  }
   
   ///////////////////
   return (
@@ -367,7 +424,7 @@ export default function Admin() {
     <TopBar/>
     <BasicBreadcrumbs/>
 
-  
+
     <Form style={{display:"flex", marginTop:"5%"}}>
       <h2 style={{color:'white', position:"relative", marginLeft:"15%"}}>UP ẢNH THƯỜNG</h2>
       <Input type='file'
@@ -377,30 +434,35 @@ export default function Admin() {
     </Form>
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
 
-    {/* <div style={{position:"relative", marginTop:"1%", marginLeft:"14.5%"}}>
+    {/* <div style={{position:"relative", marginTop:"1%", marginLeft:"14.5%", maxWidth:"80%"}}>
       <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"220px", height:"50px",
+        backgroundColor:"darkgrey", width:"180px", height:"50px",
         borderTopLeftRadius:'5px', borderBottomLeftRadius:"5px"}}
         onClick={""}>CÁ BIỂN SẢN XUẤT</button>
       <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
         onClick={""}>CÁ BIỂN TỰ NHIÊN</button>
       <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
         onClick={""}>CÁ MÚ SẢN XUẤT</button>
       <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
         onClick={""}>GIỐNG TÔM CUA</button>
       <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"220px", height:"50px"}}
+        backgroundColor:"darkgrey", width:"180px", height:"50px"}}
         onClick={""}>GIỐNG NHUYỄN THỂ</button>
       <button style={{position:"relative", color:"black",
-        backgroundColor:"darkgrey", width:"220px", height:"50px",
+        backgroundColor:"darkgrey", width:"180px", height:"50px",
         borderTopRightRadius:'5px', borderBottomRightRadius:'5px'}}
         onClick={""}>CÁ NƯỚC NGỌT</button>
     </div> */}
+
+    <button onClick={() => ListItem(PHAN_LOAI_SX.slice(0,1))} style={{position:"relative", color:"black"}}>SSS</button>
+    <button onClick={() => ListItem(PHAN_LOAI_SX.slice(1,2))} style={{position:"relative", color:"black"}}>UUU</button>
     
-    {PHAN_LOAI_SX.map((menu) => {
+    <ListItem/>
+
+    {/* {slice2 && PHAN_LOAI_SX.slice(1,2).map((menu) => {
       return(
         <div style={{position:"relative", justifyContent:"center", marginLeft:"15%", marginTop:"5%"}}>
           <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{menu.text}</h2>
@@ -447,7 +509,7 @@ export default function Admin() {
           <hr style={{width:"80%"}} ></hr>
         </div>
       )
-    })}
+    })} */}
 
     {MENU_LIST.map((menu) => {
       return(
