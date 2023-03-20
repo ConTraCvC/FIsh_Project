@@ -266,9 +266,25 @@ export default function Admin() {
         alert("Image Uploaded")
       })
       await addDoc(fish_TN, {
-          title: {title},
-          body: {body},
-          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+        title: {title},
+        body: {body},
+        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        don_gia: {don_gia},
+        body1: {body1},
+        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        title2: {title2},
+        body2: {body2},
+        youtube: {youtube},
+        youtube1: {youtube1},
+        youtube2: {youtube2},
+        youtube3: {youtube3},
+        youtube4: {youtube4},
+        youtube5: {youtube5},
+        body3: {body3}
       }).then(() => {
         alert("Data Pushed")
       })
@@ -283,9 +299,25 @@ export default function Admin() {
         alert("Image Uploaded")
       })
       await addDoc(fish_MU, {
-          title: {title},
-          body: {body},
-          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+        title: {title},
+        body: {body},
+        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        don_gia: {don_gia},
+        body1: {body1},
+        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        title2: {title2},
+        body2: {body2},
+        youtube: {youtube},
+        youtube1: {youtube1},
+        youtube2: {youtube2},
+        youtube3: {youtube3},
+        youtube4: {youtube4},
+        youtube5: {youtube5},
+        body3: {body3}
       }).then(() => {
         alert("Data Pushed")
       })
@@ -300,9 +332,25 @@ export default function Admin() {
         alert("Image Uploaded")
       })
       await addDoc(fish_TC, {
-          title: {title},
-          body: {body},
-          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+        title: {title},
+        body: {body},
+        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        don_gia: {don_gia},
+        body1: {body1},
+        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        title2: {title2},
+        body2: {body2},
+        youtube: {youtube},
+        youtube1: {youtube1},
+        youtube2: {youtube2},
+        youtube3: {youtube3},
+        youtube4: {youtube4},
+        youtube5: {youtube5},
+        body3: {body3}
       }).then(() => {
         alert("Data Pushed")
       })
@@ -317,9 +365,25 @@ export default function Admin() {
         alert("Image Uploaded")
       })
       await addDoc(fish_NT, {
-          title: {title},
-          body: {body},
-          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+        title: {title},
+        body: {body},
+        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        don_gia: {don_gia},
+        body1: {body1},
+        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        title2: {title2},
+        body2: {body2},
+        youtube: {youtube},
+        youtube1: {youtube1},
+        youtube2: {youtube2},
+        youtube3: {youtube3},
+        youtube4: {youtube4},
+        youtube5: {youtube5},
+        body3: {body3}
       }).then(() => {
         alert("Data Pushed")
       })
@@ -334,9 +398,25 @@ export default function Admin() {
         alert("Image Uploaded")
       })
       await addDoc(fish_NN, {
-          title: {title},
-          body: {body},
-          image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`
+        title: {title},
+        body: {body},
+        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        don_gia: {don_gia},
+        body1: {body1},
+        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        title2: {title2},
+        body2: {body2},
+        youtube: {youtube},
+        youtube1: {youtube1},
+        youtube2: {youtube2},
+        youtube3: {youtube3},
+        youtube4: {youtube4},
+        youtube5: {youtube5},
+        body3: {body3}
       }).then(() => {
         alert("Data Pushed")
       })
