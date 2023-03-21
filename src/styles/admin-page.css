@@ -1,7 +1,7 @@
 .table__css {
   border: 1px solid;
   border-collapse: collapse;
-  height: 200px;
+  height: 900px;
 }
 
 .table__css th{
@@ -12,3 +12,23 @@
   border: 1px solid;
   text-align: center;
 }
+
+.table__css2 {
+  border: 1px solid;
+  border-collapse: collapse;
+  height: 200px;
+}
+
+.table__css2 th{
+  border: 1px solid;
+  padding-right: 300px;
+}
+.table__css2 td{
+  border: 1px solid;
+  text-align: center;
+}
+
+.control_button button{
+  transition-duration: 0.5s;
+}
+

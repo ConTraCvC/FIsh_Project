@@ -8,7 +8,7 @@ import { ref, uploadBytes} from "firebase/storage";
 import { store } from '@component/firebase/firebase'
 import { Modal, Box } from '@mui/material'
 import { db } from "@component/firebase/firebase"
-import { addDoc, collection, doc, setDoc } from "firebase/firestore/lite"
+import { addDoc, collection, doc, setDoc, documentId } from "firebase/firestore/lite"
 
 const style = {
   position: 'absolute',
@@ -38,13 +38,14 @@ export default function Admin() {
   const [isOpenNT, setIsOpenNT] = useState(false);
   const [isOpenNN, setIsOpenNN] = useState(false);
   const [ imageUpload, setImageUpLoad ] = useState(null);
-  const [image, setImage] = useState(null)
+  const [imageBia, setImageBia] = useState(null)
   const [image1, setImage1] = useState(null)
   const [image2, setImage2] = useState(null)
   const [image3, setImage3] = useState(null)
   const [image4, setImage4] = useState(null)
-  const [image_tp, setImage_tp] = useState(null)
+  const [imageTP, setImageTP] = useState(null)
   const [title, setTitle] = useState("");
+  const [title1, setTitle1] = useState("");
   const [title2, setTitle2] = useState("");
   const [body, setBody] = useState("");
   const [body1, setBody1] = useState("");
@@ -130,15 +131,10 @@ export default function Admin() {
   const foodRef = collection(db, 'foods');
   const fish_SX = collection(db, 'fish_SX');
   const fish_TN = collection(db, 'fish_TN');
-  // const fish_TN_details = collection(db, 'fish_TN', 'details');
   const fish_MU = collection(db, 'fish_MU');
-  // const fish_MU_details = collection(db, 'fish_MU', 'details');
   const fish_TC = collection(db, 'fish_TC');
-  // const fish_TC_details = collection(db, 'fish_TC', 'details');
   const fish_NT = collection(db, 'fish_NT');
-  // const fish_NT_details = collection(db, 'fish_NT', 'details');
   const fish_NN = collection(db, 'fish_NN');
-  // const fish_NN_details = collection(db, 'fish_NN', 'details');
 
   const uploadImages = async() => {
     if (imageUpload == null) {
@@ -212,20 +208,42 @@ export default function Admin() {
   }
 
   const uploadFirebase__SX = async() => {
-    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${image_tp.name}`)
-      await uploadBytes(fishRef, image_tp).then(() => {
+      const fishRef = ref(store, `fishs/${imageBia?.name}`)
+      await uploadBytes(fishRef, imageBia).then(() => {
         alert("Image Uploaded")
       })
-      await addDoc(fish_SX, {
+      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+      if(imageTP!==null){
+      await uploadBytes(fishRef1, imageTP)}
+
+      const fishRef2 = ref(store, `fishs/${image1?.name}`)
+      if(image1!==null){
+      await uploadBytes(fishRef2, image1)}
+
+      const fishRef3 = ref(store, `fishs/${image2?.name}`)
+      if(image2!==null){
+      await uploadBytes(fishRef3, image2)}
+
+      const fishRef4 = ref(store, `fishs/${image3?.name}`)
+      if(image3!==null){
+      await uploadBytes(fishRef4, image3)}
+
+      if(image4!==null){
+      const fishRef5 = ref(store, `fishs/${image4?.name}`)
+      await uploadBytes(fishRef5, image4)}
+
+    try {
+      const docRef = await addDoc(fish_SX, {
         title: {title},
+        title1: {title1},
         body: {body},
-        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
         image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
         image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
         image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
@@ -239,10 +257,9 @@ export default function Admin() {
         youtube4: {youtube4},
         youtube5: {youtube5},
         body3: {body3}
-      }).then(() => {
-        alert("Data Pushed")
-      })
-      await setDoc(doc(db, 'fish_SX', "details"), {
+      }).then(alert("Data pushed!"))
+      console.log("Document written with ID: ", docRef.id);
+      await setDoc(doc(db, `fish_SX/${docRef.id}/details/fish_details`), {
         gia_thuong_pham: {gia_thuong_pham},
         gia_tri_dd: {gia_tri_dd},
         hinh_thuc_nuoi: {hinh_thuc_nuoi},
@@ -252,26 +269,56 @@ export default function Admin() {
         kich_thuoc: {kich_thuoc},
         loai_thuc_an: {loai_thuc_an},
         mat_do_tha: {mat_do_tha},
-
+        ten_goi: {ten_goi},
+        thoi_gian_nuoi: {thoi_gian_nuoi},
+        thuc_tai_sx: {thuc_tai_sx},
+        ti_le_song: {ti_le_song},
+        tieu_chuan: {tieu_chuan},
+        vung_nuoi: {vung_nuoi},
+        xu_huong_pt: {xu_huong_pt}
       })
+    } catch(e) {
+      console.error("Error adding document: ", e);
     }
-  }
+  }}
 
   const uploadFirebase__TN = async() => {
-    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${image_tp.name}`)
-      await uploadBytes(fishRef, image_tp).then(() => {
+      const fishRef = ref(store, `fishs/${imageBia?.name}`)
+      await uploadBytes(fishRef, imageBia).then(() => {
         alert("Image Uploaded")
       })
-      await addDoc(fish_TN, {
+      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+      if(imageTP!==null){
+      await uploadBytes(fishRef1, imageTP)}
+
+      const fishRef2 = ref(store, `fishs/${image1?.name}`)
+      if(image1!==null){
+      await uploadBytes(fishRef2, image1)}
+
+      const fishRef3 = ref(store, `fishs/${image2?.name}`)
+      if(image2!==null){
+      await uploadBytes(fishRef3, image2)}
+
+      const fishRef4 = ref(store, `fishs/${image3?.name}`)
+      if(image3!==null){
+      await uploadBytes(fishRef4, image3)}
+
+      if(image4!==null){
+      const fishRef5 = ref(store, `fishs/${image4?.name}`)
+      await uploadBytes(fishRef5, image4)}
+
+    try {
+      const docRef = await addDoc(fish_TN, {
         title: {title},
+        title1: {title1},
         body: {body},
-        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
         image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
         image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
         image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
@@ -285,26 +332,68 @@ export default function Admin() {
         youtube4: {youtube4},
         youtube5: {youtube5},
         body3: {body3}
-      }).then(() => {
-        alert("Data Pushed")
+      }).then(alert("Data pushed!"))
+      console.log("Document written with ID: ", docRef.id);
+      await setDoc(doc(db, `fish_TN/${docRef.id}/details/fish_details`), {
+        gia_thuong_pham: {gia_thuong_pham},
+        gia_tri_dd: {gia_tri_dd},
+        hinh_thuc_nuoi: {hinh_thuc_nuoi},
+        hs_loi_nhuan: {hs_loi_nhuan},
+        hscd_thuc_an: {hscd_thuc_an},
+        kich_co: {kich_co},
+        kich_thuoc: {kich_thuoc},
+        loai_thuc_an: {loai_thuc_an},
+        mat_do_tha: {mat_do_tha},
+        ten_goi: {ten_goi},
+        thoi_gian_nuoi: {thoi_gian_nuoi},
+        thuc_tai_sx: {thuc_tai_sx},
+        ti_le_song: {ti_le_song},
+        tieu_chuan: {tieu_chuan},
+        vung_nuoi: {vung_nuoi},
+        xu_huong_pt: {xu_huong_pt}
       })
+    } catch(e) {
+      console.error("Error adding document: ", e);
     }
-  }
+  }}
+
   const uploadFirebase__MU = async() => {
-    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${image_tp.name}`)
-      await uploadBytes(fishRef, image_tp).then(() => {
+      const fishRef = ref(store, `fishs/${imageBia?.name}`)
+      await uploadBytes(fishRef, imageBia).then(() => {
         alert("Image Uploaded")
       })
-      await addDoc(fish_MU, {
+      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+      if(imageTP!==null){
+      await uploadBytes(fishRef1, imageTP)}
+
+      const fishRef2 = ref(store, `fishs/${image1?.name}`)
+      if(image1!==null){
+      await uploadBytes(fishRef2, image1)}
+
+      const fishRef3 = ref(store, `fishs/${image2?.name}`)
+      if(image2!==null){
+      await uploadBytes(fishRef3, image2)}
+
+      const fishRef4 = ref(store, `fishs/${image3?.name}`)
+      if(image3!==null){
+      await uploadBytes(fishRef4, image3)}
+
+      if(image4!==null){
+      const fishRef5 = ref(store, `fishs/${image4?.name}`)
+      await uploadBytes(fishRef5, image4)}
+
+    try {
+      const docRef = await addDoc(fish_MU, {
         title: {title},
+        title1: {title1},
         body: {body},
-        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
         image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
         image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
         image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
@@ -318,26 +407,68 @@ export default function Admin() {
         youtube4: {youtube4},
         youtube5: {youtube5},
         body3: {body3}
-      }).then(() => {
-        alert("Data Pushed")
+      }).then(alert("Data pushed!"))
+      console.log("Document written with ID: ", docRef.id);
+      await setDoc(doc(db, `fish_MU/${docRef.id}/details/fish_details`), {
+        gia_thuong_pham: {gia_thuong_pham},
+        gia_tri_dd: {gia_tri_dd},
+        hinh_thuc_nuoi: {hinh_thuc_nuoi},
+        hs_loi_nhuan: {hs_loi_nhuan},
+        hscd_thuc_an: {hscd_thuc_an},
+        kich_co: {kich_co},
+        kich_thuoc: {kich_thuoc},
+        loai_thuc_an: {loai_thuc_an},
+        mat_do_tha: {mat_do_tha},
+        ten_goi: {ten_goi},
+        thoi_gian_nuoi: {thoi_gian_nuoi},
+        thuc_tai_sx: {thuc_tai_sx},
+        ti_le_song: {ti_le_song},
+        tieu_chuan: {tieu_chuan},
+        vung_nuoi: {vung_nuoi},
+        xu_huong_pt: {xu_huong_pt}
       })
+    } catch(e) {
+      console.error("Error adding document: ", e);
     }
-  }
+  }}
+
   const uploadFirebase__TC = async() => {
-    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${image_tp.name}`)
-      await uploadBytes(fishRef, image_tp).then(() => {
+      const fishRef = ref(store, `fishs/${imageBia?.name}`)
+      await uploadBytes(fishRef, imageBia).then(() => {
         alert("Image Uploaded")
       })
-      await addDoc(fish_TC, {
+      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+      if(imageTP!==null){
+      await uploadBytes(fishRef1, imageTP)}
+
+      const fishRef2 = ref(store, `fishs/${image1?.name}`)
+      if(image1!==null){
+      await uploadBytes(fishRef2, image1)}
+
+      const fishRef3 = ref(store, `fishs/${image2?.name}`)
+      if(image2!==null){
+      await uploadBytes(fishRef3, image2)}
+
+      const fishRef4 = ref(store, `fishs/${image3?.name}`)
+      if(image3!==null){
+      await uploadBytes(fishRef4, image3)}
+
+      if(image4!==null){
+      const fishRef5 = ref(store, `fishs/${image4?.name}`)
+      await uploadBytes(fishRef5, image4)}
+
+    try {
+      const docRef = await addDoc(fish_TC, {
         title: {title},
+        title1: {title1},
         body: {body},
-        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
         image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
         image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
         image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
@@ -351,26 +482,68 @@ export default function Admin() {
         youtube4: {youtube4},
         youtube5: {youtube5},
         body3: {body3}
-      }).then(() => {
-        alert("Data Pushed")
+      }).then(alert("Data pushed!"))
+      console.log("Document written with ID: ", docRef.id);
+      await setDoc(doc(db, `fish_TC/${docRef.id}/details/fish_details`), {
+        gia_thuong_pham: {gia_thuong_pham},
+        gia_tri_dd: {gia_tri_dd},
+        hinh_thuc_nuoi: {hinh_thuc_nuoi},
+        hs_loi_nhuan: {hs_loi_nhuan},
+        hscd_thuc_an: {hscd_thuc_an},
+        kich_co: {kich_co},
+        kich_thuoc: {kich_thuoc},
+        loai_thuc_an: {loai_thuc_an},
+        mat_do_tha: {mat_do_tha},
+        ten_goi: {ten_goi},
+        thoi_gian_nuoi: {thoi_gian_nuoi},
+        thuc_tai_sx: {thuc_tai_sx},
+        ti_le_song: {ti_le_song},
+        tieu_chuan: {tieu_chuan},
+        vung_nuoi: {vung_nuoi},
+        xu_huong_pt: {xu_huong_pt}
       })
+    } catch(e) {
+      console.error("Error adding document: ", e);
     }
-  }
+  }}
+
   const uploadFirebase__NT = async() => {
-    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${image_tp.name}`)
-      await uploadBytes(fishRef, image_tp).then(() => {
+      const fishRef = ref(store, `fishs/${imageBia?.name}`)
+      await uploadBytes(fishRef, imageBia).then(() => {
         alert("Image Uploaded")
       })
-      await addDoc(fish_NT, {
+      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+      if(imageTP!==null){
+      await uploadBytes(fishRef1, imageTP)}
+
+      const fishRef2 = ref(store, `fishs/${image1?.name}`)
+      if(image1!==null){
+      await uploadBytes(fishRef2, image1)}
+
+      const fishRef3 = ref(store, `fishs/${image2?.name}`)
+      if(image2!==null){
+      await uploadBytes(fishRef3, image2)}
+
+      const fishRef4 = ref(store, `fishs/${image3?.name}`)
+      if(image3!==null){
+      await uploadBytes(fishRef4, image3)}
+
+      if(image4!==null){
+      const fishRef5 = ref(store, `fishs/${image4?.name}`)
+      await uploadBytes(fishRef5, image4)}
+
+    try {
+      const docRef = await addDoc(fish_NT, {
         title: {title},
+        title1: {title1},
         body: {body},
-        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
         image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
         image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
         image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
@@ -384,26 +557,68 @@ export default function Admin() {
         youtube4: {youtube4},
         youtube5: {youtube5},
         body3: {body3}
-      }).then(() => {
-        alert("Data Pushed")
+      }).then(alert("Data pushed!"))
+      console.log("Document written with ID: ", docRef.id);
+      await setDoc(doc(db, `fish_NT/${docRef.id}/details/fish_details`), {
+        gia_thuong_pham: {gia_thuong_pham},
+        gia_tri_dd: {gia_tri_dd},
+        hinh_thuc_nuoi: {hinh_thuc_nuoi},
+        hs_loi_nhuan: {hs_loi_nhuan},
+        hscd_thuc_an: {hscd_thuc_an},
+        kich_co: {kich_co},
+        kich_thuoc: {kich_thuoc},
+        loai_thuc_an: {loai_thuc_an},
+        mat_do_tha: {mat_do_tha},
+        ten_goi: {ten_goi},
+        thoi_gian_nuoi: {thoi_gian_nuoi},
+        thuc_tai_sx: {thuc_tai_sx},
+        ti_le_song: {ti_le_song},
+        tieu_chuan: {tieu_chuan},
+        vung_nuoi: {vung_nuoi},
+        xu_huong_pt: {xu_huong_pt}
       })
+    } catch(e) {
+      console.error("Error adding document: ", e);
     }
-  }
+  }}
+
   const uploadFirebase__NN = async() => {
-    if (image_tp == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${image_tp.name}`)
-      await uploadBytes(fishRef, image_tp).then(() => {
+      const fishRef = ref(store, `fishs/${imageBia?.name}`)
+      await uploadBytes(fishRef, imageBia).then(() => {
         alert("Image Uploaded")
       })
-      await addDoc(fish_NN, {
+      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+      if(imageTP!==null){
+      await uploadBytes(fishRef1, imageTP)}
+
+      const fishRef2 = ref(store, `fishs/${image1?.name}`)
+      if(image1!==null){
+      await uploadBytes(fishRef2, image1)}
+
+      const fishRef3 = ref(store, `fishs/${image2?.name}`)
+      if(image2!==null){
+      await uploadBytes(fishRef3, image2)}
+
+      const fishRef4 = ref(store, `fishs/${image3?.name}`)
+      if(image3!==null){
+      await uploadBytes(fishRef4, image3)}
+
+      if(image4!==null){
+      const fishRef5 = ref(store, `fishs/${image4?.name}`)
+      await uploadBytes(fishRef5, image4)}
+
+    try {
+      const docRef = await addDoc(fish_NN, {
         title: {title},
+        title1: {title1},
         body: {body},
-        image_tp: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image_tp.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
         image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
         image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
         image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
@@ -417,11 +632,30 @@ export default function Admin() {
         youtube4: {youtube4},
         youtube5: {youtube5},
         body3: {body3}
-      }).then(() => {
-        alert("Data Pushed")
+      }).then(alert("Data pushed!"))
+      console.log("Document written with ID: ", docRef.id);
+      await setDoc(doc(db, `fish_NN/${docRef.id}/details/fish_details`), {
+        gia_thuong_pham: {gia_thuong_pham},
+        gia_tri_dd: {gia_tri_dd},
+        hinh_thuc_nuoi: {hinh_thuc_nuoi},
+        hs_loi_nhuan: {hs_loi_nhuan},
+        hscd_thuc_an: {hscd_thuc_an},
+        kich_co: {kich_co},
+        kich_thuoc: {kich_thuoc},
+        loai_thuc_an: {loai_thuc_an},
+        mat_do_tha: {mat_do_tha},
+        ten_goi: {ten_goi},
+        thoi_gian_nuoi: {thoi_gian_nuoi},
+        thuc_tai_sx: {thuc_tai_sx},
+        ti_le_song: {ti_le_song},
+        tieu_chuan: {tieu_chuan},
+        vung_nuoi: {vung_nuoi},
+        xu_huong_pt: {xu_huong_pt}
       })
+    } catch(e) {
+      console.error("Error adding document: ", e);
     }
-  }
+  }}
 
   const MODAL_MAPPING = [
     {
@@ -543,21 +777,21 @@ export default function Admin() {
     </Form>
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
 
-    <div style={{position:"relative", marginLeft:"20%"}}>
+    <div className='control_button' style={{position:"relative", left:"15%", maxWidth:"80%"}}>
       <button onClick={handleSlice} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"180px", height:"50px",
-        borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px"}}>CÁ BIỂN SẢN XUẤT</button>
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px",
+        borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px", fontWeight:"bold"}}>CÁ BIỂN SẢN XUẤT</button>
       <button onClick={handleSlice2} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}>CÁ BIỂN TỰ NHIÊN</button>
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ BIỂN TỰ NHIÊN</button>
       <button onClick={handleSlice3} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}>CÁ MÚ SẢN XUẤT</button>
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ MÚ SẢN XUẤT</button>
       <button onClick={handleSlice4} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}>GIỐNG TÔM, CUA</button>
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG TÔM, CUA</button>
       <button onClick={handleSlice5} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"180px", height:"50px"}}>GIỐNG NHUYỄN THỂ</button>
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG NHUYỄN THỂ</button>
       <button onClick={handleSlice6} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"180px", height:"50px",
-        borderTopRightRadius:"5px", borderBottomRightRadius:"5px"}}>GIỐNG CÁ NƯỚC NGỌT</button>
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px",
+        borderTopRightRadius:"5px", borderBottomRightRadius:"5px", fontWeight:"bold"}}>GIỐNG CÁ NƯỚC NGỌT</button>
     </div>
     
     {items.map((menu) => {
@@ -569,11 +803,11 @@ export default function Admin() {
           <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
             <thead>
               <tr>
-                <th>Ảnh:</th>
+                <th>Ảnh Bìa:</th>
                 <td width="50%" style={{textAlign:'center'}}>
                   <Input
                     type='file'
-                    onChange={(event) => setImageUpLoad(event.target.files[0])}>
+                    onChange={(event) => setImageBia(event.target.files[0])}>
                   </Input></td>
               </tr>
               <tr>
@@ -586,7 +820,16 @@ export default function Admin() {
                   </Input></td>
               </tr>
               <tr>
-                <th>Nội dung:</th>
+                <th>Tiêu Đề 2:</th>
+                <td>
+                  <Input
+                    type='textarea'
+                    placeholder='Nhập Tiêu Đề'
+                    onChange={(e) => setTitle1(e.target.value)}>
+                  </Input></td>
+              </tr>
+              <tr>
+                <th>Nội Dung:</th>
                 <td>
                   <Input 
                     type='textarea' 
@@ -595,8 +838,337 @@ export default function Admin() {
                   </Input>
                 </td>
               </tr>
+              <tr>
+                <th>Đơn Giá:</th>
+                <td>
+                  <Input 
+                    type='textarea' 
+                    placeholder='Nhập Đơn Giá'
+                    onChange={(e) => setDon_gia(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Nội Dung 2:</th>
+                <td>
+                  <Input 
+                    type='textarea' 
+                    placeholder='Nhập Nội Dung'
+                    onChange={(e) => setBody1(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Ảnh Thành Phẩm:</th>
+                <td>
+                  <Input 
+                    type='file' 
+                    onChange={(e) => setImageTP(e.target.files[0])}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Ảnh Thứ 2:</th>
+                <td>
+                  <Input 
+                    type='file' 
+                    onChange={(e) => setImage1(e.target.files[0])}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Ảnh Thứ 3:</th>
+                <td>
+                  <Input 
+                    type='file' 
+                    onChange={(e) => setImage2(e.target.files[0])}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Ảnh Thứ 4:</th>
+                <td>
+                  <Input 
+                    type='file' 
+                    onChange={(e) => setImage3(e.target.files[0])}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Ảnh Thứ 5:</th>
+                <td>
+                  <Input 
+                    type='file' 
+                    onChange={(e) => setImage4(e.target.files[0])}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Tiêu Đề 3:</th>
+                <td>
+                  <Input 
+                    type='textarea' 
+                    placeholder='Nhập Tiêu'
+                    onChange={(e) => setTitle2(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Nội dung 3:</th>
+                <td>
+                  <Input 
+                    type='textarea' 
+                    placeholder='Nhập Nội Dung'
+                    onChange={(e) => setBody2(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Video 1:</th>
+                <td>
+                  <Input
+                    style={{height:"35px", width:"400px"}} 
+                    type='link' 
+                    placeholder='Nhập Video'
+                    onChange={(e) => setYoutube(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Video 2:</th>
+                <td>
+                  <Input 
+                    style={{height:"35px", width:"400px"}}
+                    type='link' 
+                    placeholder='Nhập Video'
+                    onChange={(e) => setYoutube1(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Video 3:</th>
+                <td>
+                  <Input 
+                    style={{height:"35px", width:"400px"}}
+                    type='link' 
+                    placeholder='Nhập Video'
+                    onChange={(e) => setYoutube2(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Video 4:</th>
+                <td>
+                  <Input 
+                    style={{height:"35px", width:"400px"}}
+                    type='link' 
+                    placeholder='Nhập Video'
+                    onChange={(e) => setYoutube3(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Video 5:</th>
+                <td>
+                  <Input
+                    style={{height:"35px", width:"400px"}}
+                    type='link' 
+                    placeholder='Nhập Video'
+                    onChange={(e) => setYoutube4(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Video 6:</th>
+                <td>
+                  <Input 
+                    style={{height:"35px", width:"400px"}}
+                    type='link' 
+                    placeholder='Nhập Video'
+                    onChange={(e) => setYoutube5(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
+              <tr>
+                <th>Nội Dung Cuối Bài:</th>
+                <td>
+                  <Input 
+                    style={{height:"35px", width:"400px"}}
+                    type='textarea' 
+                    placeholder='Nhập Nội Dung'
+                    onChange={(e) => setBody3(e.target.value)}>
+                  </Input>
+                </td>
+              </tr>
             </thead>
           </Table>
+          </FormGroup>
+          <h3 style={{position:"relative", color:"white", padding:"10px 0 10px 0"}}>Thông số chi tiết:</h3>
+          <FormGroup>
+            <Table className='table__css' style={{color:"white", width:"80%", position:"relative"}}>
+              <thead>
+                <tr>
+                <th>Tên gọi:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setTen_goi(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Vùng nuôi:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setVung_nuoi(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Hình thức nuôi:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setHinh_thuc_nuoi(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Tiêu chuẩn chất lượng:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setTieu_chuan(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Kích thước cá giống:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setKich_thuoc(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Mật độ thả:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setMat_do_tha(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Thời gian nuôi thương phẩm:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setThoi_gian_nuoi(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Kích cỡ đạt được:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setKich_co(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Tỷ lệ sống trung bình:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setTi_le_song(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Loại thức ăn:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setLoai_thuc_an(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Hệ số chuyển đổi thức ăn:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setHscd_thuc_an(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Giá trị dinh dưỡng:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setGia_tri_dd(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Giá thương phẩm:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setGia_thuong_pham(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Hệ số lợi nhuận trên 1 kg cá:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setHs_loi_nhuan(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Thực tại ở Viêt Nam:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setThuc_tai_sx(event.target.value)}>
+                  </Input></td>
+                </tr>
+                <tr>
+                <th>Xu hướng phát triển:</th>
+                <td width="50%" style={{textAlign:'center'}}>
+                  <Input
+                    style={{width:"400px", height:"30px"}}
+                    placeholder="Chi tiết"
+                    type='text'
+                    onChange={(event) => setXu_huong_pt(event.target.value)}>
+                  </Input></td>
+                </tr>
+              </thead>
+            </Table>
           </FormGroup>
           <FormGroup style={{paddingLeft:"2%", paddingTop:"2rem"}}>
             {""}
@@ -616,7 +1188,7 @@ export default function Admin() {
         <h2 style={{position:"relative", color:"white", top:"-1rem"}} >{menu.text}</h2>
         <Form>
           <FormGroup>
-          <Table className='table__css' style={{width:"80%", color:"white", position:"relative"}}>
+          <Table className='table__css2' style={{width:"80%", color:"white", position:"relative"}}>
             <thead>
               <tr>
                 <th>Ảnh:</th>

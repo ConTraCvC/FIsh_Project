@@ -58,10 +58,11 @@ const TopBar = () => {
   return(
     <header>
       <nav>
-        <Link href={"/"}>
-          <Image src={logo_vi} style={{position:"relative", left:"1rem", top:"1rem"}}/>
-        </Link>
-
+        <div id="logo">
+          <Link href={"/"}>
+            <Image src={logo_vi} style={{position:"relative", left:"1rem", top:"1rem"}}/>
+          </Link>
+        </div>
         <div className="top__menu-list">
           {MENU_LIST.map((menu) => {
             return (

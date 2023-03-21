@@ -1,10 +1,6 @@
 
 .gradient__bg {
-  background: rgb(108,66,0);
-  background: -moz-radial-gradient(circle, rgba(108,66,0,1) 0%, rgba(48,33,0,1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(108,66,0,1) 0%, rgba(48,33,0,1) 100%);
-  background: radial-gradient(circle, rgba(108,66,0,1) 0%, rgba(48,33,0,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6c4200",endColorstr="#302100",GradientType=1);;}
+  background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);}
 
 .button__gradient__bg {
   background: rgb(31,31,31);
@@ -99,7 +95,7 @@ a {
   width: 50%;
   height: 40px;
   font-weight: bold;
-  background-color:  	#404040;
+  background: linear-gradient(60deg, #29323c 0%, #485563 100%);;
   border-radius: 5px;
   align-items: center;
   color: white;
@@ -164,18 +160,18 @@ a {
   z-index: 1;
   top: 3.1rem;
   border-radius: 3px;
-  background: blanchedalmond;
+  background: linear-gradient(74.3deg, rgb(68, 17, 28) 17.4%, rgb(95, 24, 40) 34.7%, rgb(122, 31, 51) 51.8%, rgb(149, 38, 62) 67.4%, rgb(163, 41, 68) 89.6%);;
 }
 
 .dropdown-content a {
   font-size: 15px;
-  color: black;
+  color: white;
   padding: 5px 16px;
   display: block;
   font-weight: 600;
 }
 
-.dropdown-content a:hover {color: rgb(187, 0, 0);}
+.dropdown-content a:hover {color: rgb(200, 222, 0);}
 
 .dropdown:hover .dropdown-content {display: block;}
 
