@@ -8,7 +8,7 @@ import { ref, uploadBytes} from "firebase/storage";
 import { store } from '@component/firebase/firebase'
 import { Modal, Box } from '@mui/material'
 import { db } from "@component/firebase/firebase"
-import { addDoc, collection, doc, setDoc, documentId } from "firebase/firestore/lite"
+import { addDoc, collection, doc, setDoc } from "firebase/firestore/lite"
 
 const style = {
   position: 'absolute',
