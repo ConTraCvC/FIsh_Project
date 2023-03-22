@@ -208,46 +208,46 @@ export default function Admin() {
   }
 
   const uploadFirebase__SX = async() => {
-    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && imageBia!==undefined && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${imageBia?.name}`)
-      await uploadBytes(fishRef, imageBia).then(() => {
-        alert("Image Uploaded")
-      })
-      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
-      if(imageTP!==null){
-      await uploadBytes(fishRef1, imageTP)}
+    const fishRef = ref(store, `fishs/${imageBia?.name}`)
+    await uploadBytes(fishRef, imageBia).then(() => {
+      alert("Image Uploaded")
+    })
+    const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+    if(imageTP!==null && imageTP!==undefined){
+    await uploadBytes(fishRef1, imageTP)}
 
-      const fishRef2 = ref(store, `fishs/${image1?.name}`)
-      if(image1!==null){
-      await uploadBytes(fishRef2, image1)}
+    const fishRef2 = ref(store, `fishs/${image1?.name}`)
+    if(image1!==null && image1!==undefined){
+    await uploadBytes(fishRef2, image1)}
 
-      const fishRef3 = ref(store, `fishs/${image2?.name}`)
-      if(image2!==null){
-      await uploadBytes(fishRef3, image2)}
+    const fishRef3 = ref(store, `fishs/${image2?.name}`)
+    if(image2!==null && image2!==undefined){
+    await uploadBytes(fishRef3, image2)}
 
-      const fishRef4 = ref(store, `fishs/${image3?.name}`)
-      if(image3!==null){
-      await uploadBytes(fishRef4, image3)}
+    const fishRef4 = ref(store, `fishs/${image3?.name}`)
+    if(image3!==null && image3!==undefined){
+    await uploadBytes(fishRef4, image3)}
 
-      if(image4!==null){
-      const fishRef5 = ref(store, `fishs/${image4?.name}`)
-      await uploadBytes(fishRef5, image4)}
+    if(image4!==null && image3!==undefined){
+    const fishRef5 = ref(store, `fishs/${image4?.name}`)
+    await uploadBytes(fishRef5, image4)}
 
     try {
       const docRef = await addDoc(fish_SX, {
         title: {title},
         title1: {title1},
         body: {body},
-        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP?.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
-        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
-        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
-        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
-        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia?.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1?.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2?.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3?.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4?.name}?alt=media`,
         title2: {title2},
         body2: {body2},
         youtube: {youtube},
@@ -283,46 +283,46 @@ export default function Admin() {
   }}
 
   const uploadFirebase__TN = async() => {
-    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && imageBia!==undefined && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${imageBia?.name}`)
-      await uploadBytes(fishRef, imageBia).then(() => {
-        alert("Image Uploaded")
-      })
-      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
-      if(imageTP!==null){
-      await uploadBytes(fishRef1, imageTP)}
+    const fishRef = ref(store, `fishs/${imageBia?.name}`)
+    await uploadBytes(fishRef, imageBia).then(() => {
+      alert("Image Uploaded")
+    })
+    const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+    if(imageTP!==null && imageTP!==undefined){
+    await uploadBytes(fishRef1, imageTP)}
 
-      const fishRef2 = ref(store, `fishs/${image1?.name}`)
-      if(image1!==null){
-      await uploadBytes(fishRef2, image1)}
+    const fishRef2 = ref(store, `fishs/${image1?.name}`)
+    if(image1!==null && image1!==undefined){
+    await uploadBytes(fishRef2, image1)}
 
-      const fishRef3 = ref(store, `fishs/${image2?.name}`)
-      if(image2!==null){
-      await uploadBytes(fishRef3, image2)}
+    const fishRef3 = ref(store, `fishs/${image2?.name}`)
+    if(image2!==null && image2!==undefined){
+    await uploadBytes(fishRef3, image2)}
 
-      const fishRef4 = ref(store, `fishs/${image3?.name}`)
-      if(image3!==null){
-      await uploadBytes(fishRef4, image3)}
+    const fishRef4 = ref(store, `fishs/${image3?.name}`)
+    if(image3!==null && image3!==undefined){
+    await uploadBytes(fishRef4, image3)}
 
-      if(image4!==null){
-      const fishRef5 = ref(store, `fishs/${image4?.name}`)
-      await uploadBytes(fishRef5, image4)}
+    if(image4!==null && image3!==undefined){
+    const fishRef5 = ref(store, `fishs/${image4?.name}`)
+    await uploadBytes(fishRef5, image4)}
 
     try {
       const docRef = await addDoc(fish_TN, {
         title: {title},
         title1: {title1},
         body: {body},
-        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP?.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
-        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
-        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
-        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
-        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia?.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1?.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2?.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3?.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4?.name}?alt=media`,
         title2: {title2},
         body2: {body2},
         youtube: {youtube},
@@ -358,46 +358,46 @@ export default function Admin() {
   }}
 
   const uploadFirebase__MU = async() => {
-    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && imageBia!==undefined && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${imageBia?.name}`)
-      await uploadBytes(fishRef, imageBia).then(() => {
-        alert("Image Uploaded")
-      })
-      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
-      if(imageTP!==null){
-      await uploadBytes(fishRef1, imageTP)}
+    const fishRef = ref(store, `fishs/${imageBia?.name}`)
+    await uploadBytes(fishRef, imageBia).then(() => {
+      alert("Image Uploaded")
+    })
+    const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+    if(imageTP!==null && imageTP!==undefined){
+    await uploadBytes(fishRef1, imageTP)}
 
-      const fishRef2 = ref(store, `fishs/${image1?.name}`)
-      if(image1!==null){
-      await uploadBytes(fishRef2, image1)}
+    const fishRef2 = ref(store, `fishs/${image1?.name}`)
+    if(image1!==null && image1!==undefined){
+    await uploadBytes(fishRef2, image1)}
 
-      const fishRef3 = ref(store, `fishs/${image2?.name}`)
-      if(image2!==null){
-      await uploadBytes(fishRef3, image2)}
+    const fishRef3 = ref(store, `fishs/${image2?.name}`)
+    if(image2!==null && image2!==undefined){
+    await uploadBytes(fishRef3, image2)}
 
-      const fishRef4 = ref(store, `fishs/${image3?.name}`)
-      if(image3!==null){
-      await uploadBytes(fishRef4, image3)}
+    const fishRef4 = ref(store, `fishs/${image3?.name}`)
+    if(image3!==null && image3!==undefined){
+    await uploadBytes(fishRef4, image3)}
 
-      if(image4!==null){
-      const fishRef5 = ref(store, `fishs/${image4?.name}`)
-      await uploadBytes(fishRef5, image4)}
+    if(image4!==null && image3!==undefined){
+    const fishRef5 = ref(store, `fishs/${image4?.name}`)
+    await uploadBytes(fishRef5, image4)}
 
     try {
       const docRef = await addDoc(fish_MU, {
         title: {title},
         title1: {title1},
         body: {body},
-        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP?.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
-        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
-        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
-        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
-        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia?.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1?.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2?.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3?.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4?.name}?alt=media`,
         title2: {title2},
         body2: {body2},
         youtube: {youtube},
@@ -433,46 +433,46 @@ export default function Admin() {
   }}
 
   const uploadFirebase__TC = async() => {
-    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && imageBia!==undefined && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${imageBia?.name}`)
-      await uploadBytes(fishRef, imageBia).then(() => {
-        alert("Image Uploaded")
-      })
-      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
-      if(imageTP!==null){
-      await uploadBytes(fishRef1, imageTP)}
+    const fishRef = ref(store, `fishs/${imageBia?.name}`)
+    await uploadBytes(fishRef, imageBia).then(() => {
+      alert("Image Uploaded")
+    })
+    const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+    if(imageTP!==null && imageTP!==undefined){
+    await uploadBytes(fishRef1, imageTP)}
 
-      const fishRef2 = ref(store, `fishs/${image1?.name}`)
-      if(image1!==null){
-      await uploadBytes(fishRef2, image1)}
+    const fishRef2 = ref(store, `fishs/${image1?.name}`)
+    if(image1!==null && image1!==undefined){
+    await uploadBytes(fishRef2, image1)}
 
-      const fishRef3 = ref(store, `fishs/${image2?.name}`)
-      if(image2!==null){
-      await uploadBytes(fishRef3, image2)}
+    const fishRef3 = ref(store, `fishs/${image2?.name}`)
+    if(image2!==null && image2!==undefined){
+    await uploadBytes(fishRef3, image2)}
 
-      const fishRef4 = ref(store, `fishs/${image3?.name}`)
-      if(image3!==null){
-      await uploadBytes(fishRef4, image3)}
+    const fishRef4 = ref(store, `fishs/${image3?.name}`)
+    if(image3!==null && image3!==undefined){
+    await uploadBytes(fishRef4, image3)}
 
-      if(image4!==null){
-      const fishRef5 = ref(store, `fishs/${image4?.name}`)
-      await uploadBytes(fishRef5, image4)}
+    if(image4!==null && image3!==undefined){
+    const fishRef5 = ref(store, `fishs/${image4?.name}`)
+    await uploadBytes(fishRef5, image4)}
 
     try {
       const docRef = await addDoc(fish_TC, {
         title: {title},
         title1: {title1},
         body: {body},
-        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP?.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
-        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
-        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
-        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
-        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia?.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1?.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2?.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3?.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4?.name}?alt=media`,
         title2: {title2},
         body2: {body2},
         youtube: {youtube},
@@ -508,46 +508,46 @@ export default function Admin() {
   }}
 
   const uploadFirebase__NT = async() => {
-    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && imageBia!==undefined && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${imageBia?.name}`)
-      await uploadBytes(fishRef, imageBia).then(() => {
-        alert("Image Uploaded")
-      })
-      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
-      if(imageTP!==null){
-      await uploadBytes(fishRef1, imageTP)}
+    const fishRef = ref(store, `fishs/${imageBia?.name}`)
+    await uploadBytes(fishRef, imageBia).then(() => {
+      alert("Image Uploaded")
+    })
+    const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+    if(imageTP!==null && imageTP!==undefined){
+    await uploadBytes(fishRef1, imageTP)}
 
-      const fishRef2 = ref(store, `fishs/${image1?.name}`)
-      if(image1!==null){
-      await uploadBytes(fishRef2, image1)}
+    const fishRef2 = ref(store, `fishs/${image1?.name}`)
+    if(image1!==null && image1!==undefined){
+    await uploadBytes(fishRef2, image1)}
 
-      const fishRef3 = ref(store, `fishs/${image2?.name}`)
-      if(image2!==null){
-      await uploadBytes(fishRef3, image2)}
+    const fishRef3 = ref(store, `fishs/${image2?.name}`)
+    if(image2!==null && image2!==undefined){
+    await uploadBytes(fishRef3, image2)}
 
-      const fishRef4 = ref(store, `fishs/${image3?.name}`)
-      if(image3!==null){
-      await uploadBytes(fishRef4, image3)}
+    const fishRef4 = ref(store, `fishs/${image3?.name}`)
+    if(image3!==null && image3!==undefined){
+    await uploadBytes(fishRef4, image3)}
 
-      if(image4!==null){
-      const fishRef5 = ref(store, `fishs/${image4?.name}`)
-      await uploadBytes(fishRef5, image4)}
+    if(image4!==null && image3!==undefined){
+    const fishRef5 = ref(store, `fishs/${image4?.name}`)
+    await uploadBytes(fishRef5, image4)}
 
     try {
       const docRef = await addDoc(fish_NT, {
         title: {title},
         title1: {title1},
         body: {body},
-        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP?.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
-        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
-        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
-        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
-        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia?.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1?.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2?.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3?.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4?.name}?alt=media`,
         title2: {title2},
         body2: {body2},
         youtube: {youtube},
@@ -583,46 +583,46 @@ export default function Admin() {
   }}
 
   const uploadFirebase__NN = async() => {
-    if (imageBia == null && Object.values(title).length, Object.values(body).length <= 0) {
+    if (imageBia == null && imageBia!==undefined && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập trường");
     } else {
-      const fishRef = ref(store, `fishs/${imageBia?.name}`)
-      await uploadBytes(fishRef, imageBia).then(() => {
-        alert("Image Uploaded")
-      })
-      const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
-      if(imageTP!==null){
-      await uploadBytes(fishRef1, imageTP)}
+    const fishRef = ref(store, `fishs/${imageBia?.name}`)
+    await uploadBytes(fishRef, imageBia).then(() => {
+      alert("Image Uploaded")
+    })
+    const fishRef1 = ref(store, `fishs/${imageTP?.name}`)
+    if(imageTP!==null && imageTP!==undefined){
+    await uploadBytes(fishRef1, imageTP)}
 
-      const fishRef2 = ref(store, `fishs/${image1?.name}`)
-      if(image1!==null){
-      await uploadBytes(fishRef2, image1)}
+    const fishRef2 = ref(store, `fishs/${image1?.name}`)
+    if(image1!==null && image1!==undefined){
+    await uploadBytes(fishRef2, image1)}
 
-      const fishRef3 = ref(store, `fishs/${image2?.name}`)
-      if(image2!==null){
-      await uploadBytes(fishRef3, image2)}
+    const fishRef3 = ref(store, `fishs/${image2?.name}`)
+    if(image2!==null && image2!==undefined){
+    await uploadBytes(fishRef3, image2)}
 
-      const fishRef4 = ref(store, `fishs/${image3?.name}`)
-      if(image3!==null){
-      await uploadBytes(fishRef4, image3)}
+    const fishRef4 = ref(store, `fishs/${image3?.name}`)
+    if(image3!==null && image3!==undefined){
+    await uploadBytes(fishRef4, image3)}
 
-      if(image4!==null){
-      const fishRef5 = ref(store, `fishs/${image4?.name}`)
-      await uploadBytes(fishRef5, image4)}
+    if(image4!==null && image3!==undefined){
+    const fishRef5 = ref(store, `fishs/${image4?.name}`)
+    await uploadBytes(fishRef5, image4)}
 
     try {
       const docRef = await addDoc(fish_NN, {
         title: {title},
         title1: {title1},
         body: {body},
-        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP.name}?alt=media`,
+        imageTP: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageTP?.name}?alt=media`,
         don_gia: {don_gia},
         body1: {body1},
-        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia.name}?alt=media`,
-        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1.name}?alt=media`,
-        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2.name}?alt=media`,
-        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3.name}?alt=media`,
-        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4.name}?alt=media`,
+        imageBia: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${imageBia?.name}?alt=media`,
+        image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image1?.name}?alt=media`,
+        image2: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image2?.name}?alt=media`,
+        image3: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image3?.name}?alt=media`,
+        image4: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/fishs%2F${image4?.name}?alt=media`,
         title2: {title2},
         body2: {body2},
         youtube: {youtube},
