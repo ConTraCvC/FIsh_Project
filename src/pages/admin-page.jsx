@@ -155,11 +155,20 @@ export default function Admin() {
       await uploadBytes(fishRef, imageUpload).then(() => {
         alert("Image Uploaded")
       })
+    
+    if(image1!==null && image1!==undefined) {
+      const fishRef2 = ref(store, `news/${image1.name}`)
+      await uploadBytes(fishRef2, image1)
+    }
       const current = new Date();
       await addDoc(imageRef, {
           title: {title},
           body: {body},
-          image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/news%2F${imageUpload.name}?alt=media`,
+          image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/news%2F${imageUpload?.name}?alt=media`,
+          image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/news%2F${image1?.name}?alt=media`,
+          youtube: {youtube},
+          youtube1: {youtube1},
+          body1: {body1},
           date: `- ${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()} -`
       }).then(() => {
         alert("Data Pushed")
@@ -175,11 +184,20 @@ export default function Admin() {
       await uploadBytes(fishRef, imageUpload).then(() => {
         alert("Image Uploaded")
       })
+
+    if (image1!==null && image1!==undefined) {
+      const fishRef2 = ref(store, `techniques/${image1.name}`)
+      await uploadBytes(fishRef2, image1)
+    }
       const current = new Date();
       await addDoc(techRef, {
           title: {title},
           body: {body},
-          image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/techniques%2F${imageUpload.name}?alt=media`,
+          image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/techniques%2F${imageUpload?.name}?alt=media`,
+          image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/techniques%2F${image1?.name}?alt=media`,
+          youtube: {youtube},
+          youtube1: {youtube1},
+          body1: {body1},
           date: `- ${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()} -`
       }).then(() => {
         alert("Data Pushed")
@@ -195,11 +213,20 @@ export default function Admin() {
       await uploadBytes(fishRef, imageUpload).then(() => {
         alert("Image Uploaded")
       })
+
+    if(image1!==null && image1!==undefined) {
+      const fishRef2 = ref(store, `foods/${image1.name}`)
+      await uploadBytes(fishRef2, image1)
+    }
       const current = new Date();
       await addDoc(foodRef, {
           title: {title},
           body: {body},
-          image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/foods%2F${imageUpload.name}?alt=media`,
+          image: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/foods%2F${imageUpload?.name}?alt=media`,
+          image1: `https://firebasestorage.googleapis.com/v0/b/fishshop-80d05.appspot.com/o/foods%2F${image1?.name}?alt=media`,
+          youtube: {youtube},
+          youtube1: {youtube1},
+          body1: {body1},
           date: `- ${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()} -`
       }).then(() => {
         alert("Data Pushed")
