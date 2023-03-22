@@ -760,7 +760,8 @@ export default function Admin() {
 
   const items = slice ? PHAN_LOAI_SX.slice(0,1) : slice2 ? PHAN_LOAI_SX.slice(1,2)
     : slice3 ? PHAN_LOAI_SX.slice(2,3) : slice4 ? PHAN_LOAI_SX.slice(3,4)
-    : slice5 ? PHAN_LOAI_SX.slice(4,5) : slice6 ? PHAN_LOAI_SX.slice(5,6) : PHAN_LOAI_SX.slice(0,1)
+    : slice5 ? PHAN_LOAI_SX.slice(4,5) : slice6 ? PHAN_LOAI_SX.slice(5,6)
+    : PHAN_LOAI_SX.slice(0,1)
   
   ///////////////////
   return (
