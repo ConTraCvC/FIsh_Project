@@ -740,23 +740,31 @@ export default function Admin() {
   const [slice5, setSlice5] = useState(false)
   const [slice6, setSlice6] = useState(false)
 
-  function handleSlice() {setSlice(true) + setSlice2(false)
-    + setSlice3(false) + setSlice4(false) + setSlice5(false) + setSlice6(false)}
-
-  function handleSlice2() {setSlice2(true) + setSlice(false)
-    + setSlice3(false) + setSlice4(false) + setSlice5(false) + setSlice6(false)}
-
-  function handleSlice3() {setSlice3(true) + setSlice(false)
-    + setSlice2(false) + setSlice4(false) + setSlice5(false) + setSlice6(false)}
-
-  function handleSlice4() {setSlice4(true) + setSlice(false)
-    + setSlice2(false) + setSlice3(false) + setSlice5(false) + setSlice6(false)}
-
-  function handleSlice5() {setSlice5(true) + setSlice(false)
-    + setSlice2(false) + setSlice3(false) + setSlice4(false) + setSlice6(false)}
-
-  function handleSlice6() {setSlice6(true) + setSlice(false)
-    + setSlice2(false) + setSlice3(false) + setSlice4(false) + setSlice5(false)}
+  const handleClickEvent = (event) => {
+    const buttonValue = event.target.value;
+    switch (buttonValue) {
+      case "1": setSlice(true) + setSlice2(false)
+      + setSlice3(false) + setSlice4(false) + setSlice5(false) + setSlice6(false)
+      break;
+      case "2": setSlice2(true) + setSlice(false)
+      + setSlice3(false) + setSlice4(false) + setSlice5(false) + setSlice6(false)
+      break;
+      case "3": setSlice3(true) + setSlice(false)
+      + setSlice2(false) + setSlice4(false) + setSlice5(false) + setSlice6(false)
+      break;
+      case "4": setSlice4(true) + setSlice(false)
+      + setSlice2(false) + setSlice3(false) + setSlice5(false) + setSlice6(false)
+      break;
+      case "5": setSlice5(true) + setSlice(false)
+      + setSlice2(false) + setSlice3(false) + setSlice4(false) + setSlice6(false)
+      break;
+      case "6": setSlice6(true) + setSlice(false)
+      + setSlice2(false) + setSlice3(false) + setSlice4(false) + setSlice5(false)
+      break;
+      default: setSlice(true) + setSlice2(false)
+      + setSlice3(false) + setSlice4(false) + setSlice5(false) + setSlice6(false)
+    }
+  }
 
   const items = slice ? PHAN_LOAI_SX.slice(0,1) : slice2 ? PHAN_LOAI_SX.slice(1,2)
     : slice3 ? PHAN_LOAI_SX.slice(2,3) : slice4 ? PHAN_LOAI_SX.slice(3,4)
@@ -806,18 +814,18 @@ export default function Admin() {
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
 
     <div className='control_button' style={{position:"relative", left:"15%", maxWidth:"80%"}}>
-      <button onClick={handleSlice} style={{position:"relative", color:'black',
+      <button value="1" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px",
         borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px", fontWeight:"bold"}}>CÁ BIỂN SẢN XUẤT</button>
-      <button onClick={handleSlice2} style={{position:"relative", color:'black',
+      <button value="2" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ BIỂN TỰ NHIÊN</button>
-      <button onClick={handleSlice3} style={{position:"relative", color:'black',
+      <button value="3" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ MÚ SẢN XUẤT</button>
-      <button onClick={handleSlice4} style={{position:"relative", color:'black',
+      <button value="4" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG TÔM, CUA</button>
-      <button onClick={handleSlice5} style={{position:"relative", color:'black',
+      <button value="5" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG NHUYỄN THỂ</button>
-      <button onClick={handleSlice6} style={{position:"relative", color:'black',
+      <button value="6" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px",
         borderTopRightRadius:"5px", borderBottomRightRadius:"5px", fontWeight:"bold"}}>GIỐNG CÁ NƯỚC NGỌT</button>
     </div>
