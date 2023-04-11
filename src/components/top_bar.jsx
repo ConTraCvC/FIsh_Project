@@ -34,20 +34,20 @@ const MENU_LIST = [
 
 const TopBar = () => {
 
-  const searchRef = useRef();
+  const searchRef = useRef(null);
 
   const router = useRouter()
   const handleSubmit = (e) => {
       e.preventDefault()
-      router.push("/search?keyword=" + Object.values(searchRef))
+      router.push(`/search?keyword=${searchRef.current.value}`)
   }
 
   function SearchBar() {
     return (
       <Form role="search" onSubmit={handleSubmit}>
         <Input
-          ref={searchRef}
-          type="search"
+          innerRef={searchRef}
+          type="text"
           placeholder="&#128269; Bạn muốn tìm sản phẩm nào"
           style={{ height:'35px',width:'320px',borderRadius:"10px"}}
         />
