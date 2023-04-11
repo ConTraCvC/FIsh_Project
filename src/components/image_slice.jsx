@@ -18,6 +18,8 @@ const ImageSlice = ({data1, data2}) => {
     autoplaySpeed: 2000
   };
 
+  console.log(data1);
+
   return (
     <div className="slice__container">
       <h3 style={{color:"lightgreen"}}>

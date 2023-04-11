@@ -94,6 +94,78 @@ export default function ItemPage({new_props, tech_props, food_props}) {
     setRandom(randomNumberInRange(1000, 9999))
   }
 
+  const FishTable = Object.values(table_props).slice(0, 0).map(table => {
+    return (
+      <Table>
+        <thead>
+          <tr>
+            <th>Tên gọi</th>
+            <td>{table.details.ten_goi}</td>
+          </tr>
+          <tr>
+            <th>Vùng nuôi</th>
+            <td>{table.details.vung_nuoi}</td>
+          </tr>
+          <tr>
+            <th> Hình thức nuôi</th>
+            <td>{table.details.hinh_thuc_nuoi}</td>
+          </tr>
+          <tr>
+            <th>Tiêu chuẩn chất lượng</th>
+            <td>{table.details.tieu_chuan}</td>
+          </tr><tr>
+            <th>Kích thước</th>
+            <td>{table.details.kich_thuoc}</td>
+          </tr>
+          <tr>
+            <th>Mật độ thả</th>
+            <td>{table.details.mat_do_tha}</td>
+          </tr>
+          <tr>
+            <th>Thời gian nuôi đến thành phẩm</th>
+            <td>{table.details.thoi_gian_nuoi}</td>
+          </tr>
+          <tr>
+            <th>Kích cỡ đạt được</th>
+            <td>{table.details.kich_co}</td>
+          </tr>
+          <tr>
+            <th>Tỷ lệ sống trung  bình</th>
+            <td>{table.details.ti_le_song}</td>
+          </tr>
+          <tr>
+            <th>Loại thức ăn</th>
+            <td>{table.details.loai_thuc_an}</td>
+          </tr>
+          <tr>
+            <th>Hệ số chuyển đổi thức ăn</th>
+            <td>{table.details.hscd_thuc_an}</td>
+          </tr>
+          <tr>
+            <th>Giá trị dinh dưỡng</th>
+            <td>{table.details.gia_tri_dd}</td>
+          </tr>
+          <tr>
+            <th>Giá thương phẩm</th>
+            <td>{table.details.gia_thuong_pham}</td>
+          </tr>
+          <tr>
+            <th>Hệ số lợi nhuận trên 1kg cá</th>
+            <td>{table.details.hs_loi_nhuan}</td>
+          </tr>
+          <tr>
+            <th>Thực tại tại Việt Nam</th>
+            <td>{table.details.thuc_tai_sx}</td>
+          </tr>
+          <tr>
+            <th>Xu hướng phát triển</th>
+            <td>{table.details.xu_huong_pt}</td>
+          </tr>
+        </thead>
+      </Table>
+    )
+  })
+
   const FishMap = Object.values(fish_props).slice(0, 0).map(fish => {
     return (
       <div>
@@ -138,73 +210,7 @@ export default function ItemPage({new_props, tech_props, food_props}) {
             <h5>{fish.body}</h5>
             <h3>CÁ THƯƠNG PHẨM</h3>
             <img width="400px" height="300px" src={fish.image_tp}></img>
-            <Table>
-              <thead>
-                <tr>
-                  <th>Tên gọi</th>
-                  <td>{fish.details.ten_goi}</td>
-                </tr>
-                <tr>
-                  <th>Vùng nuôi</th>
-                  <td>{fish.details.vung_nuoi}</td>
-                </tr>
-                <tr>
-                  <th> Hình thức nuôi</th>
-                  <td>{fish.details.hinh_thuc_nuoi}</td>
-                </tr>
-                <tr>
-                  <th>Tiêu chuẩn chất lượng</th>
-                  <td>{fish.details.tieu_chuan}</td>
-                </tr><tr>
-                  <th>Kích thước</th>
-                  <td>{fish.details.kich_thuoc}</td>
-                </tr>
-                <tr>
-                  <th>Mật độ thả</th>
-                  <td>{fish.details.mat_do_tha}</td>
-                </tr>
-                <tr>
-                  <th>Thời gian nuôi đến thành phẩm</th>
-                  <td>{fish.details.thoi_gian_nuoi}</td>
-                </tr>
-                <tr>
-                  <th>Kích cỡ đạt được</th>
-                  <td>{fish.details.kich_co}</td>
-                </tr>
-                <tr>
-                  <th>Tỷ lệ sống trung  bình</th>
-                  <td>{fish.details.ti_le_song}</td>
-                </tr>
-                <tr>
-                  <th>Loại thức ăn</th>
-                  <td>{fish.details.loai_thuc_an}</td>
-                </tr>
-                <tr>
-                  <th>Hệ số chuyển đổi thức ăn</th>
-                  <td>{fish.details.hscd_thuc_an}</td>
-                </tr>
-                <tr>
-                  <th>Giá trị dinh dưỡng</th>
-                  <td>{fish.details.gia_tri_dd}</td>
-                </tr>
-                <tr>
-                  <th>Giá thương phẩm</th>
-                  <td>{fish.details.gia_thuong_pham}</td>
-                </tr>
-                <tr>
-                  <th>Hệ số lợi nhuận trên 1kg cá</th>
-                  <td>{fish.details.hs_loi_nhuan}</td>
-                </tr>
-                <tr>
-                  <th>Thực tại tại Việt Nam</th>
-                  <td>{fish.details.thuc_tai_sx}</td>
-                </tr>
-                <tr>
-                  <th>Xu hướng phát triển</th>
-                  <td>{fish.details.xu_huong_pt}</td>
-                </tr>
-              </thead>
-            </Table>
+            {FishTable}
             <h4>Hình 1:</h4>
             <img width="400px" height="300px"  src={fish.image1}/>
             <h4>Hình 2:</h4>
