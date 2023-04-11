@@ -36,12 +36,8 @@ export const getServerSideProps = async() => {
     next: {revalidate: 300}
   })
   const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
-  const fish_SX_tables = []
-  fish_SX_props.forEach((element) => {
-    const fish_SX_table = collection(db, `fish_SX/${element.id}/details`);
-    fish_SX_tables.push(fish_SX_table);
-  });
-  const fish_SX_table_snap = await getDocs(fish_SX_tables, {
+  const fish_SX_table = collection(db, `fish_SX/${fish_SX_props[2].id}/details`)
+  const fish_SX_table_snap = await getDocs(fish_SX_table, {
     next: {revalidate: 300}
   })
   const fish_SX_table_props = fish_SX_table_snap.docs.map((doc) => ({ ...doc.data()}))
