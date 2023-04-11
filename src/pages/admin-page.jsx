@@ -28,16 +28,16 @@ const style = {
 
 export default function Admin() {
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpen3, setIsOpen3] = useState(false);
-  const [isOpen4, setIsOpen4] = useState(false);
+  const [isOpenNF, setIsOpenNF] = useState(false);
+  const [isOpenKT, setIsOpenKT] = useState(false);
+  const [isOpenAT, setIsOpenAT] = useState(false);
   const [isOpenSX, setIsOpenSX] = useState(false);
   const [isOpenTN, setIsOpenTN] = useState(false);
   const [isOpenMU, setIsOpenMU] = useState(false);
   const [isOpenTC, setIsOpenTC] = useState(false);
   const [isOpenNT, setIsOpenNT] = useState(false);
   const [isOpenNN, setIsOpenNN] = useState(false);
-  const [ imageUpload, setImageUpLoad ] = useState(null);
+  const [imageUpload, setImageUpLoad] = useState(null);
   const [imageBia, setImageBia] = useState(null)
   const [image1, setImage1] = useState(null)
   const [image2, setImage2] = useState(null)
@@ -75,9 +75,9 @@ export default function Admin() {
   const [vung_nuoi, setVung_nuoi] = useState("")
   const [xu_huong_pt, setXu_huong_pt] = useState("")
 
-  const handleClose = () => setIsOpen(false)
-  const handleClose3 = () => setIsOpen3(false)
-  const handleClose4 = () => setIsOpen4(false)
+  const handleClose = () => setIsOpenNF(false)
+  const handleClose3 = () => setIsOpenKT(false)
+  const handleClose4 = () => setIsOpenAT(false)
   const handleCloseSX = () => setIsOpenSX(false)
   const handleCloseTN = () => setIsOpenTN(false)
   const handleCloseMU = () => setIsOpenMU(false)
@@ -683,17 +683,17 @@ export default function Admin() {
       text: "BẠN ĐÃ CHẮC CHẮN VỀ NEW FEED ??",
       upload: uploadFirebase__New,
       handle: handleClose,
-      boolean: isOpen
+      boolean: isOpenNF
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ KỸ THUẬT ??",
       upload: uploadFirebase__Tech,
       handle: handleClose3,
-      boolean: isOpen3
+      boolean: isOpenKT
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ ẨM THỰC ??",
       upload: uploadFirebase__Food,
       handle: handleClose4,
-      boolean: isOpen4
+      boolean: isOpenAT
     },{
       text: "BẠN ĐÃ CHẮC CHẮN VỀ GIỐNG CÁ BIỂN SẢN XUẤT ??",
       upload: uploadFirebase__SX,
