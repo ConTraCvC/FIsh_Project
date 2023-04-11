@@ -2,11 +2,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Image from "next/image";
-import logo_vi from "../../assets/logo_vi.png"
+import logo_vi from "../assets/logo_vi.png"
 import { Table } from "reactstrap";
 import Link from "next/link";
 
-const ImageSlice = () => {
+const ImageSlice = ({data1, data2}) => {
 
   const settings = {
     dots: true,

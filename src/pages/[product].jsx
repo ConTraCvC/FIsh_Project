@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import TopBar from '@component/pages/components/top_bar'
+import TopBar from '@component/components/top_bar'
 import Image from 'next/image'
 import background from '../assets/background.jpg'
 import Link from "next/link"
@@ -9,19 +9,27 @@ import { db } from "@component/firebase/firebase"
 import { collection, getDocs} from "firebase/firestore/lite"
 import { useRouter } from 'next/router'
 
-import BasicBreadcrumbs from '@component/pages/components/bread_crumbs'
+import BasicBreadcrumbs from '@component/components/bread_crumbs'
 import { FormGroup, Input, Table } from 'reactstrap'
+
+export const revalidate = 300
 
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
 
 export const getServerSideProps = async () => {
-  const docSnap = await getDocs(newCollection);
+  const docSnap = await getDocs(newCollection, {
+    next: {revalidate: 300}
+  });
   const new_props = docSnap.docs.map((doc) => ({ ...doc.data()}))
-  const techSnap = await getDocs(techCollection)
+  const techSnap = await getDocs(techCollection, {
+    next: {revalidate: 300}
+  })
   const tech_props = techSnap.docs.map((doc) => ({ ...doc.data()}))
-  const foodSnap = await getDocs(foodCollection)
+  const foodSnap = await getDocs(foodCollection, {
+    next: {revalidate: 300}
+  })
   const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
   return {
     props: { new_props, tech_props, food_props } };

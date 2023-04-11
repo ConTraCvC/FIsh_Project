@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useRef } from "react";
 import TopItem from "./top_item";
-import logo_vi from "../../assets/logo_vi.png"
+import logo_vi from "../assets/logo_vi.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Input, Form } from "reactstrap";

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import TopBar from '@component/pages/components/top_bar'
-import BasicBreadcrumbs from '@component/pages/components/bread_crumbs'
+import TopBar from '@component/components/top_bar'
+import BasicBreadcrumbs from '@component/components/bread_crumbs'
 import background from '../assets/background.jpg'
 import { Form, FormGroup, Input, Table } from 'reactstrap'
 import { ref, uploadBytes} from "firebase/storage";
@@ -285,7 +285,6 @@ export default function Admin() {
         youtube5: {youtube5},
         body3: {body3}
       }).then(alert("Data pushed!"))
-      console.log("Document written with ID: ", docRef.id);
       await setDoc(doc(db, `fish_SX/${docRef.id}/details/fish_details`), {
         gia_thuong_pham: {gia_thuong_pham},
         gia_tri_dd: {gia_tri_dd},
@@ -360,7 +359,6 @@ export default function Admin() {
         youtube5: {youtube5},
         body3: {body3}
       }).then(alert("Data pushed!"))
-      console.log("Document written with ID: ", docRef.id);
       await setDoc(doc(db, `fish_TN/${docRef.id}/details/fish_details`), {
         gia_thuong_pham: {gia_thuong_pham},
         gia_tri_dd: {gia_tri_dd},
@@ -435,7 +433,6 @@ export default function Admin() {
         youtube5: {youtube5},
         body3: {body3}
       }).then(alert("Data pushed!"))
-      console.log("Document written with ID: ", docRef.id);
       await setDoc(doc(db, `fish_MU/${docRef.id}/details/fish_details`), {
         gia_thuong_pham: {gia_thuong_pham},
         gia_tri_dd: {gia_tri_dd},
@@ -510,7 +507,6 @@ export default function Admin() {
         youtube5: {youtube5},
         body3: {body3}
       }).then(alert("Data pushed!"))
-      console.log("Document written with ID: ", docRef.id);
       await setDoc(doc(db, `fish_TC/${docRef.id}/details/fish_details`), {
         gia_thuong_pham: {gia_thuong_pham},
         gia_tri_dd: {gia_tri_dd},
@@ -585,7 +581,6 @@ export default function Admin() {
         youtube5: {youtube5},
         body3: {body3}
       }).then(alert("Data pushed!"))
-      console.log("Document written with ID: ", docRef.id);
       await setDoc(doc(db, `fish_NT/${docRef.id}/details/fish_details`), {
         gia_thuong_pham: {gia_thuong_pham},
         gia_tri_dd: {gia_tri_dd},
@@ -660,7 +655,6 @@ export default function Admin() {
         youtube5: {youtube5},
         body3: {body3}
       }).then(alert("Data pushed!"))
-      console.log("Document written with ID: ", docRef.id);
       await setDoc(doc(db, `fish_NN/${docRef.id}/details/fish_details`), {
         gia_thuong_pham: {gia_thuong_pham},
         gia_tri_dd: {gia_tri_dd},
