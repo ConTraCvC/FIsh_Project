@@ -18,7 +18,43 @@ const ImageSlice = ({data1, data2}) => {
     autoplaySpeed: 2000
   };
 
-  console.log(data1);
+  const fish_SX_map = Object.values(data1).map(data => {
+    return (
+      <div style={{maxWidth:"95%"}}>
+        <Table>
+          <thead>
+            <tr style={{display: "flex", flexDirection:"column",
+              maxWidth:"280px", marginLeft:"7%", marginTop:"7%"}}>
+              <th><Link href="/"><img width="100%" height="auto" src={data.imageBia}></img></Link></th>
+              <td><Link href="/" style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
+              <td><h4 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
+                WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
+                overflow: "hidden"}}>{Object.values(data.body)}</h4></td>
+            </tr>
+          </thead>
+        </Table>
+      </div>
+    )
+  })
+
+  const fish_TN_map = Object.values(data2).map(data => {
+    return (
+      <div style={{maxWidth:"95%"}}>
+        <Table>
+          <thead>
+            <tr style={{display: "flex", flexDirection:"column",
+              maxWidth:"280px", marginLeft:"7%", marginTop:"7%"}}>
+              <th><Link href="/"><img width="100%" height="auto" src={data.imageBia}></img></Link></th>
+              <td><Link href="/" style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
+              <td><h4 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
+                WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
+                overflow: "hidden"}}>{Object.values(data.body)}</h4></td>
+            </tr>
+          </thead>
+        </Table>
+      </div>
+    )
+  })
 
   return (
     <div className="slice__container">
@@ -26,96 +62,16 @@ const ImageSlice = ({data1, data2}) => {
          {" "}
          GIỐNG CÁ BIỂN SẢN XUẤT
       </h3>
-      <div style={{maxWidth:"95%", margin:"auto"}}>
         <Slider {...settings}>
-          <div>
-            <Table>
-              <thead>
-                <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
-                  <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
-                </tr>
-              </thead>
-            </Table>    
-          </div>
-          <div>
-            <Table>
-              <thead>
-                <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
-                  <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
-                </tr>
-              </thead>
-            </Table>    
-          </div>
-          <div>
-            <Table>
-              <thead>
-                <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
-                  <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
-                </tr>
-              </thead>
-            </Table>    
-          </div>
-          <div>
-            <Table>
-              <thead>
-                <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
-                  <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
-                </tr>
-              </thead>
-            </Table>    
-          </div>
-          <div>
-            <Table>
-              <thead>
-                <tr style={{display: "flex", flexDirection:"column", maxWidth:"200px"}}>
-                  <th><Image src={logo_vi}/></th>
-                  <td><Link href="/" style={{color:"lightpink"}}>Cá Mú Đen Giống Chất Lượng</Link></td>
-                  <td><h4 style={{color:"white", padding:"10px 0 0 0"}}>Hiệu quả mô hình nuôi giống cá mú đen. 
-                  Giống cá mú đen chất lượng. Phân loại và cách nhìn nhận giống cá mú đen chất lượng. TRƯỜNG PHÁT cung cấp giống cá mú.</h4></td>
-                </tr>
-              </thead>
-            </Table>    
-          </div>
+          {fish_SX_map}
         </Slider>
-      </div>
-      <h3 style={{color:"lightgreen"}}>
+      <h3 style={{color:"lightgreen", marginTop:"4%"}}>
          {" "}
          GIỐNG CÁ BIỂN THIÊN NHIÊN
       </h3>
-      <div style={{maxWidth:"95%", margin:"auto"}}>
         <Slider {...settings}>
-          <div>
-            <Image src={logo_vi}/>
-          </div>
-          <div>
-            <Image src={logo_vi}/>
-          </div>
-          <div>
-            <Image src={logo_vi}/>
-          </div>
-          <div>
-            <Image src={logo_vi}/>
-          </div>
-          <div>
-            <Image src={logo_vi}/>
-          </div>
-          <div>
-            <Image src={logo_vi}/>
-          </div>
+          {fish_TN_map}
         </Slider>
-      </div>
       <h3 style={{color:"lightgreen"}}>
          {" "}
          GIỐNG CÁ MÚ SẢN XUẤT
