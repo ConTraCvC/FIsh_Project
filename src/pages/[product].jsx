@@ -17,12 +17,17 @@ export const revalidate = 300
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
+const fish_SX_collection = collection(db, "fish_SX")
+const fish_TN_collection = collection(db, "fish_TN")
+
+const fish_SX_table = []
+const fish_TN_table = []
 
 export const getServerSideProps = async () => {
-  const docSnap = await getDocs(newCollection, {
+  const newSnap = await getDocs(newCollection, {
     next: {revalidate: 300}
   });
-  const new_props = docSnap.docs.map((doc) => ({ ...doc.data()}))
+  const new_props = newSnap.docs.map((doc) => ({ ...doc.data()}))
   const techSnap = await getDocs(techCollection, {
     next: {revalidate: 300}
   })
@@ -31,12 +36,39 @@ export const getServerSideProps = async () => {
     next: {revalidate: 300}
   })
   const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
+
+  const fish_SX = await getDocs(fish_SX_collection, {
+    next: {revalidate:300}
+  })
+  const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data()}))
+  fish_SX.forEach( async(doc) => {
+    const table_collection = collection(db, `fish_SX/${doc.id}/details`)
+    const table_snap = await getDocs(table_collection)
+    const table_detail = table_snap.docs.map((doc) => ({ ...doc.data()}))
+    fish_SX_table.push(table_detail)
+  })
+
+  const fish_TN = await getDocs(fish_TN_collection, {
+    next: {revalidate:300}
+  })
+  const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data()}))
+  fish_SX.forEach( async(doc) => {
+    const table_collection = collection(db, `fish_TN/${doc.id}/details`)
+    const table_snap = await getDocs(table_collection)
+    const table_detail = table_snap.docs.map((doc) => ({ ...doc.data()}))
+    fish_TN_table.push(table_detail)
+  })
+
   return {
-    props: { new_props, tech_props, food_props } };
+    props: { new_props, tech_props, food_props,
+      fish_SX_props, fish_SX_table, fish_TN_props,
+      fish_TN_table } 
+  };
 };
 
 /////////////
-export default function ItemPage({new_props, tech_props, food_props}) {
+export default function ItemPage({new_props, tech_props, food_props, 
+    fish_SX_props, fish_SX_table, fish_TN_props, fish_TN_table}) {
 
   const NewListMap = Object.values(new_props).slice(0, 8).map(data => {
     return ( 
@@ -94,7 +126,7 @@ export default function ItemPage({new_props, tech_props, food_props}) {
     setRandom(randomNumberInRange(1000, 9999))
   }
 
-  const FishTable = Object.values(table_props).slice(0, 0).map(table => {
+  const FishTable = Object.values(fish_SX_table).slice(0, 0).map(table => {
     return (
       <Table>
         <thead>
@@ -210,7 +242,9 @@ export default function ItemPage({new_props, tech_props, food_props}) {
             <h5>{fish.body}</h5>
             <h3>CÁ THƯƠNG PHẨM</h3>
             <img width="400px" height="300px" src={fish.image_tp}></img>
+
             {FishTable}
+
             <h4>Hình 1:</h4>
             <img width="400px" height="300px"  src={fish.image1}/>
             <h4>Hình 2:</h4>

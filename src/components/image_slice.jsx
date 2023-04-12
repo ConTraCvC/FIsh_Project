@@ -72,7 +72,7 @@ const ImageSlice = ({data1, data2}) => {
         <Slider {...settings}>
           {fish_TN_map}
         </Slider>
-      <h3 style={{color:"lightgreen"}}>
+      <h3 style={{color:"lightgreen", marginTop:"4%"}}>
          {" "}
          GIỐNG CÁ MÚ SẢN XUẤT
       </h3>
