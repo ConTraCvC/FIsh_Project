@@ -7,18 +7,16 @@ import NewAndTechnic from '@component/components/new_and_technic'
 
 import { db } from "@component/firebase/firebase"
 import { collection, getDocs } from "firebase/firestore/lite"
-import { useState } from 'react'
 
 export const revalidate = 300;
 
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
+const fish_SX_collection = collection(db, `fish_SX`)
+const fish_TN_collection = collection(db, "fish_TN")
 
-export const getServerSideProps = async() => {
-  const fish_SX_collection = collection(db, `fish_SX`)
-  const fish_TN_collection = collection(db, "fish_TN")
-
+export const getStaticProps = async() => {
   const newSnap = await getDocs(newCollection, {
     next: {revalidate: 300}
   })

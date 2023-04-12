@@ -23,7 +23,22 @@ const fish_TN_collection = collection(db, "fish_TN")
 const fish_SX_table = []
 const fish_TN_table = []
 
-export const getServerSideProps = async () => {
+export const getStaticPaths = async() => {
+  const fish_SX = getDocs(fish_SX_collection, {
+    next: {revalidate: 300}
+  })
+  const paths = (await fish_SX).docs.map(doc => {
+    return {
+      params: {id: doc.id}
+    }
+  })
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export const getStaticProps = async() => {
   const newSnap = await getDocs(newCollection, {
     next: {revalidate: 300}
   });
@@ -198,7 +213,7 @@ export default function ItemPage({new_props, tech_props, food_props,
     )
   })
 
-  const FishMap = Object.values(fish_props).slice(0, 0).map(fish => {
+  const FishMap = Object.values(fish_SX_props).slice(0, 0).map(fish => {
     return (
       <div>
         <div>
