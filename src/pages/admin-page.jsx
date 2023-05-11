@@ -88,13 +88,13 @@ export default function Admin() {
   const MENU_LIST = [
     {
       text: "UP ẢNH NEW FEED",
-      function() {setIsOpen(true)}
+      function() {setIsOpenNF(true)}
     },{
       text: "UP ẢNH KỸ THUẬT",
-      function() {setIsOpen3(true)}
+      function() {setIsOpenKT(true)}
     },{
       text: "UP ẢNH ẨM THỰC",
-      function() {setIsOpen4(true)}
+      function() {setIsOpenAT(true)}
     }
   ]
 
