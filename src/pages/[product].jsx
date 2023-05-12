@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import TopBar from '@component/components/top_bar'
 import Image from 'next/image'
 import background from '../assets/background.jpg'
@@ -6,90 +6,82 @@ import Link from "next/link"
 
 // import { child, get, getDatabase, onValue, ref, set } from "firebase/database"
 import { db } from "@component/firebase/firebase"
-import { collection, getDocs} from "firebase/firestore/lite"
+import { collection, doc, getDoc, getDocs} from "firebase/firestore/lite"
 import { useRouter } from 'next/router'
 
 import BasicBreadcrumbs from '@component/components/bread_crumbs'
 import { FormGroup, Input, Table } from 'reactstrap'
 
-export const revalidate = 300
-
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
 const fish_SX_collection = collection(db, "fish_SX")
-const fish_TN_collection = collection(db, "fish_TN")
 
-const fish_SX_table = []
-const fish_TN_table = []
+// export const getStaticPaths = async() => {
+//   const fish_SX = await getDocs(fish_SX_collection)
+//   const paths = fish_SX.docs.map(doc => ({
+//     params: {product: doc.id}
+//   }))
+//   return {
+//     paths, fallback: false
+//   }
+// }
 
-export const getStaticPaths = async() => {
-  const fish_SX = getDocs(fish_SX_collection, {
-    next: {revalidate: 300}
-  })
-  const paths = (await fish_SX).docs.map(doc => {
-    return {
-      params: {id: doc.id}
-    }
-  })
-  return {
-    paths,
-    fallback: false
-  }
-}
+export const getServerSideProps = async() => {
 
-export const getStaticProps = async() => {
-  const newSnap = await getDocs(newCollection, {
-    next: {revalidate: 300}
-  });
+  const newSnap = await getDocs(newCollection)
   const new_props = newSnap.docs.map((doc) => ({ ...doc.data()}))
-  const techSnap = await getDocs(techCollection, {
-    next: {revalidate: 300}
-  })
+
+  const techSnap = await getDocs(techCollection)
   const tech_props = techSnap.docs.map((doc) => ({ ...doc.data()}))
-  const foodSnap = await getDocs(foodCollection, {
-    next: {revalidate: 300}
-  })
+
+  const foodSnap = await getDocs(foodCollection)
   const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
 
-  const fish_SX = await getDocs(fish_SX_collection, {
-    next: {revalidate:300}
-  })
-  const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data()}))
-  fish_SX.forEach( async(doc) => {
-    const table_collection = collection(db, `fish_SX/${doc.id}/details`)
-    const table_snap = await getDocs(table_collection)
-    const table_detail = table_snap.docs.map((doc) => ({ ...doc.data()}))
-    fish_SX_table.push(table_detail)
-  })
-
-  const fish_TN = await getDocs(fish_TN_collection, {
-    next: {revalidate:300}
-  })
-  const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data()}))
-  fish_SX.forEach( async(doc) => {
-    const table_collection = collection(db, `fish_TN/${doc.id}/details`)
-    const table_snap = await getDocs(table_collection)
-    const table_detail = table_snap.docs.map((doc) => ({ ...doc.data()}))
-    fish_TN_table.push(table_detail)
-  })
+  // const fish_SX = await getDocs(fish_SX_collection)
+  // const fish_SX_Data = fish_SX.docs.map((doc) => ({...doc.data()}))
+  // const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data()}))
+  // fish_SX.forEach( async(doc) => {
+  //   const table_collection = collection(db, `fish_SX/${doc.id}/details`)
+  //   const table_snap = await getDocs(table_collection)
+  //   const table_detail = table_snap.docs.map((doc) => ({ ...doc.data()}))
+  //   fish_SX_table.push(table_detail)
+  // })
 
   return {
-    props: { new_props, tech_props, food_props,
-      fish_SX_props, fish_SX_table, fish_TN_props,
-      fish_TN_table } 
+    props: { new_props, tech_props, food_props}
   };
 };
 
 /////////////
-export default function ItemPage({new_props, tech_props, food_props, 
-    fish_SX_props, fish_SX_table, fish_TN_props, fish_TN_table}) {
+const ItemPage = ({new_props, tech_props, food_props}) => {
+
+  const fish_data = []
+  const router = useRouter()
+  const data = router.query
+
+  const effectRan = useRef(false);
+  useEffect(() => {
+    if (effectRan.current === true) {
+      const fetchData = async () => {
+        const fishSxRef = doc(db, `fish_SX/${Object.values(data)}`)
+        const fishSxSnap = await getDoc(fishSxRef)
+        if (fishSxSnap.exists()) {
+          fish_data.push(fishSxSnap.data())
+        }
+      }
+      fetchData()
+    }
+    return () => {
+      effectRan.current=true
+    }
+  }, [])
 
   const NewListMap = Object.values(new_props).slice(0, 8).map(data => {
     return ( 
       <div className='new_feed__content__column'>
         <div>
-          <Link href={""}>
+          <Link href={"/"}>
               <img src={data.image} width="110" height="75" />
           </Link>
           <li style={{opacity:"0"}}></li>
@@ -97,7 +89,7 @@ export default function ItemPage({new_props, tech_props, food_props,
         </div>
         <div style={{marginBottom:"60px", marginLeft:"10px",
          position:"relative", top:"-0.2rem", display:"flex", flexDirection:"column"}}>
-          <Link href={""} style={{color:"white"}}>{data.title.title.toString()}</Link>
+          <Link href={"/"} style={{color:"white"}}>{data.title.title.toString()}</Link>
           <a style={{color:"darkgray", fontSize:"12px", padding:"5px"}} >{data.date}</a>
         </div>
       </div>
@@ -141,7 +133,7 @@ export default function ItemPage({new_props, tech_props, food_props,
     setRandom(randomNumberInRange(1000, 9999))
   }
 
-  const FishTable = Object.values(fish_SX_table).slice(0, 0).map(table => {
+  const FishTable = Object.values("").slice(0, 0).map(table => {
     return (
       <Table>
         <thead>
@@ -213,7 +205,7 @@ export default function ItemPage({new_props, tech_props, food_props,
     )
   })
 
-  const FishMap = Object.values(fish_SX_props).slice(0, 0).map(fish => {
+  const FishMap = Object.values(fish_data).map(fish => {
     return (
       <div>
         <div>
@@ -254,11 +246,11 @@ export default function ItemPage({new_props, tech_props, food_props,
         { info &&  (
           <div style={{position:"relative", color:"white"}}>
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
-            <h5>{fish.body}</h5>
+            <h5>{Object.values(fish.body)}</h5>
             <h3>CÁ THƯƠNG PHẨM</h3>
             <img width="400px" height="300px" src={fish.image_tp}></img>
 
-            {FishTable}
+            {/* {FishTable} */}
 
             <h4>Hình 1:</h4>
             <img width="400px" height="300px"  src={fish.image1}/>
@@ -269,12 +261,12 @@ export default function ItemPage({new_props, tech_props, food_props,
             <iframe width="400px" height="300px" src={fish.youtube}>Video 1:</iframe>
             <iframe width="400px" height="300px" src={fish.youtube1}>Video 2:</iframe>
             <h4>Cá thương phẩm:</h4>
-            <h5>{fish.body2}</h5>
+            <h5>{Object.values(fish.body2)}</h5>
             <iframe width="400px" height="300px"  src={fish.youtube2}>Video 3:</iframe>
             <iframe width="400px" height="300px" src={fish.youtube3}>Video 4:</iframe>
             <iframe width="400px" height="300px"  src={fish.youtube4}>Video 5:</iframe>
             <iframe width="400px" height="300px"  src={fish.youtube5}>Video 6:</iframe>
-            <h5>{fish.body3}</h5>
+            <h5>{Object.values(fish.body3)}</h5>
           </div>
         )}
         { dat_hang && (
@@ -337,8 +329,12 @@ export default function ItemPage({new_props, tech_props, food_props,
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-          {/* {FishMap} */}
+        {FishMap}
+        {console.log(fish_data)}
+        {/* {test2} */}
       </div>
     </div>
   )
 }
+
+export default ItemPage

@@ -8,8 +8,6 @@ import NewAndTechnic from '@component/components/new_and_technic'
 import { db } from "@component/firebase/firebase"
 import { collection, getDocs } from "firebase/firestore/lite"
 
-export const revalidate = 300;
-
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
@@ -17,34 +15,25 @@ const fish_SX_collection = collection(db, `fish_SX`)
 const fish_TN_collection = collection(db, "fish_TN")
 
 export const getStaticProps = async() => {
-  const newSnap = await getDocs(newCollection, {
-    next: {revalidate: 300}
-  })
+  const newSnap = await getDocs(newCollection)
   const new_props = newSnap.docs.map((doc) => ({ ...doc.data()}))
 
-  const techSnap = await getDocs(techCollection, {
-    next: {revalidate: 300}
-  })
+  const techSnap = await getDocs(techCollection)
   const tech_props = techSnap.docs.map((doc) => ({ ...doc.data()}))
   
-  const foodSnap = await getDocs(foodCollection, {
-    next: {revalidate: 300}
-  })
+  const foodSnap = await getDocs(foodCollection)
   const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
   
-  const fish_SX = await getDocs(fish_SX_collection, {
-    next: {revalidate: 300}
-  })
+  const fish_SX = await getDocs(fish_SX_collection)
   const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
 
-  const fish_TN = await getDocs(fish_TN_collection, {
-    next: {revalidate: 300}
-  })
+  const fish_TN = await getDocs(fish_TN_collection)
   const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data()}))
 
   return {
     props: { new_props, tech_props, food_props,
-      fish_SX_props, fish_TN_props }};
+      fish_SX_props, fish_TN_props },
+    revalidate: 100};
 };
 
 export default function Home({new_props, tech_props,
