@@ -242,24 +242,30 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data}) => {
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
             <h4>{Object.values(fish_SX_Data.body)}</h4>
             <h3>CÁ THƯƠNG PHẨM</h3>
-            {fish_SX_Data.imageTP!==null && fish_SX_Data.imageTP!==undefined ? <img width="100%" src={fish_SX_Data.imageTP}></img> : null }
+            {fish_SX_Data.imageTP!=="" && fish_SX_Data.imageTP!==undefined ? <img width="100%" src={fish_SX_Data.imageTP}></img> : null }
 
             {/* {FishTable} */}
 
             <h4>Hình 1:</h4>
-            <img width="100%" src={fish_SX_Data.image1}/>
+            {fish_SX_Data.image1!=="" && fish_SX_Data.image1!==undefined ? <img width="100%" src={fish_SX_Data.image1}/> : null}
             <h4>Hình 2:</h4>
-            <img width="100%" src={fish_SX_Data.image2}></img>
+            {fish_SX_Data.image2!=="" && fish_SX_Data.image2!==undefined ? <img width="100%" src={fish_SX_Data.image2}></img> : null}
             <h4>Hình 3:</h4>
             {fish_SX_Data.image3!==null && fish_SX_Data.image3!==undefined ? <img width="100%" src={fish_SX_Data.image3}></img> : null}
-            <iframe width="100%" src={Object.values(fish_SX_Data.youtube)}>Video 1:</iframe>
-            <iframe width="100%" src={Object.values(fish_SX_Data.youtube1)}>Video 2:</iframe>
+            {Object.values(fish_SX_Data.youtube)[0]!=="" && Object.values(fish_SX_Data.youtube)[0]!==undefined ?
+              <iframe width="100%" src={Object.values(fish_SX_Data.youtube)[0]}>Video 1:</iframe> : null}
+            {Object.values(fish_SX_Data.youtube1)[0]!=="" && Object.values(fish_SX_Data.youtube1)[0]!==undefined ? 
+              <iframe width="100%" src={Object.values(fish_SX_Data.youtube1)[0]}>Video 2:</iframe> : null}
             <h4>Cá thương phẩm:</h4>
             <h4>{Object.values(fish_SX_Data.body2)}</h4>
-            {Object.values(fish_SX_Data.youtube2)!=="" || Object.values(fish_SX_Data.youtube2)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube2)}/> : null}
-            {Object.values(fish_SX_Data.youtube3)!=="" || Object.values(fish_SX_Data.youtube3)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube3)}/> : null}
-            {Object.values(fish_SX_Data.youtube4)!=="" || Object.values(fish_SX_Data.youtube4)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube4)}/> : null}
-            {Object.values(fish_SX_Data.youtube5)!=="" || Object.values(fish_SX_Data.youtube5)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube5)}/> : null}
+            {Object.values(fish_SX_Data.youtube2)[0]!=="" && Object.values(fish_SX_Data.youtube2)[0]!==undefined ?
+              <iframe width="100%" src={Object.values(fish_SX_Data.youtube2)[0]}/> : null}
+            {Object.values(fish_SX_Data.youtube3)[0]!=="" && Object.values(fish_SX_Data.youtube3)[0]!==undefined ?
+              <iframe width="100%" src={Object.values(fish_SX_Data.youtube3)[0]}/> : null}
+            {Object.values(fish_SX_Data.youtube4)[0]!=="" && Object.values(fish_SX_Data.youtube5)[0]!==undefined ?
+              <iframe width="100%" src={Object.values(fish_SX_Data.youtube4)[0]}/> : null}
+            {Object.values(fish_SX_Data.youtube5)[0]!=="" && Object.values(fish_SX_Data.youtube5)[0]!==undefined ?
+              <iframe width="100%" src={Object.values(fish_SX_Data.youtube5)[0]}/> : null}
             <h3>{Object.values(fish_SX_Data.body3)}</h3>
           </div>
         ) : dat_hang && (
@@ -323,7 +329,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data}) => {
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-        {console.log(fish_SX_Data)}
+        {console.log(fish_SX_Data.image1)}
       </div>
       {FishMap()}
     </div>
