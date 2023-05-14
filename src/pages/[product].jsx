@@ -41,11 +41,16 @@ export const getServerSideProps = async(context) => {
 
   const fish_SX_Ref = doc(db, `fish_SX/${product}`)
   const fish_SX_Snap = await getDoc(fish_SX_Ref)
+  const fish_SxTable_Ref = doc(db, `fish_SX/${product}/details/fish_details`)
+  const fish_SxTable_Snap = await getDoc(fish_SxTable_Ref)
 
   const fish_TN_Ref = doc(db, `fish_TN/${product}`)
   const fish_TN_Snap = await getDoc(fish_TN_Ref)
+  const fish_TnTable_Ref = doc(db, `fish_TN/${product}/details/fish_details`)
+  const fish_TnTable_Snap = await getDoc(fish_TnTable_Ref)
   
   const fish_Data = fish_SX_Snap.data() || fish_TN_Snap.data()
+  const fish_Table_data = fish_SxTable_Snap.data() || fish_TnTable_Snap.data()
 
   // const fish_SX = await getDocs(fish_SX_collection)
   // const fish_SX_Data = fish_SX.docs.map((doc) => ({...doc.data()}))
@@ -58,12 +63,12 @@ export const getServerSideProps = async(context) => {
   // })
 
   return {
-    props: { new_props, tech_props, food_props, product, fish_Data}
+    props: { new_props, tech_props, food_props, product, fish_Data, fish_Table_data}
   };
 };
 
 /////////////
-const ItemPage = ({new_props, tech_props, food_props, fish_Data}) => {
+const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data}) => {
 
   const NewListMap = Object.values(new_props).slice(0, 8).map(data => {
     return ( 
@@ -129,77 +134,77 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data}) => {
     return result
   }, [kich_thuoc, so_luong])
 
-  const FishTable = Object.values("").slice(0, 0).map(table => {
+  const FishTable = () => {
     return (
       <Table>
         <thead>
           <tr>
-            <th>Tên gọi</th>
-            <td>{table.details.ten_goi}</td>
+            <td>Tên gọi</td>
+            <td>{Object.values(fish_Table_data.ten_goi)}</td>
           </tr>
           <tr>
-            <th>Vùng nuôi</th>
-            <td>{table.details.vung_nuoi}</td>
+            <td>Vùng nuôi</td>
+            <td>{Object.values(fish_Table_data.vung_nuoi)}</td>
           </tr>
           <tr>
-            <th> Hình thức nuôi</th>
-            <td>{table.details.hinh_thuc_nuoi}</td>
+            <td> Hình thức nuôi</td>
+            <td>{Object.values(fish_Table_data.hinh_thuc_nuoi)}</td>
           </tr>
           <tr>
-            <th>Tiêu chuẩn chất lượng</th>
-            <td>{table.details.tieu_chuan}</td>
+            <td>Tiêu chuẩn chất lượng</td>
+            <td>{Object.values(fish_Table_data.tieu_chuan)}</td>
           </tr><tr>
-            <th>Kích thước</th>
-            <td>{table.details.kich_thuoc}</td>
+            <td>Kích thước</td>
+            <td>{Object.values(fish_Table_data.kich_thuoc)}</td>
           </tr>
           <tr>
-            <th>Mật độ thả</th>
-            <td>{table.details.mat_do_tha}</td>
+            <td>Mật độ thả</td>
+            <td>{Object.values(fish_Table_data.mat_do_tha)}</td>
           </tr>
           <tr>
-            <th>Thời gian nuôi đến thành phẩm</th>
-            <td>{table.details.thoi_gian_nuoi}</td>
+            <td>Thời gian nuôi đến thành phẩm</td>
+            <td>{Object.values(fish_Table_data.thoi_gian_nuoi)}</td>
           </tr>
           <tr>
-            <th>Kích cỡ đạt được</th>
-            <td>{table.details.kich_co}</td>
+            <td>Kích cỡ đạt được</td>
+            <td>{Object.values(fish_Table_data.kich_co)}</td>
           </tr>
           <tr>
-            <th>Tỷ lệ sống trung  bình</th>
-            <td>{table.details.ti_le_song}</td>
+            <td>Tỷ lệ sống trung  bình</td>
+            <td>{Object.values(fish_Table_data.ti_le_song)}</td>
           </tr>
           <tr>
-            <th>Loại thức ăn</th>
-            <td>{table.details.loai_thuc_an}</td>
+            <td>Loại thức ăn</td>
+            <td>{Object.values(fish_Table_data.loai_thuc_an)}</td>
           </tr>
           <tr>
-            <th>Hệ số chuyển đổi thức ăn</th>
-            <td>{table.details.hscd_thuc_an}</td>
+            <td>Hệ số chuyển đổi thức ăn</td>
+            <td>{Object.values(fish_Table_data.hscd_thuc_an)}</td>
           </tr>
           <tr>
-            <th>Giá trị dinh dưỡng</th>
-            <td>{table.details.gia_tri_dd}</td>
+            <td>Giá trị dinh dưỡng</td>
+            <td>{Object.values(fish_Table_data.gia_tri_dd)}</td>
           </tr>
           <tr>
-            <th>Giá thương phẩm</th>
-            <td>{table.details.gia_thuong_pham}</td>
+            <td>Giá thương phẩm</td>
+            <td>{Object.values(fish_Table_data.gia_thuong_pham)}</td>
           </tr>
           <tr>
-            <th>Hệ số lợi nhuận trên 1kg cá</th>
-            <td>{table.details.hs_loi_nhuan}</td>
+            <td>Hệ số lợi nhuận trên 1kg cá</td>
+            <td>{Object.values(fish_Table_data.hs_loi_nhuan)}</td>
           </tr>
           <tr>
-            <th>Thực tại tại Việt Nam</th>
-            <td>{table.details.thuc_tai_sx}</td>
+            <td>Thực tại tại Việt Nam</td>
+            <td>{Object.values(fish_Table_data.thuc_tai_sx)}</td>
           </tr>
           <tr>
-            <th>Xu hướng phát triển</th>
-            <td>{table.details.xu_huong_pt}</td>
+            <td>Xu hướng phát triển</td>
+            <td>{Object.values(fish_Table_data.xu_huong_pt)}</td>
           </tr>
         </thead>
       </Table>
     )
-  })
+  }
 
   const FishMap = () => {
     return (
@@ -248,7 +253,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data}) => {
             <h3>CÁ THƯƠNG PHẨM</h3>
             {fish_Data.imageTP!=="" && fish_Data.imageTP!==undefined ? <img width="100%" src={fish_Data.imageTP}></img> : null }
 
-            {/* {FishTable} */}
+            {FishTable()}
 
             <h4>Hình 1:</h4>
             {fish_Data.image1!=="" && fish_Data.image1!==undefined ? <img width="100%" src={fish_Data.image1}/> : null}
@@ -333,7 +338,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data}) => {
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-        {console.log(fish_Data.image2)}
+        {console.log(fish_Table_data)}
       </div>
       {FishMap()}
     </div>
