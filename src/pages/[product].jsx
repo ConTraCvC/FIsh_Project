@@ -136,73 +136,71 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data
 
   const FishTable = () => {
     return (
-      <Table>
-        <thead>
-          <tr>
-            <td>Tên gọi</td>
-            <td>{Object.values(fish_Table_data.ten_goi)}</td>
-          </tr>
-          <tr>
-            <td>Vùng nuôi</td>
-            <td>{Object.values(fish_Table_data.vung_nuoi)}</td>
-          </tr>
-          <tr>
-            <td> Hình thức nuôi</td>
-            <td>{Object.values(fish_Table_data.hinh_thuc_nuoi)}</td>
-          </tr>
-          <tr>
-            <td>Tiêu chuẩn chất lượng</td>
-            <td>{Object.values(fish_Table_data.tieu_chuan)}</td>
-          </tr><tr>
-            <td>Kích thước</td>
-            <td>{Object.values(fish_Table_data.kich_thuoc)}</td>
-          </tr>
-          <tr>
-            <td>Mật độ thả</td>
-            <td>{Object.values(fish_Table_data.mat_do_tha)}</td>
-          </tr>
-          <tr>
-            <td>Thời gian nuôi đến thành phẩm</td>
-            <td>{Object.values(fish_Table_data.thoi_gian_nuoi)}</td>
-          </tr>
-          <tr>
-            <td>Kích cỡ đạt được</td>
-            <td>{Object.values(fish_Table_data.kich_co)}</td>
-          </tr>
-          <tr>
-            <td>Tỷ lệ sống trung  bình</td>
-            <td>{Object.values(fish_Table_data.ti_le_song)}</td>
-          </tr>
-          <tr>
-            <td>Loại thức ăn</td>
-            <td>{Object.values(fish_Table_data.loai_thuc_an)}</td>
-          </tr>
-          <tr>
-            <td>Hệ số chuyển đổi thức ăn</td>
-            <td>{Object.values(fish_Table_data.hscd_thuc_an)}</td>
-          </tr>
-          <tr>
-            <td>Giá trị dinh dưỡng</td>
-            <td>{Object.values(fish_Table_data.gia_tri_dd)}</td>
-          </tr>
-          <tr>
-            <td>Giá thương phẩm</td>
-            <td>{Object.values(fish_Table_data.gia_thuong_pham)}</td>
-          </tr>
-          <tr>
-            <td>Hệ số lợi nhuận trên 1kg cá</td>
-            <td>{Object.values(fish_Table_data.hs_loi_nhuan)}</td>
-          </tr>
-          <tr>
-            <td>Thực tại tại Việt Nam</td>
-            <td>{Object.values(fish_Table_data.thuc_tai_sx)}</td>
-          </tr>
-          <tr>
-            <td>Xu hướng phát triển</td>
-            <td>{Object.values(fish_Table_data.xu_huong_pt)}</td>
-          </tr>
-        </thead>
-      </Table>
+      <table style={{width:"100%", borderCollapse:"collapse"}}>
+        <tr>
+          <td>Tên gọi</td>
+          <td>{Object.values(fish_Table_data.ten_goi)}</td>
+        </tr>
+        <tr>
+          <td>Vùng nuôi</td>
+          <td>{Object.values(fish_Table_data.vung_nuoi)}</td>
+        </tr>
+        <tr>
+          <td> Hình thức nuôi</td>
+          <td>{Object.values(fish_Table_data.hinh_thuc_nuoi)}</td>
+        </tr>
+        <tr>
+          <td>Tiêu chuẩn chất lượng</td>
+          <td>{Object.values(fish_Table_data.tieu_chuan)}</td>
+        </tr><tr>
+          <td>Kích thước</td>
+          <td>{Object.values(fish_Table_data.kich_thuoc)}</td>
+        </tr>
+        <tr>
+          <td>Mật độ thả</td>
+          <td>{Object.values(fish_Table_data.mat_do_tha)}</td>
+        </tr>
+        <tr>
+          <td>Thời gian nuôi đến thành phẩm</td>
+          <td>{Object.values(fish_Table_data.thoi_gian_nuoi)}</td>
+        </tr>
+        <tr>
+          <td>Kích cỡ đạt được</td>
+          <td>{Object.values(fish_Table_data.kich_co)}</td>
+        </tr>
+        <tr>
+          <td>Tỷ lệ sống trung  bình</td>
+          <td>{Object.values(fish_Table_data.ti_le_song)}</td>
+        </tr>
+        <tr>
+          <td>Loại thức ăn</td>
+          <td>{Object.values(fish_Table_data.loai_thuc_an)}</td>
+        </tr>
+        <tr>
+          <td>Hệ số chuyển đổi thức ăn</td>
+          <td>{Object.values(fish_Table_data.hscd_thuc_an)}</td>
+        </tr>
+        <tr>
+          <td>Giá trị dinh dưỡng</td>
+          <td>{Object.values(fish_Table_data.gia_tri_dd)}</td>
+        </tr>
+        <tr>
+          <td>Giá thương phẩm</td>
+          <td>{Object.values(fish_Table_data.gia_thuong_pham)}</td>
+        </tr>
+        <tr>
+          <td>Hệ số lợi nhuận trên 1kg cá</td>
+          <td>{Object.values(fish_Table_data.hs_loi_nhuan)}</td>
+        </tr>
+        <tr>
+          <td>Thực tại tại Việt Nam</td>
+          <td>{Object.values(fish_Table_data.thuc_tai_sx)}</td>
+        </tr>
+        <tr>
+          <td>Xu hướng phát triển</td>
+          <td>{Object.values(fish_Table_data.xu_huong_pt)}</td>
+        </tr>
+      </table>
     )
   }
 
