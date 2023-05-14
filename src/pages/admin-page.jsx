@@ -3,7 +3,7 @@ import Image from 'next/image'
 import TopBar from '@component/components/top_bar'
 import BasicBreadcrumbs from '@component/components/bread_crumbs'
 import background from '../assets/background.jpg'
-import { Form, FormGroup, Input, Table } from 'reactstrap'
+import { Button, Form, FormGroup, Input, Table } from 'reactstrap'
 import { ref, uploadBytes} from "firebase/storage";
 import { store } from '@component/firebase/firebase'
 import { Modal, Box } from '@mui/material'
@@ -808,20 +808,20 @@ export default function Admin() {
     <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
 
     <div className='control_button' style={{position:"relative", left:"15%", maxWidth:"80%"}}>
-      <button value="1" onClick={handleClickEvent} style={{position:"relative", color:'black',
+      <Button value="1" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px",
-        borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px", fontWeight:"bold"}}>CÁ BIỂN SẢN XUẤT</button>
-      <button value="2" onClick={handleClickEvent} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ BIỂN TỰ NHIÊN</button>
-      <button value="3" onClick={handleClickEvent} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ MÚ SẢN XUẤT</button>
-      <button value="4" onClick={handleClickEvent} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG TÔM, CUA</button>
-      <button value="5" onClick={handleClickEvent} style={{position:"relative", color:'black',
-        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG NHUYỄN THỂ</button>
-      <button value="6" onClick={handleClickEvent} style={{position:"relative", color:'black',
+        borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px", fontWeight:"bold"}}>CÁ BIỂN SẢN XUẤT</Button>
+      <Button value="2" onClick={handleClickEvent} style={{position:"relative", color:'black',
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ BIỂN TỰ NHIÊN</Button>
+      <Button value="3" onClick={handleClickEvent} style={{position:"relative", color:'black',
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>CÁ MÚ SẢN XUẤT</Button>
+      <Button value="4" onClick={handleClickEvent} style={{position:"relative", color:'black',
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG TÔM, CUA</Button>
+      <Button value="5" onClick={handleClickEvent} style={{position:"relative", color:'black',
+        backgroundColor:"darkgrey", width:"14.5%", height:"60px", fontWeight:"bold"}}>GIỐNG NHUYỄN THỂ</Button>
+      <Button value="6" onClick={handleClickEvent} style={{position:"relative", color:'black',
         backgroundColor:"darkgrey", width:"14.5%", height:"60px",
-        borderTopRightRadius:"5px", borderBottomRightRadius:"5px", fontWeight:"bold"}}>GIỐNG CÁ NƯỚC NGỌT</button>
+        borderTopRightRadius:"5px", borderBottomRightRadius:"5px", fontWeight:"bold"}}>GIỐNG CÁ NƯỚC NGỌT</Button>
     </div>
     
     {items.map((menu) => {

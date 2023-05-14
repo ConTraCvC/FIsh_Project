@@ -43,6 +43,9 @@ export const getServerSideProps = async(context) => {
   const fish_SX_Snap = await getDoc(fish_SX_Ref)
   const fish_SX_Data = fish_SX_Snap.data()
 
+  const fish_TN_Ref = doc(db, `fish_SX/${product}`)
+  const fish_TN_Snap = await getDoc(fish_TN_Ref)
+  const fish_TN_Data = fish_TN_Snap.data()
 
   // const fish_SX = await getDocs(fish_SX_collection)
   // const fish_SX_Data = fish_SX.docs.map((doc) => ({...doc.data()}))
@@ -55,12 +58,12 @@ export const getServerSideProps = async(context) => {
   // })
 
   return {
-    props: { new_props, tech_props, food_props, product, fish_SX_Data}
+    props: { new_props, tech_props, food_props, product, fish_SX_Data, fish_TN_Data}
   };
 };
 
 /////////////
-const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data}) => {
+const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data, fish_TN_Data}) => {
 
   const NewListMap = Object.values(new_props).slice(0, 8).map(data => {
     return ( 
