@@ -41,11 +41,11 @@ export const getServerSideProps = async(context) => {
 
   const fish_SX_Ref = doc(db, `fish_SX/${product}`)
   const fish_SX_Snap = await getDoc(fish_SX_Ref)
-  const fish_SX_Data = fish_SX_Snap.data()
 
-  const fish_TN_Ref = doc(db, `fish_SX/${product}`)
+  const fish_TN_Ref = doc(db, `fish_TN/${product}`)
   const fish_TN_Snap = await getDoc(fish_TN_Ref)
-  const fish_TN_Data = fish_TN_Snap.data()
+  
+  const fish_Data = fish_SX_Snap.data() || fish_TN_Snap.data()
 
   // const fish_SX = await getDocs(fish_SX_collection)
   // const fish_SX_Data = fish_SX.docs.map((doc) => ({...doc.data()}))
@@ -58,12 +58,12 @@ export const getServerSideProps = async(context) => {
   // })
 
   return {
-    props: { new_props, tech_props, food_props, product, fish_SX_Data, fish_TN_Data}
+    props: { new_props, tech_props, food_props, product, fish_Data}
   };
 };
 
 /////////////
-const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data, fish_TN_Data}) => {
+const ItemPage = ({new_props, tech_props, food_props, fish_Data}) => {
 
   const NewListMap = Object.values(new_props).slice(0, 8).map(data => {
     return ( 
@@ -111,7 +111,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data, fish_TN_Data
   const [ kich_thuoc, setKich_thuoc ] = useState(1);
   const [ so_luong, setSo_luong] = useState(1);
   const don_gia = useMemo(() =>{
-    const result = Object.values(fish_SX_Data.don_gia)
+    const result = Object.values(fish_Data.don_gia)
     return result
   })
   const [ info, setInfo ] = useState(true);
@@ -206,8 +206,8 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data, fish_TN_Data
       <div style={{position:"absolute", right:"48%", top:"40%", maxWidth:"40%"}}>
         <div style={{display:"flex"}}>
           <div>
-            <h3 style={{color:"lightgreen"}}>{Object.values(fish_SX_Data.title)}</h3>
-            <img width="90%" src={fish_SX_Data.imageBia}></img>
+            <h3 style={{color:"lightgreen"}}>{Object.values(fish_Data.title)}</h3>
+            <img width="90%" src={fish_Data.imageBia}></img>
           </div>
           <div style={{position:'relative', paddingTop:"5%"}}>
             <h3 style={{color:"white"}}>Nội dung:</h3>
@@ -244,33 +244,33 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data, fish_TN_Data
         { info ?  (
           <div style={{position:"relative", color:"white"}}>
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
-            <h4>{Object.values(fish_SX_Data.body)}</h4>
+            <h4>{Object.values(fish_Data.body)}</h4>
             <h3>CÁ THƯƠNG PHẨM</h3>
-            {fish_SX_Data.imageTP!=="" && fish_SX_Data.imageTP!==undefined ? <img width="100%" src={fish_SX_Data.imageTP}></img> : null }
+            {fish_Data.imageTP!=="" && fish_Data.imageTP!==undefined ? <img width="100%" src={fish_Data.imageTP}></img> : null }
 
             {/* {FishTable} */}
 
             <h4>Hình 1:</h4>
-            {fish_SX_Data.image1!=="" && fish_SX_Data.image1!==undefined ? <img width="100%" src={fish_SX_Data.image1}/> : null}
+            {fish_Data.image1!=="" && fish_Data.image1!==undefined ? <img width="100%" src={fish_Data.image1}/> : null}
             <h4>Hình 2:</h4>
-            {fish_SX_Data.image2!=="" && fish_SX_Data.image2!==undefined ? <img width="100%" src={fish_SX_Data.image2}></img> : null}
+            {fish_Data.image2!=="" && fish_Data.image2!==undefined ? <img width="100%" src={fish_Data.image2}></img> : null}
             <h4>Hình 3:</h4>
-            {fish_SX_Data.image3!==null && fish_SX_Data.image3!==undefined ? <img width="100%" src={fish_SX_Data.image3}></img> : null}
-            {Object.values(fish_SX_Data.youtube)[0]!=="" && Object.values(fish_SX_Data.youtube)[0]!==undefined ?
-              <ReactPlayer width="100%" url={Object.values(fish_SX_Data.youtube)[0]}/> : null}
-            {Object.values(fish_SX_Data.youtube1)[0]!=="" && Object.values(fish_SX_Data.youtube1)[0]!==undefined ? 
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube1)[0]}/> : null}
+            {fish_Data.image3!==null && fish_Data.image3!==undefined ? <img width="100%" src={fish_Data.image3}></img> : null}
+            {Object.values(fish_Data.youtube)[0]!=="" && Object.values(fish_Data.youtube)[0]!==undefined ?
+              <ReactPlayer width="100%" url={Object.values(fish_Data.youtube)[0]}/> : null}
+            {Object.values(fish_Data.youtube1)[0]!=="" && Object.values(fish_Data.youtube1)[0]!==undefined ? 
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube1)[0]}/> : null}
             <h4>Cá thương phẩm:</h4>
-            <h4>{Object.values(fish_SX_Data.body2)}</h4>
-            {Object.values(fish_SX_Data.youtube2)[0]!=="" && Object.values(fish_SX_Data.youtube2)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube2)[0]}/> : null}
-            {Object.values(fish_SX_Data.youtube3)[0]!=="" && Object.values(fish_SX_Data.youtube3)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube3)[0]}/> : null}
-            {Object.values(fish_SX_Data.youtube4)[0]!=="" && Object.values(fish_SX_Data.youtube5)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube4)[0]}/> : null}
-            {Object.values(fish_SX_Data.youtube5)[0]!=="" && Object.values(fish_SX_Data.youtube5)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube5)[0]}/> : null}
-            <h3>{Object.values(fish_SX_Data.body3)}</h3>
+            <h4>{Object.values(fish_Data.body2)}</h4>
+            {Object.values(fish_Data.youtube2)[0]!=="" && Object.values(fish_Data.youtube2)[0]!==undefined ?
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube2)[0]}/> : null}
+            {Object.values(fish_Data.youtube3)[0]!=="" && Object.values(fish_Data.youtube3)[0]!==undefined ?
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube3)[0]}/> : null}
+            {Object.values(fish_Data.youtube4)[0]!=="" && Object.values(fish_Data.youtube5)[0]!==undefined ?
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube4)[0]}/> : null}
+            {Object.values(fish_Data.youtube5)[0]!=="" && Object.values(fish_Data.youtube5)[0]!==undefined ?
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube5)[0]}/> : null}
+            <h3>{Object.values(fish_Data.body3)}</h3>
           </div>
         ) : dat_hang && (
           <div style={{position:"relative", color:"white"}}>
@@ -333,7 +333,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data, fish_TN_Data
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-        {console.log(Object.values(fish_SX_Data.youtube)[0])}
+        {console.log(Object.values(fish_Data))}
       </div>
       {FishMap()}
     </div>

@@ -24,10 +24,10 @@ const ImageSlice = ({data1, data2}) => {
         <Table>
           <thead>
             <tr style={{display: "flex", flexDirection:"column",
-              maxWidth:"280px", marginLeft:"7%", marginTop:"7%"}}>
+              maxWidth:"95%", marginLeft:"7%", marginTop:"7%"}}>
               <th><Link href={{
                 pathname: data.id
-              }}><img width="100%" height="auto" src={data.imageBia}></img></Link></th>
+              }}><img width="95%" height="auto" src={data.imageBia}></img></Link></th>
               <td><Link href={data.id} style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
               <td><h4 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
                 WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
@@ -45,9 +45,13 @@ const ImageSlice = ({data1, data2}) => {
         <Table>
           <thead>
             <tr style={{display: "flex", flexDirection:"column",
-              maxWidth:"280px", marginLeft:"7%", marginTop:"7%"}}>
-              <th><Link href="/"><img width="100%" height="auto" src={data.imageBia}></img></Link></th>
-              <td><Link href="/" style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
+              maxWidth:"95%", marginLeft:"7%", marginTop:"7%"}}>
+              <th><Link href={{
+                pathname: data.id
+              }}><img width="100%" height="auto" src={data.imageBia}></img></Link></th>
+              <td><Link href={{
+                pathname: data.id
+              }} style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
               <td><h4 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
                 WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
                 overflow: "hidden"}}>{Object.values(data.body)}</h4></td>

@@ -28,7 +28,7 @@ export const getStaticProps = async() => {
   const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
 
   const fish_TN = await getDocs(fish_TN_collection)
-  const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data()}))
+  const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
 
   return {
     props: { new_props, tech_props, food_props,
