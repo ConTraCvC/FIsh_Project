@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef, useMemo } from 'react'
 import TopBar from '@component/components/top_bar'
 import Image from 'next/image'
 import background from '../assets/background.jpg'
@@ -7,15 +7,13 @@ import Link from "next/link"
 // import { child, get, getDatabase, onValue, ref, set } from "firebase/database"
 import { db } from "@component/firebase/firebase"
 import { collection, doc, getDoc, getDocs} from "firebase/firestore/lite"
-import { useRouter } from 'next/router'
 
 import BasicBreadcrumbs from '@component/components/bread_crumbs'
-import { FormGroup, Input, Table } from 'reactstrap'
+import { Button, Form, FormGroup, Input, Table } from 'reactstrap'
 
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
-const fish_SX_collection = collection(db, "fish_SX")
 
 // export const getStaticPaths = async() => {
 //   const fish_SX = await getDocs(fish_SX_collection)
@@ -27,7 +25,9 @@ const fish_SX_collection = collection(db, "fish_SX")
 //   }
 // }
 
-export const getServerSideProps = async() => {
+export const getServerSideProps = async(context) => {
+
+  const product = context.params.product
 
   const newSnap = await getDocs(newCollection)
   const new_props = newSnap.docs.map((doc) => ({ ...doc.data()}))
@@ -37,6 +37,11 @@ export const getServerSideProps = async() => {
 
   const foodSnap = await getDocs(foodCollection)
   const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
+
+  const fish_SX_Ref = doc(db, `fish_SX/${product}`)
+  const fish_SX_Snap = await getDoc(fish_SX_Ref)
+  const fish_SX_Data = fish_SX_Snap.data()
+
 
   // const fish_SX = await getDocs(fish_SX_collection)
   // const fish_SX_Data = fish_SX.docs.map((doc) => ({...doc.data()}))
@@ -49,33 +54,12 @@ export const getServerSideProps = async() => {
   // })
 
   return {
-    props: { new_props, tech_props, food_props}
+    props: { new_props, tech_props, food_props, product, fish_SX_Data}
   };
 };
 
 /////////////
-const ItemPage = ({new_props, tech_props, food_props}) => {
-
-  const fish_data = []
-  const router = useRouter()
-  const data = router.query
-
-  const effectRan = useRef(false);
-  useEffect(() => {
-    if (effectRan.current === true) {
-      const fetchData = async () => {
-        const fishSxRef = doc(db, `fish_SX/${Object.values(data)}`)
-        const fishSxSnap = await getDoc(fishSxRef)
-        if (fishSxSnap.exists()) {
-          fish_data.push(fishSxSnap.data())
-        }
-      }
-      fetchData()
-    }
-    return () => {
-      effectRan.current=true
-    }
-  }, [])
+const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data}) => {
 
   const NewListMap = Object.values(new_props).slice(0, 8).map(data => {
     return ( 
@@ -85,7 +69,7 @@ const ItemPage = ({new_props, tech_props, food_props}) => {
               <img src={data.image} width="110" height="75" />
           </Link>
           <li style={{opacity:"0"}}></li>
-          <hr style={{borderTop:"0.1px", position:"absolute", width:"440px"}}></hr><li style={{opacity:"0"}}></li>
+          <hr style={{borderTop:"0.1px", position:"relative", maxWidth:"100%"}}></hr><li style={{opacity:"0"}}></li>
         </div>
         <div style={{marginBottom:"60px", marginLeft:"10px",
          position:"relative", top:"-0.2rem", display:"flex", flexDirection:"column"}}>
@@ -122,16 +106,24 @@ const ItemPage = ({new_props, tech_props, food_props}) => {
 
   const [ kich_thuoc, setKich_thuoc ] = useState(1);
   const [ so_luong, setSo_luong] = useState(1);
+  const don_gia = useMemo(() =>{
+    const result = Object.values(fish_SX_Data.don_gia)
+    return result
+  })
   const [ info, setInfo ] = useState(true);
-  const [ dat_hang, setDat_Hang ] = useState(false);
+  const [ dat_hang, setDat_Hang ] = useState(true);
   const [random, setRandom] = useState(0);
 
-  function randomNumberInRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  function getRandomInt(min, max) {
+    min = Math.ceil(1000);
+    max = Math.floor(9999);
+    return setRandom(Math.floor(Math.random() * (max - min) + min))
   }
-  function ranDom() {
-    setRandom(randomNumberInRange(1000, 9999))
-  }
+
+  const total = useMemo(() => {
+    const result = kich_thuoc*so_luong*don_gia
+    return result
+  }, [kich_thuoc, so_luong])
 
   const FishTable = Object.values("").slice(0, 0).map(table => {
     return (
@@ -205,72 +197,73 @@ const ItemPage = ({new_props, tech_props, food_props}) => {
     )
   })
 
-  const FishMap = Object.values(fish_data).map(fish => {
+  const FishMap = () => {
     return (
-      <div>
-        <div>
-          <h3>{Object.values(fish.title)}</h3>
-          <img width="400px" height="300px" src={fish.image}></img>
-        </div>
-        <div style={{position:"relative"}}>
-          <h5 style={{position:"relative", color:"white"}}>Nội dung:</h5>
-          <h3>Đơn giá: {`${fish.don_gia}`} vnđ/cm/con</h3>\
+      <div style={{position:"absolute", right:"48%", top:"40%", maxWidth:"40%"}}>
+        <div style={{display:"flex"}}>
+          <div>
+            <h3 style={{color:"lightgreen"}}>{Object.values(fish_SX_Data.title)}</h3>
+            <img width="90%" src={fish_SX_Data.imageBia}></img>
+          </div>
+          <div style={{position:'relative', paddingTop:"5%"}}>
+            <h3 style={{color:"white"}}>Nội dung:</h3>
+            <h3 style={{color:"lightgreen"}}>Giá: {`${total}`} vnđ/cm/con</h3>
+            <h3 style={{color:"white"}}>Kích thước</h3>
+            <Input size="large"
+              value={kich_thuoc}
+              onChange={(e) => setKich_thuoc(e.target.value)}></Input>
+            <Button
+              value={kich_thuoc}
+              onClick={() => setKich_thuoc(kich_thuoc+1)}>+</Button>
+            <Button
+              value={kich_thuoc}
+              onClick={() => kich_thuoc>0 ? setKich_thuoc(kich_thuoc-1) : null}>-</Button>
+            <h3 style={{color:"white"}}>Số lượng</h3>
+            <Input size="large"
+              height="30px"
+              value={so_luong}
+              onChange={(e) => setSo_luong(e.target.value)}/>
+            <Button
+              value={so_luong}
+              onClick={() => setSo_luong(so_luong+1)}>+</Button>
+            <Button
+              value={so_luong}
+              onClick={() => so_luong>0 ? setSo_luong(so_luong-1) : null}>-</Button>
 
-          <Input style={{position:"relative", color:"white"}}
-            value={kich_thuoc}
-            onChange={(e) => setKich_thuoc(e.target.value)}/>
-          <button
-            value={kich_thuoc}
-            onClick={(e) => setKich_thuoc(++e.target.value)}/>
-          <button
-            value={kich_thuoc}
-            onClick={(e) => setKich_thuoc(--e.target.value)}/>
-          <Input style={{position:"relative", color:"white"}}
-            value={so_luong}
-            onChange={(e) => setSo_luong(e.target.value)}/>
-          <button
-            value={so_luong}
-            onClick={(e) => setSo_luong(++e.target.value)}/>
-            <button
-            value={so_luong}
-            onClick={(e) => setSo_luong(--e.target.value)}/>
-
-          <h4 style={{position:"relative", color:"lightblue"}}>{`Tổng tiền: ${kich_thuoc*so_luong*fish.don_gia}`}</h4>
+            <h3 style={{position:"relative", color:"lightblue", paddingTop:"10px"}}>{`Tổng tiền: ${total}`}</h3>
+          </div>
         </div>
-        { info && dat_hang ? 
-          <button style={{position:"relative", color:"white"}}
-            onClick={() => setInfo(true) && setDat_Hang(false)}>Thông tin sản phẩm</button> :
-          <button style={{position:"relative", color:"white"}}
-            onClick={() => setInfo(false) && setDat_Hang(true)}>Đặt hàng</button>
-        }
-        { info &&  (
+        <Button style={{position:"relative", color:"black"}}
+          onClick={() => setInfo(true) && setDat_Hang(false)}>Thông tin sản phẩm</Button>
+        <Button style={{position:"relative", color:"black"}}
+          onClick={() => setInfo(false) && setDat_Hang(true)}>Đặt hàng</Button>
+        { info ?  (
           <div style={{position:"relative", color:"white"}}>
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
-            <h5>{Object.values(fish.body)}</h5>
+            <h4>{Object.values(fish_SX_Data.body)}</h4>
             <h3>CÁ THƯƠNG PHẨM</h3>
-            <img width="400px" height="300px" src={fish.image_tp}></img>
+            {fish_SX_Data.imageTP!==null && fish_SX_Data.imageTP!==undefined ? <img width="100%" src={fish_SX_Data.imageTP}></img> : null }
 
             {/* {FishTable} */}
 
             <h4>Hình 1:</h4>
-            <img width="400px" height="300px"  src={fish.image1}/>
+            <img width="100%" src={fish_SX_Data.image1}/>
             <h4>Hình 2:</h4>
-            <img width="400px" height="300px"  src={fish.image2}></img>
+            <img width="100%" src={fish_SX_Data.image2}></img>
             <h4>Hình 3:</h4>
-            <img width="400px" height="300px"  src={fish.image3}></img>
-            <iframe width="400px" height="300px" src={fish.youtube}>Video 1:</iframe>
-            <iframe width="400px" height="300px" src={fish.youtube1}>Video 2:</iframe>
+            {fish_SX_Data.image3!==null && fish_SX_Data.image3!==undefined ? <img width="100%" src={fish_SX_Data.image3}></img> : null}
+            <iframe width="100%" src={Object.values(fish_SX_Data.youtube)}>Video 1:</iframe>
+            <iframe width="100%" src={Object.values(fish_SX_Data.youtube1)}>Video 2:</iframe>
             <h4>Cá thương phẩm:</h4>
-            <h5>{Object.values(fish.body2)}</h5>
-            <iframe width="400px" height="300px"  src={fish.youtube2}>Video 3:</iframe>
-            <iframe width="400px" height="300px" src={fish.youtube3}>Video 4:</iframe>
-            <iframe width="400px" height="300px"  src={fish.youtube4}>Video 5:</iframe>
-            <iframe width="400px" height="300px"  src={fish.youtube5}>Video 6:</iframe>
-            <h5>{Object.values(fish.body3)}</h5>
+            <h4>{Object.values(fish_SX_Data.body2)}</h4>
+            {Object.values(fish_SX_Data.youtube2)!=="" || Object.values(fish_SX_Data.youtube2)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube2)}/> : null}
+            {Object.values(fish_SX_Data.youtube3)!=="" || Object.values(fish_SX_Data.youtube3)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube3)}/> : null}
+            {Object.values(fish_SX_Data.youtube4)!=="" || Object.values(fish_SX_Data.youtube4)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube4)}/> : null}
+            {Object.values(fish_SX_Data.youtube5)!=="" || Object.values(fish_SX_Data.youtube5)!==undefined ? <iframe width="100%" src={Object.values(fish_SX_Data.youtube5)}/> : null}
+            <h3>{Object.values(fish_SX_Data.body3)}</h3>
           </div>
-        )}
-        { dat_hang && (
-          <div>
+        ) : dat_hang && (
+          <div style={{position:"relative", color:"white"}}>
             <h3>THÔNG TIN KHÁCH HÀNG</h3>
             <Form>
               <FormGroup>
@@ -284,9 +277,10 @@ const ItemPage = ({new_props, tech_props, food_props}) => {
                 <Input/>
               </FormGroup>
               <FormGroup>
-                <Input/>
-                <button>{random}</button>
-                <button onClick={ranDom}>{""}</button>
+              {/* <Input style={{position:"relative"}}
+                onChange={(e) => e.target.value}/> */}
+                <h3>{random}</h3>
+                <Button onClick={getRandomInt}><h1>&#x267B;</h1></Button>
               </FormGroup>
               <button onClick={""}>Mua ngay</button>
             </Form>
@@ -294,7 +288,7 @@ const ItemPage = ({new_props, tech_props, food_props}) => {
         )}
       </div>
     )
-  })
+  }
 
   return (
     <div className='mainframe__item' style={{overflow: "scroll"}}>
@@ -329,10 +323,9 @@ const ItemPage = ({new_props, tech_props, food_props}) => {
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-        {FishMap}
-        {console.log(fish_data)}
-        {/* {test2} */}
+        {console.log(fish_SX_Data)}
       </div>
+      {FishMap()}
     </div>
   )
 }
