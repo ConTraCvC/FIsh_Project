@@ -4,6 +4,7 @@ import '../styles/item-page.css'
 import '../styles/image-slice.css'
 import '../styles/new-and-technique.css'
 import '../styles/admin-page.css'
+import '../styles/product.css'
 
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />
