@@ -9,17 +9,17 @@ const TopDropDown = () => {
       <button style={{color:"white", borderTopLeftRadius:"3px", borderBottomLeftRadius:"3px"}} 
        class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN SẢN XUẤT</button>
       <div class="dropdown-content">
-        <Link href={{pathname:"/item-page"}}>Cá Bớp Giống Chất Lượng</Link>
-        <a href="/abc">Cá Mú Lai Giống Chất Lượng</a>
-        <a href="/abc">Cá Chẽm Giống Chất Lượng</a>
-        <a href="/abc">Cá Bè Vàng Giống Chất Lượng</a>
-        <a href="/abc">Cá Bè Trắng Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Đen Giống Chất Lượng</a>
-        <a href="/abc">Cá Chim Vây Vàng Giống Chất Lượng</a>
-        <a href="/abc">Cá Hồng Mỹ Giống Chất Lượng</a>
-        <a href="/abc">Cá Đối Mục Giống Chất Lượng</a>
-        <a href="/abc">Cá Tai Bồ Giống Chất Lượng</a>
-        <a href="/abc">Cá Gáy Lù Giống Chất Lượng</a>
+        <Link href={{pathname:"IC6iambKU0ji4eFUE4Ec"}}>Cá Bớp Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Mú Lai Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Chẽm Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Bè Vàng Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Bè Trắng Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Mú Đen Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Chim Vây Vàng Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Hồng Mỹ Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Đối Mục Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Tai Bồ Giống Chất Lượng</Link>
+        <Link href={{pathname:"/abs"}}>Cá Gáy Lù Giống Chất Lượng</Link>
       </div>
       </div>
 

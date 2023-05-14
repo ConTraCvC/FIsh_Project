@@ -21,9 +21,6 @@ const MENU_LIST = [
     text: "Hỏi Đáp",
     href:"/question"
   },{
-    text: "Sơ đồ web",
-    href:"/webmap"
-  },{
     text: "Dự báo thời tiết",
     href:"/weather"
   },{

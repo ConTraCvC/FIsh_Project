@@ -49,8 +49,8 @@ export const getServerSideProps = async(context) => {
   const fish_TnTable_Ref = doc(db, `fish_TN/${product}/details/fish_details`)
   const fish_TnTable_Snap = await getDoc(fish_TnTable_Ref)
   
-  const fish_Data = fish_SX_Snap.data() || fish_TN_Snap.data()
-  const fish_Table_data = fish_SxTable_Snap.data() || fish_TnTable_Snap.data()
+  const fish_Data = fish_SX_Snap?.data() || fish_TN_Snap?.data() || null
+  const fish_Table_data = fish_SxTable_Snap?.data() || fish_TnTable_Snap?.data() || null
 
   // const fish_SX = await getDocs(fish_SX_collection)
   // const fish_SX_Data = fish_SX.docs.map((doc) => ({...doc.data()}))
@@ -116,7 +116,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data
   const [ kich_thuoc, setKich_thuoc ] = useState(1);
   const [ so_luong, setSo_luong] = useState(1);
   const don_gia = useMemo(() =>{
-    const result = Object.values(fish_Data.don_gia)
+    const result = null ? Object.values(fish_Data.don_gia) : null
     return result
   })
   const [ info, setInfo ] = useState(true);
@@ -134,9 +134,9 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data
     return result
   }, [kich_thuoc, so_luong])
 
-  const FishTable = () => {
+  const FishTable = () => { 
     return (
-      <table style={{width:"100%", borderCollapse:"collapse"}}>
+      <Table style={{width:"100%", height:"500px", fontSize:"20px"}}>
         <tr>
           <td>Tên gọi</td>
           <td>{Object.values(fish_Table_data.ten_goi)}</td>
@@ -200,12 +200,12 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data
           <td>Xu hướng phát triển</td>
           <td>{Object.values(fish_Table_data.xu_huong_pt)}</td>
         </tr>
-      </table>
+      </Table>
     )
   }
 
   const FishMap = () => {
-    return (
+    return ( fish_Data!==null && fish_Table_data !==null ?
       <div style={{position:"absolute", right:"48%", top:"40%", maxWidth:"40%"}}>
         <div style={{display:"flex"}}>
           <div>
@@ -214,29 +214,32 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data
           </div>
           <div style={{position:'relative', paddingTop:"5%"}}>
             <h3 style={{color:"white"}}>Nội dung:</h3>
-            <h3 style={{color:"lightgreen"}}>Giá: {`${total}`} vnđ/cm/con</h3>
+            <h3 style={{color:"lightgreen"}}>Giá: {`${Object.values(fish_Data.don_gia)}`} vnđ/cm/con</h3>
             <h3 style={{color:"white"}}>Kích thước</h3>
-            <Input size="large"
+            <Input style={{height:"30px"}}
               value={kich_thuoc}
               onChange={(e) => setKich_thuoc(e.target.value)}></Input>
-            <Button
-              value={kich_thuoc}
-              onClick={() => setKich_thuoc(kich_thuoc+1)}>+</Button>
-            <Button
-              value={kich_thuoc}
-              onClick={() => kich_thuoc>0 ? setKich_thuoc(kich_thuoc-1) : null}>-</Button>
+            <div>
+              <Button style={{height:"30px", width:'30px', backgroundColor:"lightblue", borderRadius:"5px"}}
+                value={kich_thuoc}
+                onClick={(e) => setKich_thuoc(++e.target.value)}>+</Button>
+              <Button style={{height:"30px", width:'30px', backgroundColor:"lightsalmon", borderRadius:"5px"}}
+                value={kich_thuoc}
+                onClick={(e) => kich_thuoc>1 ? setKich_thuoc(--e.target.value) : null}>-</Button>
+            </div>  
             <h3 style={{color:"white"}}>Số lượng</h3>
-            <Input size="large"
+            <Input style={{height:"30px"}}
               height="30px"
               value={so_luong}
               onChange={(e) => setSo_luong(e.target.value)}/>
-            <Button
-              value={so_luong}
-              onClick={() => setSo_luong(so_luong+1)}>+</Button>
-            <Button
-              value={so_luong}
-              onClick={() => so_luong>0 ? setSo_luong(so_luong-1) : null}>-</Button>
-
+            <div>
+              <Button style={{height:"30px", width:'30px', backgroundColor:"lightblue", borderRadius:"5px"}}
+                value={so_luong}
+                onClick={(e) => setSo_luong(++e.target.value)}>+</Button>
+              <Button style={{height:"30px", width:'30px', backgroundColor:"lightsalmon", borderRadius:"5px"}}
+                value={so_luong}
+                onClick={(e) => so_luong>1 ? setSo_luong(--e.target.value) : null}>-</Button>
+            </div>
             <h3 style={{position:"relative", color:"lightblue", paddingTop:"10px"}}>{`Tổng tiền: ${total}`}</h3>
           </div>
         </div>
@@ -295,11 +298,11 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data
                 <h3>{random}</h3>
                 <Button onClick={getRandomInt}><h1>&#x267B;</h1></Button>
               </FormGroup>
-              <button onClick={""}>Mua ngay</button>
+              <Button onClick={""}>Mua ngay</Button>
             </Form>
           </div>
         )}
-      </div>
+      </div> : null
     )
   }
 
@@ -336,7 +339,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-        {console.log(fish_Table_data)}
+        {/* {console.log(fish_Data)} */}
       </div>
       {FishMap()}
     </div>

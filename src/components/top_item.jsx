@@ -4,7 +4,9 @@ import React from "react";
 const TopItem = ({ href, text, active}) => {
   
   return (
-    <Link href={href} className={`top__link ${active? "active" : ""}`}>
+    <Link href={{
+        pathname: href
+      }} className={`top__link ${active? "active" : ""}`}>
       {text}
     </Link>
   )
