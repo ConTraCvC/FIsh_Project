@@ -10,6 +10,7 @@ import { collection, doc, getDoc, getDocs} from "firebase/firestore/lite"
 
 import BasicBreadcrumbs from '@component/components/bread_crumbs'
 import { Button, Form, FormGroup, Input, Table } from 'reactstrap'
+import ReactPlayer from 'react-player'
 
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
@@ -253,19 +254,19 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data}) => {
             <h4>Hình 3:</h4>
             {fish_SX_Data.image3!==null && fish_SX_Data.image3!==undefined ? <img width="100%" src={fish_SX_Data.image3}></img> : null}
             {Object.values(fish_SX_Data.youtube)[0]!=="" && Object.values(fish_SX_Data.youtube)[0]!==undefined ?
-              <iframe width="100%" src={Object.values(fish_SX_Data.youtube)[0]}>Video 1:</iframe> : null}
+              <ReactPlayer width="100%" url={Object.values(fish_SX_Data.youtube)[0]}/> : null}
             {Object.values(fish_SX_Data.youtube1)[0]!=="" && Object.values(fish_SX_Data.youtube1)[0]!==undefined ? 
-              <iframe width="100%" src={Object.values(fish_SX_Data.youtube1)[0]}>Video 2:</iframe> : null}
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube1)[0]}/> : null}
             <h4>Cá thương phẩm:</h4>
             <h4>{Object.values(fish_SX_Data.body2)}</h4>
             {Object.values(fish_SX_Data.youtube2)[0]!=="" && Object.values(fish_SX_Data.youtube2)[0]!==undefined ?
-              <iframe width="100%" src={Object.values(fish_SX_Data.youtube2)[0]}/> : null}
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube2)[0]}/> : null}
             {Object.values(fish_SX_Data.youtube3)[0]!=="" && Object.values(fish_SX_Data.youtube3)[0]!==undefined ?
-              <iframe width="100%" src={Object.values(fish_SX_Data.youtube3)[0]}/> : null}
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube3)[0]}/> : null}
             {Object.values(fish_SX_Data.youtube4)[0]!=="" && Object.values(fish_SX_Data.youtube5)[0]!==undefined ?
-              <iframe width="100%" src={Object.values(fish_SX_Data.youtube4)[0]}/> : null}
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube4)[0]}/> : null}
             {Object.values(fish_SX_Data.youtube5)[0]!=="" && Object.values(fish_SX_Data.youtube5)[0]!==undefined ?
-              <iframe width="100%" src={Object.values(fish_SX_Data.youtube5)[0]}/> : null}
+              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_SX_Data.youtube5)[0]}/> : null}
             <h3>{Object.values(fish_SX_Data.body3)}</h3>
           </div>
         ) : dat_hang && (
@@ -329,7 +330,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_SX_Data}) => {
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-        {console.log(fish_SX_Data.image1)}
+        {console.log(Object.values(fish_SX_Data.youtube)[0])}
       </div>
       {FishMap()}
     </div>
