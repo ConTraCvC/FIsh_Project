@@ -45,7 +45,7 @@ const ImageSlice = ({data1, data2}) => {
         <Table>
           <thead>
             <tr style={{display: "flex", flexDirection:"column",
-              maxWidth:"95%", marginLeft:"7%", marginTop:"7%"}}>
+              maxWidth:"90%", marginLeft:"7%", marginTop:"7%"}}>
               <th><Link href={{
                 pathname: data.id
               }}><img width="100%" height="auto" src={data.imageBia}></img></Link></th>

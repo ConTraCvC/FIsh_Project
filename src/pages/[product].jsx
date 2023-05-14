@@ -255,7 +255,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data}) => {
             <h4>Hình 2:</h4>
             {fish_Data.image2!=="" && fish_Data.image2!==undefined ? <img width="100%" src={fish_Data.image2}></img> : null}
             <h4>Hình 3:</h4>
-            {fish_Data.image3!==null && fish_Data.image3!==undefined ? <img width="100%" src={fish_Data.image3}></img> : null}
+            {fish_Data.image3!=="" && fish_Data.image3!==undefined ? <img width="100%" src={fish_Data.image3}></img> : null}
             {Object.values(fish_Data.youtube)[0]!=="" && Object.values(fish_Data.youtube)[0]!==undefined ?
               <ReactPlayer width="100%" url={Object.values(fish_Data.youtube)[0]}/> : null}
             {Object.values(fish_Data.youtube1)[0]!=="" && Object.values(fish_Data.youtube1)[0]!==undefined ? 
@@ -333,7 +333,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data}) => {
           <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
-        {console.log(Object.values(fish_Data))}
+        {console.log(fish_Data.image2)}
       </div>
       {FishMap()}
     </div>
