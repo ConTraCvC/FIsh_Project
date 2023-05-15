@@ -126,7 +126,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
   const [ kich_thuoc, setKich_thuoc ] = useState(1);
   const [ so_luong, setSo_luong] = useState(1);
   const don_gia = useMemo(() =>{
-    const result = null ? Object.values(fish_Data.don_gia) : null
+    const result = Object.values(fish_Data.don_gia)
     return result
   })
   const [ info, setInfo ] = useState(true);
@@ -216,7 +216,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
 
   const FishMap = () => {
     return ( fish_Data!==null && fish_Table_data !==null ?
-      <div style={{position:"absolute", right:"48%", top:"40%", maxWidth:"40%"}}>
+      <div style={{position:"absolute", left:"13%", top:"50%" , maxWidth:"40%"}}>
         <div style={{display:"flex"}}>
           <div>
             <h3 style={{color:"lightgreen"}}>{Object.values(fish_Data.title)}</h3>
@@ -317,7 +317,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
   }
 
   return (
-    <div className='mainframe__item' style={{overflow: "scroll"}}>
+    <div className='mainframe__item'>
       <div className="bg-image-wrapper">
        <Image
           src={background}

@@ -40,7 +40,7 @@
 }
 
 .mainframe__item{
-  height: 4000px;
+  height: 100%;
   overflow: hidden;
   scroll-behavior: smooth
 }
