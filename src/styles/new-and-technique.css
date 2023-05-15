@@ -19,8 +19,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 450px;
   margin-left: 3rem;
+  max-width: 100%;
 }
 
 .new__feed__content2 {

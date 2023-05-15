@@ -148,7 +148,6 @@ a {
 
 .dropdown button {
   font-weight: bold;
-  left: 110%;
 }
 
 .dropdown-content {
@@ -218,7 +217,7 @@ a {
 @media screen and (max-width: 1400px) {
   .top__menu-list {
     position: relative;
-    width: 900px;
+    width: 800px;
     left: 2rem;
   }
   .top__link {
@@ -251,7 +250,7 @@ a {
   }
   .dropdown{
     position: relative;
-    left: -7%;
+    left: -3%;
   }
   .dropbtn{
     position: relative;
