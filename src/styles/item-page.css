@@ -11,7 +11,7 @@
 .new_feed__content {
   width:450px;
   position: relative;
-  margin-top: 3%;
+  padding-top: 3%;
   margin-left: 60%;
   max-width: 30%;
 }

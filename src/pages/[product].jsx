@@ -142,7 +142,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
   const total = useMemo(() => {
     const result = kich_thuoc*so_luong*don_gia
     return result
-  }, [kich_thuoc, so_luong])
+  }, [don_gia])
 
   const FishTable = () => { 
     return (
@@ -216,7 +216,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
 
   const FishMap = () => {
     return ( fish_Data!==null && fish_Table_data !==null ?
-      <div style={{position:"absolute", left:"13%", top:"50%" , maxWidth:"40%"}}>
+      <div style={{position:"absolute", left:"13%", top:"370px", maxWidth:"40%", paddingBottom:"2%"}}>
         <div style={{display:"flex"}}>
           <div>
             <h3 style={{color:"lightgreen"}}>{Object.values(fish_Data.title)}</h3>
