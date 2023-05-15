@@ -255,13 +255,13 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
             <h3 style={{position:"relative", color:"lightblue", paddingTop:"10px"}}>{`Tổng tiền: ${total}`}</h3>
           </div>
         </div>
-        <Button style={{position:"relative", color:"black", width:"150px", height:"40px", margin:"20px 10px 20px 0"}}
+        <Button style={{position:"relative", color:"black", width:"150px", height:"40px", margin:"20px 10px 0 0"}}
           onClick={() => setInfo(true) && setDat_Hang(false)}>Thông tin sản phẩm</Button>
-        <Button style={{position:"relative", color:"black", width:"100px", height:"40px", margin:"20px 10px 20px 0"}}
+        <Button style={{position:"relative", color:"black", width:"100px", height:"40px", margin:"20px 10px 0 0"}}
           onClick={() => setInfo(false) && setDat_Hang(true)}>Đặt hàng</Button>
         <hr></hr>
         { info ?  (
-          <div style={{position:"relative", color:"white", marginTop:"1%"}}>
+          <div style={{position:"relative", color:"white", marginTop:"2%"}}>
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
             <h4>{Object.values(fish_Data.body)}</h4>
             <h3>CÁ THƯƠNG PHẨM</h3>
@@ -292,7 +292,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
             <h3>{Object.values(fish_Data.body3)}</h3>
           </div>
         ) : dat_hang && (
-          <div style={{color:"white", maxWidth:"65%", marginTop:"1%"}}>
+          <div style={{color:"white", maxWidth:"65%", marginTop:"2%"}}>
             <h2>THÔNG TIN KHÁCH HÀNG</h2>
             <Form>
               <FormGroup style={{display:"flex", flexDirection:"column"}}>
