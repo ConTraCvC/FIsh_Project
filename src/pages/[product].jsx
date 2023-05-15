@@ -9,7 +9,7 @@ import { db } from "@component/firebase/firebase"
 import { collection, doc, getDoc, getDocs} from "firebase/firestore/lite"
 
 import BasicBreadcrumbs from '@component/components/bread_crumbs'
-import { Button, Form, FormGroup, Input, Table } from 'reactstrap'
+import { Button, Form, FormGroup, Input, InputGroup, Table } from 'reactstrap'
 import ReactPlayer from 'react-player'
 
 const newCollection = collection(db, "news")
@@ -126,9 +126,11 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
   const [ kich_thuoc, setKich_thuoc ] = useState(1);
   const [ so_luong, setSo_luong] = useState(1);
   const don_gia = useMemo(() =>{
-    const result = Object.values(fish_Data.don_gia)
-    return result
-  })
+    if(fish_Data!==null){
+      const result = Object.values(fish_Data.don_gia)
+      return result
+    }
+  }, [])
   const [ info, setInfo ] = useState(true);
   const [ dat_hang, setDat_Hang ] = useState(true);
   const [random, setRandom] = useState(0);
@@ -142,7 +144,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
   const total = useMemo(() => {
     const result = kich_thuoc*so_luong*don_gia
     return result
-  }, [don_gia])
+  }, [kich_thuoc, so_luong])
 
   const FishTable = () => { 
     return (
@@ -219,46 +221,47 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
       <div style={{position:"absolute", left:"13%", top:"370px", maxWidth:"40%", paddingBottom:"2%"}}>
         <div style={{display:"flex"}}>
           <div>
-            <h3 style={{color:"lightgreen"}}>{Object.values(fish_Data.title)}</h3>
+            <h3 style={{color:"lightgreen", marginBottom:"3%"}}>{Object.values(fish_Data.title)}</h3>
             <img width="90%" src={fish_Data.imageBia}></img>
           </div>
           <div style={{position:'relative', paddingTop:"5%"}}>
             <h3 style={{color:"white"}}>Nội dung:</h3>
             <h3 style={{color:"lightgreen"}}>Giá: {`${Object.values(fish_Data.don_gia)}`} vnđ/cm/con</h3>
             <h3 style={{color:"white"}}>Kích thước</h3>
-            <Input style={{height:"30px"}}
-              value={kich_thuoc}
-              onChange={(e) => setKich_thuoc(e.target.value)}></Input>
-            <div>
+            <InputGroup style={{display:"flex"}}>
+              <Input style={{height:"30px"}}
+                value={kich_thuoc}
+                onChange={(e) => setKich_thuoc(e.target.value)}></Input>
               <Button style={{height:"30px", width:'30px', backgroundColor:"lightblue", borderRadius:"5px"}}
                 value={kich_thuoc}
                 onClick={(e) => setKich_thuoc(++e.target.value)}>+</Button>
               <Button style={{height:"30px", width:'30px', backgroundColor:"lightsalmon", borderRadius:"5px"}}
                 value={kich_thuoc}
                 onClick={(e) => kich_thuoc>1 ? setKich_thuoc(--e.target.value) : null}>-</Button>
-            </div>  
+            </InputGroup>
             <h3 style={{color:"white"}}>Số lượng</h3>
-            <Input style={{height:"30px"}}
-              height="30px"
-              value={so_luong}
-              onChange={(e) => setSo_luong(e.target.value)}/>
-            <div>
+            <InputGroup style={{display:"flex"}}>
+              <Input style={{height:"30px"}}
+                height="30px"
+                value={so_luong}
+                onChange={(e) => setSo_luong(e.target.value)}/>
               <Button style={{height:"30px", width:'30px', backgroundColor:"lightblue", borderRadius:"5px"}}
                 value={so_luong}
                 onClick={(e) => setSo_luong(++e.target.value)}>+</Button>
               <Button style={{height:"30px", width:'30px', backgroundColor:"lightsalmon", borderRadius:"5px"}}
                 value={so_luong}
                 onClick={(e) => so_luong>1 ? setSo_luong(--e.target.value) : null}>-</Button>
-            </div>
+            </InputGroup>
             <h3 style={{position:"relative", color:"lightblue", paddingTop:"10px"}}>{`Tổng tiền: ${total}`}</h3>
           </div>
         </div>
-        <Button style={{position:"relative", color:"black"}}
+        <Button style={{position:"relative", color:"black", width:"150px", height:"40px", margin:"20px 10px 20px 0"}}
           onClick={() => setInfo(true) && setDat_Hang(false)}>Thông tin sản phẩm</Button>
-        <Button style={{position:"relative", color:"black"}}
+        <Button style={{position:"relative", color:"black", width:"100px", height:"40px", margin:"20px 10px 20px 0"}}
           onClick={() => setInfo(false) && setDat_Hang(true)}>Đặt hàng</Button>
+        <hr></hr>
         { info ?  (
-          <div style={{position:"relative", color:"white"}}>
+          <div style={{position:"relative", color:"white", marginTop:"1%"}}>
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
             <h4>{Object.values(fish_Data.body)}</h4>
             <h3>CÁ THƯƠNG PHẨM</h3>
@@ -289,26 +292,23 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
             <h3>{Object.values(fish_Data.body3)}</h3>
           </div>
         ) : dat_hang && (
-          <div style={{position:"relative", color:"white"}}>
-            <h3>THÔNG TIN KHÁCH HÀNG</h3>
+          <div style={{color:"white", maxWidth:"65%", marginTop:"1%"}}>
+            <h2>THÔNG TIN KHÁCH HÀNG</h2>
             <Form>
-              <FormGroup>
-                <Input/>
-                <Input/>
-                <Input/>
-                <Input/>
+              <FormGroup style={{display:"flex", flexDirection:"column"}}>
+                <Input style={{height:"40px", width:"135%"}} placeholder='Họ và tên'/>
+                <Input style={{height:"40px", width:"135%"}} placeholder='Địa chỉ'/>
+                <Input style={{height:"40px", width:"135%"}} placeholder='Email'/>
+                <Input style={{height:"40px", width:"135%"}} placeholder='Số điện thoại'/>
+                <Input size="lg" placeholder='Tiêu đề' style={{height:"30px", width:"155%"}}/>
+                <Input type="textarea" placeholder='Nội dung' style={{height:"160px", width:"155%"}}/>
               </FormGroup>
-              <FormGroup>
-                <Input/>
-                <Input/>
+              <FormGroup style={{display:"flex", paddingLeft:"15%"}}>
+                  <h3 style={{backgroundColor:"black", width:"50px", marginTop:"10%"}}>{random}</h3>
+                  <Input placeholder='Nhập mã kiểm tra' style={{width:"100px", marginTop:"10%"}}/>
+                  <Button style={{ width:"50px", backgroundColor:"lightblue", marginTop:"10%"}} onClick={getRandomInt}><h1>&#x267B;</h1></Button>
+                  <Button style={{height:"40px", width:"70px", backgroundColor:"orchid", marginTop:"10%", marginLeft:"10%"}} >Mua ngay</Button>
               </FormGroup>
-              <FormGroup>
-              {/* <Input style={{position:"relative"}}
-                onChange={(e) => e.target.value}/> */}
-                <h3>{random}</h3>
-                <Button onClick={getRandomInt}><h1>&#x267B;</h1></Button>
-              </FormGroup>
-              <Button onClick={""}>Mua ngay</Button>
             </Form>
           </div>
         )}

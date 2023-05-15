@@ -1,6 +1,7 @@
 .new_feed {
   display: flex;
   position: relative;
+  padding-bottom: 2%;
 }
 
 .new_feed__content__column {
