@@ -49,8 +49,8 @@ export const getServerSideProps = async(context) => {
   const fish_TnTable_Ref = doc(db, `fish_TN/${product}/details/fish_details`)
   const fish_TnTable_Snap = await getDoc(fish_TnTable_Ref)
   
-  const fish_Data = fish_SX_Snap?.data() || fish_TN_Snap?.data() || null
-  const fish_Table_data = fish_SxTable_Snap?.data() || fish_TnTable_Snap?.data() || null
+  const fish_Data_Memo = fish_SX_Snap?.data() || fish_TN_Snap?.data() || null
+  const fish_Table_data_Memo = fish_SxTable_Snap?.data() || fish_TnTable_Snap?.data() || null
 
   // const fish_SX = await getDocs(fish_SX_collection)
   // const fish_SX_Data = fish_SX.docs.map((doc) => ({...doc.data()}))
@@ -63,12 +63,22 @@ export const getServerSideProps = async(context) => {
   // })
 
   return {
-    props: { new_props, tech_props, food_props, product, fish_Data, fish_Table_data}
+    props: { new_props, tech_props, food_props, product, fish_Data_Memo, fish_Table_data_Memo, product}
   };
 };
 
 /////////////
-const ItemPage = ({new_props, tech_props, food_props, fish_Data, fish_Table_data}) => {
+const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table_data_Memo, product}) => {
+
+  const fish_Data = useMemo(() => {
+    const memo = fish_Data_Memo
+    return memo
+  }, [product])
+
+  const fish_Table_data = useMemo(() => {
+    const memo = fish_Table_data_Memo
+    return memo
+  }, [product])
 
   const NewListMap = Object.values(new_props).slice(0, 8).map(data => {
     return ( 
