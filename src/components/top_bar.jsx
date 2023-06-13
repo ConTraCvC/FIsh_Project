@@ -1,11 +1,46 @@
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import TopItem from "./top_item";
 import logo_vi from "../assets/logo_vi.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Input, Form } from "reactstrap";
+import { Input, Form, Button, FormGroup, Label } from "reactstrap";
 import TopDropDown from "./top_drop_down";
+import Popup from "reactjs-popup";
+
+const admin = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter()
+  const redirect = () => {username==="admin"&&password==="admin" ? router.push('/admin-page') : alert("Sai mật khẩu")}
+  return (
+    <div style={{display:"flex"}}>
+      <Popup contentStyle={{width: "120px"}} trigger={<div><Button color="success" id="login">Login</Button></div>}
+      position="bottom right">
+        <Form>
+          <FormGroup controlId="username">
+            <Label>Username:</Label>
+            <Input
+              placeholder="&#x1F464; Username"
+              type="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}/>
+          </FormGroup>
+          <FormGroup>
+            <Label>Password:</Label>
+            <Input
+              placeholder="&#x1F512; Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}/>
+            <hr></hr>
+          </FormGroup>
+          <Button size="lg" color="success" onClick={redirect}>Login</Button>
+        </Form>
+      </Popup>
+    </div>
+  )
+}
 
 const MENU_LIST = [
   {
@@ -23,9 +58,6 @@ const MENU_LIST = [
   },{
     text: "Dự báo thời tiết",
     href:"/weather"
-  },{
-    text: "Admin",
-    href:"/admin-page"
   }
 ]
 
@@ -66,6 +98,7 @@ const TopBar = () => {
               <TopItem {...menu}/>
             )
           })}
+          {admin()}
         </div>
         <div style={{position:"relative", top:"-5rem", marginLeft:"69%"}}>
           <SearchBar/>
