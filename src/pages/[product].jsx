@@ -87,10 +87,9 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
           <Link href={"/"}>
             <img src={data.image} width="110" height="75" />
           </Link>
-          <li style={{opacity:"0"}}></li>
-          <hr style={{borderTop:"0.1px", position:"relative", maxWidth:"100%"}}></hr><li style={{opacity:"0"}}></li>
+          <hr style={{borderTop:"0.1px", position:"relative", maxWidth:"100%"}}></hr>
         </div>
-        <div style={{marginBottom:"60px", marginLeft:"10px",
+        <div style={{marginBottom:"2px", marginLeft:"10px",
          position:"relative", top:"-0.2rem", display:"flex", flexDirection:"column"}}>
           <Link href={"/"} style={{color:"white"}}>{data.title.title.toString()}</Link>
           <a style={{color:"darkgray", fontSize:"12px", padding:"5px"}} >{data.date}</a>
@@ -148,7 +147,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
 
   const FishTable = () => { 
     return (
-      <Table style={{width:"100%", height:"500px", fontSize:"20px"}}>
+      <Table style={{width:"100%", height:"500px", fontSize:"18px"}}>
         <tr>
           <td>Tên gọi</td>
           <td>{Object.values(fish_Table_data.ten_goi)}</td>
@@ -226,8 +225,8 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
           </div>
           <div style={{position:'relative', paddingTop:"5%"}}>
             <h3 style={{color:"white"}}>Nội dung:</h3>
-            <h3 style={{color:"lightgreen"}}>Giá: {`${Object.values(fish_Data.don_gia)}`} vnđ/cm/con</h3>
-            <h3 style={{color:"white"}}>Kích thước</h3>
+            <h5 style={{color:"lightgreen"}}>Giá: {`${Object.values(fish_Data.don_gia)}`} vnđ/cm/con</h5>
+            <h5 style={{color:"white"}}>Kích thước</h5>
             <InputGroup style={{display:"flex"}}>
               <Input style={{height:"30px"}}
                 value={kich_thuoc}
@@ -239,7 +238,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
                 value={kich_thuoc}
                 onClick={(e) => kich_thuoc>1 ? setKich_thuoc(--e.target.value) : null}>-</Button>
             </InputGroup>
-            <h3 style={{color:"white"}}>Số lượng</h3>
+            <h5 style={{color:"white"}}>Số lượng</h5>
             <InputGroup style={{display:"flex"}}>
               <Input style={{height:"30px"}}
                 height="30px"
@@ -252,18 +251,18 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
                 value={so_luong}
                 onClick={(e) => so_luong>1 ? setSo_luong(--e.target.value) : null}>-</Button>
             </InputGroup>
-            <h3 style={{position:"relative", color:"lightblue", paddingTop:"10px"}}>{`Tổng tiền: ${total}`}</h3>
+            <h4 style={{position:"relative", color:"lightblue", paddingTop:"10px"}}>{`Tổng tiền: ${total}`}</h4>
           </div>
         </div>
-        <Button style={{position:"relative", color:"black", width:"150px", height:"40px", margin:"20px 10px 0 0"}}
+        <Button style={{position:"relative", color:"white", margin:"20px 10px 0 0"}}
           onClick={() => setInfo(true) && setDat_Hang(false)}>Thông tin sản phẩm</Button>
-        <Button style={{position:"relative", color:"black", width:"100px", height:"40px", margin:"20px 10px 0 0"}}
+        <Button style={{position:"relative", color:"white", margin:"20px 10px 0 0"}}
           onClick={() => setInfo(false) && setDat_Hang(true)}>Đặt hàng</Button>
         <hr></hr>
         { info ?  (
           <div style={{position:"relative", color:"white", marginTop:"2%"}}>
             <h1>HIỆU QUẢ MÔ HÌNH NUÔI</h1>
-            <h4>{Object.values(fish_Data.body)}</h4>
+            <h5>{Object.values(fish_Data.body)}</h5>
             <h3>CÁ THƯƠNG PHẨM</h3>
             {fish_Data.imageTP!=="" && fish_Data.imageTP!==undefined ? <img width="100%" src={fish_Data.imageTP}></img> : null }
 
@@ -289,7 +288,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
               <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube4)[0]}/> : null}
             {Object.values(fish_Data.youtube5)[0]!=="" && Object.values(fish_Data.youtube5)[0]!==undefined ?
               <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube5)[0]}/> : null}
-            <h3>{Object.values(fish_Data.body3)}</h3>
+            <h5>{Object.values(fish_Data.body3)}</h5>
           </div>
         ) : dat_hang && (
           <div style={{color:"white", maxWidth:"65%", marginTop:"2%"}}>
@@ -304,10 +303,10 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
                 <Input type="textarea" placeholder='Nội dung' style={{height:"160px", width:"155%"}}/>
               </FormGroup>
               <FormGroup style={{display:"flex", paddingLeft:"15%"}}>
-                  <h3 style={{backgroundColor:"black", width:"50px", marginTop:"10%"}}>{random}</h3>
-                  <Input placeholder='Nhập mã kiểm tra' style={{width:"100px", marginTop:"10%"}}/>
-                  <Button style={{ width:"50px", backgroundColor:"lightblue", marginTop:"10%"}} onClick={getRandomInt}><h1>&#x267B;</h1></Button>
-                  <Button style={{height:"40px", width:"70px", backgroundColor:"orchid", marginTop:"10%", marginLeft:"10%"}} >Mua ngay</Button>
+                <h3 style={{backgroundColor:"black", width:"100%"}}>{random}</h3>
+                <Input placeholder='Nhập mã kiểm tra' style={{width:"160px", height:"60px"}}/>
+                <Button style={{backgroundColor:"lightblue", height:"60px"}} onClick={getRandomInt}><h1>&#x267B;</h1></Button>
+                <Button style={{backgroundColor:"orchid", marginLeft:"10%"}} >Mua ngay</Button>
               </FormGroup>
             </Form>
           </div>
@@ -341,12 +340,10 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
       <div className='new_feed'>
         <div className='new_feed__content2' style={{fontSize:"14px"}}>
           <a style={{color:"lightgreen", fontWeight:"bold" ,fontSize:"18px"}}>KỸ THUẬT NUÔI</a>
-          <li style={{opacity:"0"}}></li>
           {TechNickMap}
         </div>
         <div className="new_feed__content3" style={{fontSize:"14px"}}>
           <a style={{color:"lightgreen", fontWeight:"bold" ,fontSize:"18px",}}>ẨM THỰC</a>
-          <li style={{opacity:"0"}}></li>
           {FoodMap}
         </div>
         {/* {console.log(fish_Data)} */}

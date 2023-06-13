@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { Button } from "reactstrap";
 
 const TopDropDown = () => {
   return (
     <div className="dropmenu gradient__bg">
       <h2 style={{color:"white", position:"absolute", whiteSpace:"nowrap"}}>Sản Phẩm Và Dịch Vụ</h2>
       <div className="dropdown">
-      <button style={{color:"white", borderTopLeftRadius:"3px", borderBottomLeftRadius:"3px"}} 
-       class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN SẢN XUẤT</button>
+      <button style={{color:"white"}} class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN SẢN XUẤT</button>
       <div class="dropdown-content">
         <Link href={{pathname:"IC6iambKU0ji4eFUE4Ec"}}>Cá Bớp Giống Chất Lượng</Link>
         <Link href={{pathname:"/abs"}}>Cá Mú Lai Giống Chất Lượng</Link>

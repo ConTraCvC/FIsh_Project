@@ -34,7 +34,7 @@ const admin = () => {
       position="bottom right">
         <Form style={{backgroundColor:"LightSteelBlue", borderRadius:"5px"}}>
           <FormGroup controlId="username">
-            <h5 color="red">Username:</h5>
+            <h5 color="white">Username:</h5>
             <Input
               placeholder="&#x1F464; Username"
               type="username"
@@ -42,7 +42,7 @@ const admin = () => {
               onChange={(e) => setUsername(e.target.value)}/>
           </FormGroup>
           <FormGroup>
-            <Label>Password:</Label>
+          <h5 color="white">Password:</h5>
             <Input
               placeholder="&#x1F512; Password"
               type="password"
@@ -50,7 +50,7 @@ const admin = () => {
               onChange={(e) => setPassword(e.target.value)}/>
             <hr></hr>
           </FormGroup>
-          <Button size="lg" color="success" onClick={redirect} onKeyDown={handleKeyDown} type="submit" style={{marginLeft:"30%"}}>Login</Button>
+          <Button size="lg" color="success" onClick={redirect} onKeyDown={handleKeyDown} style={{marginLeft:"30%"}}>Login</Button>
         </Form>
       </Popup>
       }

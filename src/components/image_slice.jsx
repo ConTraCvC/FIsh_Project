@@ -24,14 +24,14 @@ const ImageSlice = ({data1, data2}) => {
         <table>
           <thead>
             <tr style={{display: "flex", flexDirection:"column",
-              maxWidth:"95%", marginLeft:"7%", marginTop:"7%"}}>
+              maxWidth:"90%", marginLeft:"7%", marginTop:"7%"}}>
               <th><Link href={{
                 pathname: data.id
-              }}><img width="95%" height="auto" src={data.imageBia}></img></Link></th>
+              }}><img width="100%" height="auto" src={data.imageBia}></img></Link></th>
               <td><Link href={data.id} style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
-              <td><h5 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
+              <td><h6 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
                 WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
-                overflow: "hidden"}}>{Object.values(data.body)}</h5></td>
+                overflow: "hidden"}}>{Object.values(data.body)}</h6></td>
             </tr>
           </thead>
         </table>
@@ -52,9 +52,9 @@ const ImageSlice = ({data1, data2}) => {
               <td><Link href={{
                 pathname: data.id
               }} style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
-              <td><h5 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
+              <td><h6 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
                 WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
-                overflow: "hidden"}}>{Object.values(data.body)}</h5></td>
+                overflow: "hidden"}}>{Object.values(data.body)}</h6></td>
             </tr>
           </thead>
         </table>
