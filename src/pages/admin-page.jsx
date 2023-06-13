@@ -136,17 +136,6 @@ export default function Admin() {
   const fish_NT = collection(db, 'fish_NT');
   const fish_NN = collection(db, 'fish_NN');
 
-  const uploadImages = async() => {
-    if (imageUpload == null) {
-      return alert("Bạn hãy chọn file");
-    } else {
-      const fishRef = ref(store, `$fishs/${imageUpload.name}`)
-      await uploadBytes(fishRef, imageUpload).then(() => {
-        alert("Image Uploaded")
-      })
-    }
-  }
-
   const uploadFirebase__New = async() => {
     if (imageUpload == null && Object.values(title).length, Object.values(body).length <= 0) {
       return alert("Bạn hãy chọn file và nhập đủ trường");
@@ -778,10 +767,10 @@ export default function Admin() {
       >
         <Box sx={{ ...style ,width: 400 }}>
           <h2 id="parent-modal-title">{menu.text}</h2>
-          <button onClick={menu.upload} style={{position:"relative", left:"13%", width:"100px", height:"30px",
-            marginRight:"1rem", marginTop:"1rem", backgroundColor:"royalblue", borderRadius:"5px"}}>UPLOAD</button>
-          <button onClick={menu.handle} style={{position:"relative", left:"20%", width:"100px",
-            height:"30px", backgroundColor:"red", borderRadius:"5px"}}>EXIT</button>
+          <Button onClick={menu.upload} style={{position:"relative", left:"13%", width:"100px", height:"30px",
+            marginRight:"1rem", marginTop:"1rem", backgroundColor:"royalblue", borderRadius:"5px"}}>UPLOAD</Button>
+          <Button onClick={menu.handle} style={{position:"relative", left:"20%", width:"100px",
+            height:"30px", backgroundColor:"red", borderRadius:"5px"}}>EXIT</Button>
         </Box>
       </Modal>
       )
@@ -796,16 +785,6 @@ export default function Admin() {
     </div>
     <TopBar/>
     <BasicBreadcrumbs/>
-
-
-    <Form style={{display:"flex", marginTop:"5%"}}>
-      <h2 style={{color:'white', position:"relative", marginLeft:"15%"}}>UP ẢNH THƯỜNG</h2>
-      <Input type='file'
-        style={{color:"white", position:"relative", marginLeft:"3rem"}}
-        onChange={(e) => setImageUpLoad(e.target.files[0])}></Input>
-      <button onClick={uploadImages} style={{position:"relative", width:"100px", height:"30px", backgroundColor:"royalblue", borderRadius:"5px", marginLeft:"2rem"}}>UPLOAD</button>
-    </Form>
-    <hr style={{position:"relative", color:"white", margin:"auto", maxWidth:"70%", marginTop:"2%"}}></hr>
 
     <div className='control_button' style={{position:"relative", left:"15%", maxWidth:"80%"}}>
       <Button value="1" onClick={handleClickEvent} style={{position:"relative", color:'black',
@@ -1204,8 +1183,8 @@ export default function Admin() {
             {""}
           </FormGroup>
         </Form>
-        <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
-             scolor='success' onClick={menu.function} type="submit">Upload</button>
+        <Button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
+             scolor='success' onClick={menu.function} type="submit">Upload</Button>
 
         <hr style={{width:"80%"}} ></hr>
       </div>
@@ -1254,8 +1233,8 @@ export default function Admin() {
             {""}
           </FormGroup>
         </Form>
-        <button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
-             scolor='success' onClick={menu.function} type="submit">Upload</button>
+        <Button style={{width:"100px", height:"40px", fontSize:"18px", backgroundColor:"royalblue", borderRadius:"10px", marginBottom:"5rem"}}
+             scolor='success' onClick={menu.function} type="submit">Upload</Button>
 
         <hr style={{width:"80%"}} ></hr>
       </div>

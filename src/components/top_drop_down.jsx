@@ -4,7 +4,7 @@ import React from "react";
 const TopDropDown = () => {
   return (
     <div className="dropmenu gradient__bg">
-      <h1 style={{color:"white", position:"absolute", top:"1rem", whiteSpace:"nowrap"}}>Sản Phẩm Và Dịch Vụ</h1>
+      <h2 style={{color:"white", position:"absolute", whiteSpace:"nowrap"}}>Sản Phẩm Và Dịch Vụ</h2>
       <div className="dropdown">
       <button style={{color:"white", borderTopLeftRadius:"3px", borderBottomLeftRadius:"3px"}} 
        class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN SẢN XUẤT</button>

@@ -21,7 +21,7 @@ const ImageSlice = ({data1, data2}) => {
   const fish_SX_map = Object.values(data1).map(data => {
     return (
       <div style={{maxWidth:"95%"}}>
-        <Table>
+        <table>
           <thead>
             <tr style={{display: "flex", flexDirection:"column",
               maxWidth:"95%", marginLeft:"7%", marginTop:"7%"}}>
@@ -29,12 +29,12 @@ const ImageSlice = ({data1, data2}) => {
                 pathname: data.id
               }}><img width="95%" height="auto" src={data.imageBia}></img></Link></th>
               <td><Link href={data.id} style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
-              <td><h4 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
+              <td><h5 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
                 WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
-                overflow: "hidden"}}>{Object.values(data.body)}</h4></td>
+                overflow: "hidden"}}>{Object.values(data.body)}</h5></td>
             </tr>
           </thead>
-        </Table>
+        </table>
       </div>
     )
   })
@@ -42,7 +42,7 @@ const ImageSlice = ({data1, data2}) => {
   const fish_TN_map = Object.values(data2).map(data => {
     return (
       <div style={{maxWidth:"95%"}}>
-        <Table>
+        <table>
           <thead>
             <tr style={{display: "flex", flexDirection:"column",
               maxWidth:"90%", marginLeft:"7%", marginTop:"7%"}}>
@@ -52,36 +52,36 @@ const ImageSlice = ({data1, data2}) => {
               <td><Link href={{
                 pathname: data.id
               }} style={{color:"lightpink"}}>{Object.values(data.title)}</Link></td>
-              <td><h4 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
+              <td><h5 style={{color:"white", padding:"10px 0 0 0", display: "-webkit-box",
                 WebkitBoxOrient: "vertical", WebkitLineClamp: 5,
-                overflow: "hidden"}}>{Object.values(data.body)}</h4></td>
+                overflow: "hidden"}}>{Object.values(data.body)}</h5></td>
             </tr>
           </thead>
-        </Table>
+        </table>
       </div>
     )
   })
 
   return (
     <div className="slice__container">
-      <h3 style={{color:"lightgreen"}}>
+      <h4 style={{color:"lightgreen"}}>
          {" "}
          GIỐNG CÁ BIỂN SẢN XUẤT
-      </h3>
+      </h4>
         <Slider {...settings}>
           {fish_SX_map}
         </Slider>
-      <h3 style={{color:"lightgreen", marginTop:"4%"}}>
+      <h4 style={{color:"lightgreen"}}>
          {" "}
          GIỐNG CÁ BIỂN THIÊN NHIÊN
-      </h3>
+      </h4>
         <Slider {...settings}>
           {fish_TN_map}
         </Slider>
-      <h3 style={{color:"lightgreen", marginTop:"4%"}}>
+      <h4 style={{color:"lightgreen"}}>
          {" "}
          GIỐNG CÁ MÚ SẢN XUẤT
-      </h3>
+      </h4>
       <div style={{maxWidth:"95%", margin:"auto"}}>
         <Slider {...settings}>
           <div>

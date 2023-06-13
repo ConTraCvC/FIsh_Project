@@ -25,8 +25,8 @@ const NewAndTechnic = ({data1, data2, data3}) => {
   const newListMap = Object.values(data1).slice(0, 6).map(data => {
     return <div style={{display:"flex", flexDirection:"column"}}>
       <Link href="/item-page" style={{color:"white", fontWeight:"bold"}}>{Object.values(data.title)}</Link>
-      <a style={{color:"darkgrey", fontSize:"12px", padding:"5px"}} >{Object.values(data.date)}</a>
-      <hr style={{borderTop:"0.1px"}}></hr><li style={{opacity:"0"}}></li>
+      <a style={{color:"darkgrey", fontSize:"12px"}} >{Object.values(data.date)}</a>
+      <hr></hr>
     </div>
   })
   const imageMap = Object.values(data1).slice(0, 1).map(data => {

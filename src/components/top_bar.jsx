@@ -7,19 +7,34 @@ import { useRouter } from "next/router";
 import { Input, Form, Button, FormGroup, Label } from "reactstrap";
 import TopDropDown from "./top_drop_down";
 import Popup from "reactjs-popup";
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 
 const admin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter()
-  const redirect = () => {username==="admin"&&password==="admin" ? router.push('/admin-page') : alert("Sai mật khẩu")}
+  const redirect = () => {username==="admin"&&password==="admin" ?
+    router.push('/admin-page')+setCookie('admin','admin',{secure:true}) : alert("Sai mật khẩu")}
+
+  const handleKeyDown = (event) => {
+    event.key = "Enter"
+    setCookie('admin', 'admin', {secure:true})
+  }
+
+  const exit = () => {
+    deleteCookie('admin')
+    router.push("/")
+  }
+
   return (
     <div style={{display:"flex"}}>
-      <Popup contentStyle={{width: "120px"}} trigger={<div><Button color="success" id="login">Login</Button></div>}
+      { getCookie('admin')!=null&&getCookie('admin')!=undefined ?
+      <Button size="lg" color="danger" onClick={exit}>Exit</Button> :
+      <Popup contentStyle={{width: "200px"}} trigger={<div><Button color="warning" id="login">Admin</Button></div>}
       position="bottom right">
-        <Form>
+        <Form style={{backgroundColor:"LightSteelBlue", borderRadius:"5px"}}>
           <FormGroup controlId="username">
-            <Label>Username:</Label>
+            <h5 color="red">Username:</h5>
             <Input
               placeholder="&#x1F464; Username"
               type="username"
@@ -35,9 +50,10 @@ const admin = () => {
               onChange={(e) => setPassword(e.target.value)}/>
             <hr></hr>
           </FormGroup>
-          <Button size="lg" color="success" onClick={redirect}>Login</Button>
+          <Button size="lg" color="success" onClick={redirect} onKeyDown={handleKeyDown} type="submit" style={{marginLeft:"30%"}}>Login</Button>
         </Form>
       </Popup>
+      }
     </div>
   )
 }

@@ -11,7 +11,7 @@
 .new__feed__item{
   display: flex;
   position: relative;
-  top: 2rem;
+  top: 1rem;
   margin-bottom: 2%;
 }
 
@@ -19,7 +19,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-left: 3rem;
+  margin-left: 2rem;
   max-width: 100%;
 }
 
@@ -54,13 +54,13 @@
 @media screen and (max-width: 1400px) {
   .new__feed__content2{
     position: relative;
-    top: 30rem;
+    top: 40rem;
     max-width: 250px;
     right: 35rem;
   }
   .new__feed__content3{
     position: relative;
-    top: 30rem;
+    top: 40rem;
     right: 30rem;
   }
   .new__feed__content{
@@ -71,7 +71,7 @@
   }
   .new__feed {
     top:3%;
-    height: 1090px;
+    height: 1230px;
   }.new__feed_subContent {
     width: 300px;
   }
@@ -80,14 +80,14 @@
 @media screen and (max-width: 1000px) {
   .new__feed__content2{
     position: relative;
-    top: 35rem;
+    top: 45rem;
     max-width: 250px;
-    left:-42rem
+    left:-41rem
   }
   .new__feed__content3{
     position: relative;
-    top: 35rem;
-    right: 37rem;
+    top: 45rem;
+    right: 36rem;
   }
   .new__feed__content{
     top: -1rem;
@@ -102,6 +102,6 @@
     width: 300px;
   }
   .new__feed {
-    height: 1180px;
+    height: 1320px;
   }
 }

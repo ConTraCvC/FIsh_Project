@@ -85,7 +85,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
       <div className='new_feed__content__column'>
         <div>
           <Link href={"/"}>
-              <img src={data.image} width="110" height="75" />
+            <img src={data.image} width="110" height="75" />
           </Link>
           <li style={{opacity:"0"}}></li>
           <hr style={{borderTop:"0.1px", position:"relative", maxWidth:"100%"}}></hr><li style={{opacity:"0"}}></li>
