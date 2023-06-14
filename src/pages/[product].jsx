@@ -12,6 +12,8 @@ import BasicBreadcrumbs from '@component/components/bread_crumbs'
 import { Button, Form, FormGroup, Input, InputGroup, Table } from 'reactstrap'
 import ReactPlayer from 'react-player'
 
+export const revalidate = 120
+
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
@@ -30,24 +32,38 @@ export const getServerSideProps = async(context) => {
 
   const product = context.params.product
 
-  const newSnap = await getDocs(newCollection)
+  const newSnap = await getDocs(newCollection, {
+    next: {revalidate: 60}
+  })
   const new_props = newSnap.docs.map((doc) => ({ ...doc.data()}))
 
-  const techSnap = await getDocs(techCollection)
+  const techSnap = await getDocs(techCollection, {
+    next: {revalidate: 60}
+  })
   const tech_props = techSnap.docs.map((doc) => ({ ...doc.data()}))
 
-  const foodSnap = await getDocs(foodCollection)
+  const foodSnap = await getDocs(foodCollection, {
+    next: {revalidate: 60}
+  })
   const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
 
   const fish_SX_Ref = doc(db, `fish_SX/${product}`)
-  const fish_SX_Snap = await getDoc(fish_SX_Ref)
+  const fish_SX_Snap = await getDoc(fish_SX_Ref, {
+    next: {revalidate: 60}
+  })
   const fish_SxTable_Ref = doc(db, `fish_SX/${product}/details/fish_details`)
-  const fish_SxTable_Snap = await getDoc(fish_SxTable_Ref)
+  const fish_SxTable_Snap = await getDoc(fish_SxTable_Ref, {
+    next: {revalidate: 60}
+  })
 
   const fish_TN_Ref = doc(db, `fish_TN/${product}`)
-  const fish_TN_Snap = await getDoc(fish_TN_Ref)
+  const fish_TN_Snap = await getDoc(fish_TN_Ref, {
+    next: {revalidate: 60}
+  })
   const fish_TnTable_Ref = doc(db, `fish_TN/${product}/details/fish_details`)
-  const fish_TnTable_Snap = await getDoc(fish_TnTable_Ref)
+  const fish_TnTable_Snap = await getDoc(fish_TnTable_Ref, {
+    next: {revalidate: 60}
+  })
   
   const fish_Data_Memo = fish_SX_Snap?.data() || fish_TN_Snap?.data() || null
   const fish_Table_data_Memo = fish_SxTable_Snap?.data() || fish_TnTable_Snap?.data() || null

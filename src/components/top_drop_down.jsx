@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { Button } from "reactstrap";
 
 const TopDropDown = () => {
   return (
@@ -26,95 +25,95 @@ const TopDropDown = () => {
       <div className="dropdown">
       <button style={{color:"white"}} class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN TỰ NHIÊN</button>
       <div class="dropdown-content">
-        <a href="/abc">Cá Dìa Giống Chất Lượng</a>
-        <a href="/abc">Cá Hồng Bạc Giống Chất Lượng</a>
-        <a href="/abc">Cá Măng Giống Chất Lượng</a>
-        <a href="/abc">Cá Tráp Giống Chất Lượng</a>
-        <a href="/abc">Cá Nâu Vàng Giống Chất Lượng</a>
-        <a href="/abc">Cá Kình Trắng Giống Chất Lượng</a>
-        <a href="/abc">Cá Ong Căng Giống Chất Lượng</a>
-        <a href="/abc">Cá Cam Giống Chất Lượng</a>
-        <a href="/abc">Cá Hồng Đỏ Giống Chất Lượng</a>
-        <a href="/abc">Cá Thiên Sứ Giống Chất Lượng</a>
-        <a href="/abc">Cá Sủ Đất Giống Chất Lượng</a>
+        <Link href="/abc">Cá Dìa Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Hồng Bạc Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Măng Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Tráp Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Nâu Vàng Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Kình Trắng Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Ong Căng Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Cam Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Hồng Đỏ Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Thiên Sứ Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Sủ Đất Giống Chất Lượng</Link>
       </div>
       </div>
 
       <div className="dropdown">
       <button style={{color:"white"}} class="dropbtn button__gradient__bg">GIỐNG CÁ MÚ SẢN XUẤT</button>
       <div class="dropdown-content">
-        <a href="/abc">Cá Mú Lai Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Đen Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Nghệ Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Sao Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Chuột Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Cọp Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Mè Chất Lượng</a>
-        <a href="/abc">Cá Mú Cọp Xám Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Nghệ Xanh Giống Chất Lượng</a>
-        <a href="/abc">Cá Mú Lai Đen Giống Chất Lượng</a>
+        <Link href="/abc">Cá Mú Lai Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Đen Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Nghệ Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Sao Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Chuột Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Cọp Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Mè Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Cọp Xám Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Nghệ Xanh Giống Chất Lượng</Link>
+        <Link href="/abc">Cá Mú Lai Đen Giống Chất Lượng</Link>
       </div>
       </div>
 
       <div className="dropdown">
       <button style={{color:"white"}} class="dropbtn button__gradient__bg">TÔM, CUA GIỐNG</button>
       <div class="dropdown-content">
-        <a href="/abc">Tôm Hùm Bông Giống Chất Lượng</a>
-        <a href="/abc">Tôm Hùm Xanh Giống Chất Lượng</a>
-        <a href="/abc">Tôm Sú Giống Chất Lượng</a>
-        <a href="/abc">Tôm Thẻ Giống Chất Lượng</a>
-        <a href="/abc">Tôm Đất Giống Chất Lượng</a>
-        <a href="/abc">Tôm Càng Xanh Giống Chất Lượng</a>
-        <a href="/abc">Cua Xanh Giống Chất Lượng</a>
+        <Link href="/abc">Tôm Hùm Bông Giống Chất Lượng</Link>
+        <Link href="/abc">Tôm Hùm Xanh Giống Chất Lượng</Link>
+        <Link href="/abc">Tôm Sú Giống Chất Lượng</Link>
+        <Link href="/abc">Tôm Thẻ Giống Chất Lượng</Link>
+        <Link href="/abc">Tôm Đất Giống Chất Lượng</Link>
+        <Link href="/abc">Tôm Càng Xanh Giống Chất Lượng</Link>
+        <Link href="/abc">Cua Xanh Giống Chất Lượng</Link>
       </div>
       </div>
 
       <div className="dropdown">
       <button style={{color:"white"}} class="dropbtn button__gradient__bg">GIỐNG NHUYỄN THỂ</button>
       <div class="dropdown-content">
-        <a href="/abc">Hầu Giống Chất Lượng</a>
-        <a href="/abc">Tu Hài Giống Chất Lượng</a>
-        <a href="/abc">Ốc Hương Giống Chất Lượng</a>
-        <a href="/abc">Nghêu Bến Tre Giống Chất Lượng</a>
-        <a href="/abc">Rong Nho Giống Chất Lượng</a>
-        <a href="/abc">Rong Sụn Giống Chất Lượng</a>
+        <Link href="/abc">Hầu Giống Chất Lượng</Link>
+        <Link href="/abc">Tu Hài Giống Chất Lượng</Link>
+        <Link href="/abc">Ốc Hương Giống Chất Lượng</Link>
+        <Link href="/abc">Nghêu Bến Tre Giống Chất Lượng</Link>
+        <Link href="/abc">Rong Nho Giống Chất Lượng</Link>
+        <Link href="/abc">Rong Sụn Giống Chất Lượng</Link>
       </div>
       </div>
 
       <div className="dropdown">
       <button style={{color:"white"}} class="dropbtn button__gradient__bg">GIỐNG CÁ NƯỚC NGỌT</button>
       <div class="dropdown-content">
-        <a href="/abc">Cá Chình Bông Giống Chất Lượng</a>
-        <a href="/abc">Giống Cá Kèo Chất Lượng</a>
-        <a href="/abc">Nghêu Bến Tre Giống Chất Lượng</a>
-        <a href="/abc">Rong Nho Giống Chất Lượng</a>
+        <Link href="/abc">Cá Chình Bông Giống Chất Lượng</Link>
+        <Link href="/abc">Giống Cá Kèo Chất Lượng</Link>
+        <Link href="/abc">Nghêu Bến Tre Giống Chất Lượng</Link>
+        <Link href="/abc">Rong Nho Giống Chất Lượng</Link>
       </div>
       </div>
 
       <div className="dropdown">
       <button style={{color:"white"}} class="dropbtn button__gradient__bg">KỸ THUẬT NUÔI</button>
       <div class="dropdown-content">
-        <a href="/abc">Đặc Điểm Sinh Học</a>
+        <Link href="/abc">Đặc Điểm Sinh Học</Link>
       </div>
       </div>
 
       <div className="dropdown">
       <button style={{color:"white"}} class="dropbtn button__gradient__bg">THƯ VIỆN</button>
       <div class="dropdown-content">
-        <a href="/abc">Hình Ảnh</a>
-        <a href="/abc">Video</a>
-        <a href="/abc">Tin Tức</a>
-        <a href="/abc">Ẩm Thực</a>
-        <a href="/abc">Giải Trí</a>
+        <Link href="/abc">Hình Ảnh</Link>
+        <Link href="/abc">Video</Link>
+        <Link href="/abc">Tin Tức</Link>
+        <Link href="/abc">Ẩm Thực</Link>
+        <Link href="/abc">Giải Trí</Link>
       </div>
       </div>
 
       <div className="dropdown">
       <button style={{color:"white", borderTopRightRadius:"3px", borderBottomRightRadius:"3px"}} class="dropbtn button__gradient__bg">THÔNG TIN WEBSITE</button>
       <div class="dropdown-content">
-        <a href="/abc">Điều Kiện Giao Dịch Chung</a>
-        <a href="/abc">Thông Tin Vận Chuyển</a>
-        <a href="/abc">Chính Sách Bảo Mật</a>
+        <Link href="/abc">Điều Kiện Giao Dịch Chung</Link>
+        <Link href="/abc">Thông Tin Vận Chuyển</Link>
+        <Link href="/abc">Chính Sách Bảo Mật</Link>
       </div>
       </div>
     </div>
