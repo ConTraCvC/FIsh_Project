@@ -773,11 +773,11 @@ export default function Admin() {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style ,width: 400 }}>
-          <h2 id="parent-modal-title">{menu.text}</h2>
+          <h3 id="parent-modal-title">{menu.text}</h3>
           <Button onClick={menu.upload} style={{position:"relative", left:"13%", width:"100px", height:"30px",
             marginRight:"1rem", marginTop:"1rem", backgroundColor:"royalblue", borderRadius:"5px"}}>UPLOAD</Button>
           <Button onClick={menu.handle} style={{position:"relative", left:"20%", width:"100px",
-            height:"30px", backgroundColor:"red", borderRadius:"5px"}}>EXIT</Button>
+            height:"30px", marginTop:"1rem", backgroundColor:"red", borderRadius:"5px"}}>EXIT</Button>
         </Box>
       </Modal>
       )

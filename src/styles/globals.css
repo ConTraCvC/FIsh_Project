@@ -87,12 +87,12 @@ a {
 
 .top__menu-list {
   display: flex;
-  column-gap: 33px;
+  column-gap: 28px;
   top: -7rem;
   position: relative;
   justify-content: center;
   margin-left: auto;
-  width: 40%;
+  width: 45%;
   height: 40px;
   font-weight: bold;
   background: linear-gradient(60deg, #29323c 0%, #485563 100%);;

@@ -123,6 +123,7 @@ const TopBar = () => {
             )
           })}
           {admin()}
+          {getCookie('admin')==='admin' ? <Link href={"/admin-page"}>Upload</Link> : null}
         </div>
         <div style={{position:"relative", top:"-5rem", marginLeft:"69%"}}>
           <SearchBar/>
