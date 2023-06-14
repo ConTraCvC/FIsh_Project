@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import TopBar from '@component/components/top_bar'
 import BasicBreadcrumbs from '@component/components/bread_crumbs'
@@ -9,6 +9,8 @@ import { store } from '@component/firebase/firebase'
 import { Modal, Box } from '@mui/material'
 import { db } from "@component/firebase/firebase"
 import { addDoc, collection, doc, setDoc } from "firebase/firestore/lite"
+import { getCookie } from 'cookies-next'
+import { useRouter } from 'next/router'
 
 const style = {
   position: 'absolute',
@@ -27,6 +29,11 @@ const style = {
 };
 
 export default function Admin() {
+  
+  const router = useRouter()
+  useEffect(() => {
+    getCookie('admin')==='admin' ? router.push('/admin-page') : router.push('/')
+  }, [])
 
   const [isOpenNF, setIsOpenNF] = useState(false);
   const [isOpenKT, setIsOpenKT] = useState(false);
