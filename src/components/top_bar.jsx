@@ -4,7 +4,7 @@ import TopItem from "./top_item";
 import logo_vi from "../assets/logo_vi.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Input, Form, Button, FormGroup, Label } from "reactstrap";
+import { Input, Form, Button, FormGroup } from "reactstrap";
 import TopDropDown from "./top_drop_down";
 import Popup from "reactjs-popup";
 import { setCookie, getCookie, deleteCookie } from 'cookies-next';
@@ -17,8 +17,14 @@ const admin = () => {
     router.push('/admin-page')+setCookie('admin','admin',{secure:true}) : alert("Sai mật khẩu")}
 
   const handleKeyDown = (event) => {
-    event.key = "Enter"
-    setCookie('admin', 'admin', {secure:true})
+    event.code="Enter"
+    if(username==="admin"&&password==="admin"){
+      setCookie('admin', 'admin', {secure:true})
+      router.push('/admin-page')
+    }
+    if(username!=="admin"&&password!=="admin"&&event.key==="Enter"){
+      alert("Sai mật khẩu")
+    }
   }
 
   const exit = () => {
@@ -39,7 +45,8 @@ const admin = () => {
               placeholder="&#x1F464; Username"
               type="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}/>
+              onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={handleKeyDown}/>
           </FormGroup>
           <FormGroup>
           <h5 color="white">Password:</h5>
@@ -47,10 +54,11 @@ const admin = () => {
               placeholder="&#x1F512; Password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}/>
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={handleKeyDown}/>
             <hr></hr>
           </FormGroup>
-          <Button size="lg" color="success" onClick={redirect} onKeyDown={handleKeyDown} style={{marginLeft:"30%"}}>Login</Button>
+          <Button size="lg" color="success" onClick={redirect} style={{marginLeft:"30%"}}>Login</Button>
         </Form>
       </Popup>
       }
