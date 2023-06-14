@@ -291,19 +291,19 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
             <h4>Hình 3:</h4>
             {fish_Data.image3!=="" && fish_Data.image3!==undefined ? <img width="100%" src={fish_Data.image3}></img> : null}
             {Object.values(fish_Data.youtube)[0]!=="" && Object.values(fish_Data.youtube)[0]!==undefined ?
-              <ReactPlayer width="100%" url={Object.values(fish_Data.youtube)[0]}/> : null}
+              <ReactPlayer controls={true} width="100%" url={Object.values(fish_Data.youtube)[0]}/> : null}
             {Object.values(fish_Data.youtube1)[0]!=="" && Object.values(fish_Data.youtube1)[0]!==undefined ? 
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube1)[0]}/> : null}
+              <ReactPlayer controls={true} style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube1)[0]}/> : null}
             <h4>Cá thương phẩm:</h4>
             <h4>{Object.values(fish_Data.body2)}</h4>
             {Object.values(fish_Data.youtube2)[0]!=="" && Object.values(fish_Data.youtube2)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube2)[0]}/> : null}
+              <ReactPlayer controls={true} style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube2)[0]}/> : null}
             {Object.values(fish_Data.youtube3)[0]!=="" && Object.values(fish_Data.youtube3)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube3)[0]}/> : null}
+              <ReactPlayer controls={true} style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube3)[0]}/> : null}
             {Object.values(fish_Data.youtube4)[0]!=="" && Object.values(fish_Data.youtube5)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube4)[0]}/> : null}
+              <ReactPlayer controls={true} style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube4)[0]}/> : null}
             {Object.values(fish_Data.youtube5)[0]!=="" && Object.values(fish_Data.youtube5)[0]!==undefined ?
-              <ReactPlayer style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube5)[0]}/> : null}
+              <ReactPlayer controls={true} style={{paddingTop:"10px"}} width="100%" url={Object.values(fish_Data.youtube5)[0]}/> : null}
             <h5>{Object.values(fish_Data.body3)}</h5>
           </div>
         ) : dat_hang && (
