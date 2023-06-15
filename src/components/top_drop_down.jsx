@@ -1,25 +1,28 @@
+import { getCookie } from "cookies-next";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
-const TopDropDown = () => {
+const TopDropDown = ({data1, data2, data3, data4}) => {
+
+  const memo1 = data1 || data3
+  const memo2 = data2 || data4
+
+  const SX_Link = Object.values(memo1).map(item => {
+    return(
+      <>
+        <Link href={{pathname: item.id}}>{Object.values(item.title)}</Link>
+      </>
+    )
+  })
+
   return (
     <div className="dropmenu gradient__bg">
       <h2 style={{color:"white", position:"absolute", whiteSpace:"nowrap"}}>Sản Phẩm Và Dịch Vụ</h2>
       <div className="dropdown">
       <button style={{color:"white", borderTopLeftRadius:"3px", borderBottomLeftRadius:"3px"}} class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN SẢN XUẤT</button>
-      <div class="dropdown-content">
-        <Link href={{pathname:"IC6iambKU0ji4eFUE4Ec"}}>Cá Bớp Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Mú Lai Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Chẽm Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Bè Vàng Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Bè Trắng Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Mú Đen Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Chim Vây Vàng Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Hồng Mỹ Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Đối Mục Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Tai Bồ Giống Chất Lượng</Link>
-        <Link href={{pathname:"/abs"}}>Cá Gáy Lù Giống Chất Lượng</Link>
-      </div>
+        <div class="dropdown-content">
+          {SX_Link}
+        </div>
       </div>
 
       <div className="dropdown">

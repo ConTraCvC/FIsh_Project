@@ -17,6 +17,8 @@ export const revalidate = 120
 const newCollection = collection(db, "news")
 const techCollection = collection(db, "techniques")
 const foodCollection = collection(db, "foods")
+const fish_SX_collection = collection(db, `fish_SX`)
+const fish_TN_collection = collection(db, "fish_TN")
 
 // export const getStaticPaths = async() => {
 //   const fish_SX = await getDocs(fish_SX_collection)
@@ -64,7 +66,18 @@ export const getServerSideProps = async(context) => {
   const fish_TnTable_Snap = await getDoc(fish_TnTable_Ref, {
     next: {revalidate: 60}
   })
-  
+
+  const fish_SX = await getDocs(fish_SX_collection, {
+    next: {revalidate: 60}
+  })
+  const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
+
+  const fish_TN = await getDocs(fish_TN_collection, {
+    next: {revalidate: 60}
+  })
+  const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
+
+  /////////////////////////////
   const fish_Data_Memo = fish_SX_Snap?.data() || fish_TN_Snap?.data() || null
   const fish_Table_data_Memo = fish_SxTable_Snap?.data() || fish_TnTable_Snap?.data() || null
 
@@ -79,12 +92,15 @@ export const getServerSideProps = async(context) => {
   // })
 
   return {
-    props: { new_props, tech_props, food_props, product, fish_Data_Memo, fish_Table_data_Memo, product}
+    props: { new_props, tech_props, food_props, product,
+      fish_Data_Memo, fish_Table_data_Memo, product,
+      fish_SX_props, fish_TN_props}
   };
 };
 
 /////////////
-const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table_data_Memo, product}) => {
+const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo,
+  fish_Table_data_Memo, product, fish_SX_props, fish_TN_props}) => {
 
   const fish_Data = useMemo(() => {
     const memo = fish_Data_Memo
@@ -247,11 +263,9 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
               <Input style={{height:"30px"}}
                 value={kich_thuoc}
                 onChange={(e) => setKich_thuoc(e.target.value)}></Input>
-              <Button style={{height:"30px", width:'30px', backgroundColor:"lightblue", borderRadius:"5px"}}
-                value={kich_thuoc}
+              <Button color='primary' size="sm" value={kich_thuoc}
                 onClick={(e) => setKich_thuoc(++e.target.value)}>+</Button>
-              <Button style={{height:"30px", width:'30px', backgroundColor:"lightsalmon", borderRadius:"5px"}}
-                value={kich_thuoc}
+              <Button color='danger' size="sm" value={kich_thuoc}
                 onClick={(e) => kich_thuoc>1 ? setKich_thuoc(--e.target.value) : null}>-</Button>
             </InputGroup>
             <h5 style={{color:"white"}}>Số lượng</h5>
@@ -260,11 +274,9 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
                 height="30px"
                 value={so_luong}
                 onChange={(e) => setSo_luong(e.target.value)}/>
-              <Button style={{height:"30px", width:'30px', backgroundColor:"lightblue", borderRadius:"5px"}}
-                value={so_luong}
+              <Button color='primary' size='sm' value={so_luong}
                 onClick={(e) => setSo_luong(++e.target.value)}>+</Button>
-              <Button style={{height:"30px", width:'30px', backgroundColor:"lightsalmon", borderRadius:"5px"}}
-                value={so_luong}
+              <Button color='danger' size='sm' value={so_luong}
                 onClick={(e) => so_luong>1 ? setSo_luong(--e.target.value) : null}>-</Button>
             </InputGroup>
             <h4 style={{position:"relative", color:"lightblue", paddingTop:"10px"}}>{`Tổng tiền: ${total}`}</h4>
@@ -340,7 +352,7 @@ const ItemPage = ({new_props, tech_props, food_props, fish_Data_Memo, fish_Table
           layout='fill'
          />
       </div>
-      <TopBar/>
+      <TopBar fetch1={fish_SX_props} fetch2={fish_TN_props}/>
       <BasicBreadcrumbs/>
 
       <div style={{position:'relative', color:"white"}}>

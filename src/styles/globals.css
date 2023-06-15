@@ -159,11 +159,11 @@ a {
 }
 
 .dropdown-content a {
-  font-size: 14px;
+  font-size: 11px;
   color: white;
   padding: 5px 16px;
   display: block;
-  font-weight: 600;
+  font-weight: 900;
 }
 
 .dropdown-content a:hover {color: rgb(200, 222, 0);}

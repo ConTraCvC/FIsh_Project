@@ -58,7 +58,7 @@ export default function Home({new_props, tech_props,
           layout='fill'
          />
       </div>
-      <TopBar/>
+      <TopBar fetch3={fish_SX_props} fetch4={fish_TN_props}/>
       <ImageSlice data1={fish_SX_props} data2={fish_TN_props}/>
       <NewAndTechnic data1={new_props} data2={tech_props} data3={food_props}/>
     </div>
