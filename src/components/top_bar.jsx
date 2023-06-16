@@ -19,7 +19,7 @@ const admin = () => {
   const handleKeyDown = (event) => {
     event.code="Enter"
     if(username==="admin"&&password==="admin"){
-      setCookie('admin', 'admin', {secure:true})
+      setCookie('admin', 'admin', {secure:true, sameSite:'strict'})
       router.push('/admin-page')
     }
     if(username!=="admin"&&password!=="admin"&&event.key==="Enter"){

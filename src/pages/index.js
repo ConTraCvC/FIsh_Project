@@ -10,13 +10,13 @@ import { collection, getDocs } from "firebase/firestore/lite"
 
 export const revalidate = 120
 
-const newCollection = collection(db, "news")
-const techCollection = collection(db, "techniques")
-const foodCollection = collection(db, "foods")
-const fish_SX_collection = collection(db, `fish_SX`)
-const fish_TN_collection = collection(db, "fish_TN")
-
 export const getStaticProps = async() => {
+  const newCollection = collection(db, "news")
+  const techCollection = collection(db, "techniques")
+  const foodCollection = collection(db, "foods")
+  const fish_SX_collection = collection(db, `fish_SX`)
+  const fish_TN_collection = collection(db, "fish_TN")
+
   const newSnap = await getDocs(newCollection, {
     next: {revalidate: 60}
   })

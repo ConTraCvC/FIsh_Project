@@ -31,6 +31,10 @@ const style = {
 export const getStaticProps = async() => {
   const fish_SX_collection = collection(db, `fish_SX`)
   const fish_TN_collection = collection(db, "fish_TN")
+  const newCollection = collection(db, "news")
+  const techCollection = collection(db, "techniques")
+  const foodCollection = collection(db, "foods")
+
   const fish_SX = await getDocs(fish_SX_collection, {
     next: {revalidate: 60}
   })
@@ -41,13 +45,40 @@ export const getStaticProps = async() => {
   })
   const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
 
+  const newSnap = await getDocs(newCollection, {
+    next: {revalidate: 60}
+  })
+  const new_props = newSnap.docs.map((doc) => ({ ...doc.data()}))
+
+  const techSnap = await getDocs(techCollection, {
+    next: {revalidate: 60}
+  })
+  const tech_props = techSnap.docs.map((doc) => ({ ...doc.data()}))
+  
+  const foodSnap = await getDocs(foodCollection, {
+    next: {revalidate: 60}
+  })
+  const food_props = foodSnap.docs.map((doc) => ({ ...doc.data()}))
+
   return {
-    props: {fish_SX_props, fish_TN_props}
+    props: {fish_SX_props, fish_TN_props, new_props, tech_props, food_props}
   };
 }
 
-export default function Admin({fish_SX_props, fish_TN_props}) {
+export default function Admin({fish_SX_props, fish_TN_props, new_props, tech_props, food_props}) {
   const router = useRouter()
+
+  const [fish_SX_state, setFish_SX_state] = useState(fish_SX_props)
+  const [fish_TN_state, setFish_TN_state] = useState(fish_TN_props)
+  const [new_state, setNew_state] = useState(new_props)
+  const [tech_state, setTech_state] = useState(tech_props)
+  const [food_state, setFood_state] = useState(food_props)
+
+  const maps = {fish_SX_state, fish_TN_state, new_state, tech_state, food_state}
+
+  const test = Object.values(maps).slice(0,5)
+
+  console.log(test)
   
   useEffect(() => {
     getCookie('admin')==='admin' ? router.push('/admin-page') : router.push('/')

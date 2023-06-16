@@ -13,13 +13,6 @@ import { Button, Form, FormGroup, Input, InputGroup, Table } from 'reactstrap'
 import ReactPlayer from 'react-player'
 
 export const revalidate = 120
-
-const newCollection = collection(db, "news")
-const techCollection = collection(db, "techniques")
-const foodCollection = collection(db, "foods")
-const fish_SX_collection = collection(db, `fish_SX`)
-const fish_TN_collection = collection(db, "fish_TN")
-
 // export const getStaticPaths = async() => {
 //   const fish_SX = await getDocs(fish_SX_collection)
 //   const paths = fish_SX.docs.map(doc => ({
@@ -31,8 +24,13 @@ const fish_TN_collection = collection(db, "fish_TN")
 // }
 
 export const getServerSideProps = async(context) => {
-
   const product = context.params.product
+
+  const newCollection = collection(db, "news")
+  const techCollection = collection(db, "techniques")
+  const foodCollection = collection(db, "foods")
+  const fish_SX_collection = collection(db, `fish_SX`)
+  const fish_TN_collection = collection(db, "fish_TN")
 
   const newSnap = await getDocs(newCollection, {
     next: {revalidate: 60}
