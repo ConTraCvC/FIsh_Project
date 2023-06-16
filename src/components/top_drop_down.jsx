@@ -1,4 +1,3 @@
-import { getCookie } from "cookies-next";
 import Link from "next/link";
 import React, { useEffect } from "react";
 

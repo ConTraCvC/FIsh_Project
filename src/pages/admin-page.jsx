@@ -35,6 +35,9 @@ export default function Admin() {
     getCookie('admin')==='admin' ? router.push('/admin-page') : router.push('/')
   }, [])
 
+  const {data5} = router.query
+  console.log(data5)
+
   const [isOpenNF, setIsOpenNF] = useState(false);
   const [isOpenKT, setIsOpenKT] = useState(false);
   const [isOpenAT, setIsOpenAT] = useState(false);
@@ -785,12 +788,13 @@ export default function Admin() {
 
     <div className="bg-image-wrapper">
      <Image
+        alt='home'
         src={background}
         quality="100"
         layout='fill'
        />
     </div>
-    <TopBar/>
+    {/* <TopBar/> */}
     <BasicBreadcrumbs/>
 
     <div className='control_button' style={{position:"relative", left:"15%", maxWidth:"80%"}}>
