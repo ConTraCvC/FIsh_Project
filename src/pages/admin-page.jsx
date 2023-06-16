@@ -8,7 +8,7 @@ import { ref, uploadBytes} from "firebase/storage";
 import { store } from '@component/firebase/firebase'
 import { Modal, Box } from '@mui/material'
 import { db } from "@component/firebase/firebase"
-import { addDoc, collection, doc, setDoc } from "firebase/firestore/lite"
+import { addDoc, collection, doc, setDoc, getDocs } from "firebase/firestore/lite"
 import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
 
@@ -28,15 +28,30 @@ const style = {
   borderRadius:"10px"
 };
 
-export default function Admin() {
-  
+export const getStaticProps = async() => {
+  const fish_SX_collection = collection(db, `fish_SX`)
+  const fish_TN_collection = collection(db, "fish_TN")
+  const fish_SX = await getDocs(fish_SX_collection, {
+    next: {revalidate: 60}
+  })
+  const fish_SX_props = fish_SX.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
+
+  const fish_TN = await getDocs(fish_TN_collection, {
+    next: {revalidate: 60}
+  })
+  const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
+
+  return {
+    props: {fish_SX_props, fish_TN_props}
+  };
+}
+
+export default function Admin({fish_SX_props, fish_TN_props}) {
   const router = useRouter()
+  
   useEffect(() => {
     getCookie('admin')==='admin' ? router.push('/admin-page') : router.push('/')
   }, [])
-
-  const {data5} = router.query
-  console.log(data5)
 
   const [isOpenNF, setIsOpenNF] = useState(false);
   const [isOpenKT, setIsOpenKT] = useState(false);
@@ -794,7 +809,7 @@ export default function Admin() {
         layout='fill'
        />
     </div>
-    {/* <TopBar/> */}
+    <TopBar fetch5={fish_SX_props} fetch6={fish_TN_props}/>
     <BasicBreadcrumbs/>
 
     <div className='control_button' style={{position:"relative", left:"15%", maxWidth:"80%"}}>

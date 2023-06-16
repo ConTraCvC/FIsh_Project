@@ -85,7 +85,7 @@ const MENU_LIST = [
   }
 ]
 
-const TopBar = ({fetch1, fetch2, fetch3, fetch4}) => {
+const TopBar = ({fetch1, fetch2, fetch3, fetch4, fetch5, fetch6}) => {
 
   // console.log()
 
@@ -130,7 +130,7 @@ const TopBar = ({fetch1, fetch2, fetch3, fetch4}) => {
         <div style={{position:"relative", top:"-5rem", marginLeft:"69%"}}>
           <SearchBar/>
         </div>
-        <TopDropDown data1={fetch1} data2={fetch2} data3={fetch3} data4={fetch4}/>
+        <TopDropDown data1={fetch1} data2={fetch2} data3={fetch3} data4={fetch4} data5={fetch5} data6={fetch6}/>
       </nav>
     </header>
   )

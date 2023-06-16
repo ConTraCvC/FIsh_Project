@@ -11,7 +11,6 @@ import { collection, doc, getDoc, getDocs} from "firebase/firestore/lite"
 import BasicBreadcrumbs from '@component/components/bread_crumbs'
 import { Button, Form, FormGroup, Input, InputGroup, Table } from 'reactstrap'
 import ReactPlayer from 'react-player'
-import Router from 'next/router'
 
 export const revalidate = 120
 
@@ -77,11 +76,6 @@ export const getServerSideProps = async(context) => {
     next: {revalidate: 60}
   })
   const fish_TN_props = fish_TN.docs.map((doc) => ({ ...doc.data(), id: doc.id}))
-
-  Router.push({
-    pathname: '/admin-page',
-    query: {data5: fish_SX_props, data6: fish_TN_props}
-  })
 
   /////////////////////////////
   const fish_Data_Memo = fish_SX_Snap?.data() || fish_TN_Snap?.data() || null

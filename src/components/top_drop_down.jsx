@@ -1,12 +1,20 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-const TopDropDown = ({data1, data2, data3, data4}) => {
+const TopDropDown = ({data1, data2, data3, data4, data5, data6}) => {
 
-  const memo1 = data1 || data3
-  const memo2 = data2 || data4
+  const memo1 = data1 || data3 || data5
+  const memo2 = data2 || data4 || data6
 
   const SX_Link = Object.values(memo1).map(item => {
+    return(
+      <>
+        <Link href={{pathname: item.id}}>{Object.values(item.title)}</Link>
+      </>
+    )
+  })
+
+  const TN_Link = Object.values(memo2).map(item => {
     return(
       <>
         <Link href={{pathname: item.id}}>{Object.values(item.title)}</Link>
@@ -18,27 +26,17 @@ const TopDropDown = ({data1, data2, data3, data4}) => {
     <div className="dropmenu gradient__bg">
       <h2 style={{color:"white", position:"absolute", whiteSpace:"nowrap"}}>Sản Phẩm Và Dịch Vụ</h2>
       <div className="dropdown">
-      <button style={{color:"white", borderTopLeftRadius:"3px", borderBottomLeftRadius:"3px"}} class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN SẢN XUẤT</button>
+        <button style={{color:"white", borderTopLeftRadius:"3px", borderBottomLeftRadius:"3px"}} class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN SẢN XUẤT</button>
         <div class="dropdown-content">
           {SX_Link}
         </div>
       </div>
 
       <div className="dropdown">
-      <button style={{color:"white"}} class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN TỰ NHIÊN</button>
-      <div class="dropdown-content">
-        <Link href="/abc">Cá Dìa Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Hồng Bạc Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Măng Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Tráp Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Nâu Vàng Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Kình Trắng Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Ong Căng Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Cam Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Hồng Đỏ Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Thiên Sứ Giống Chất Lượng</Link>
-        <Link href="/abc">Cá Sủ Đất Giống Chất Lượng</Link>
-      </div>
+        <button style={{color:"white"}} class="dropbtn button__gradient__bg">GIỐNG CÁ BIỂN TỰ NHIÊN</button>
+        <div class="dropdown-content">
+          {TN_Link}
+        </div>
       </div>
 
       <div className="dropdown">
