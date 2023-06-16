@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 
 const TopDropDown = ({data1, data2, data3, data4, data5, data6}) => {
 
